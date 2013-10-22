@@ -35,15 +35,15 @@ public final class MainActivity_
     }
 
     private void afterSetContentView_() {
-        mTabImg2 = ((ImageView) findViewById(id.iv_maps));
-        mTabImg = ((ImageView) findViewById(id.iv_tab_now));
-        mTabImg3 = ((ImageView) findViewById(id.iv_impress));
-        mTabImg1 = ((ImageView) findViewById(id.iv_friends));
-        mTab4 = ((LinearLayout) findViewById(id.ll_settings));
-        mTabPager = ((ViewPager) findViewById(id.tabpager));
-        mTabImg4 = ((ImageView) findViewById(id.iv_settings));
-        mTab3 = ((LinearLayout) findViewById(id.ll_impress));
         mTab2 = ((LinearLayout) findViewById(id.ll_maps));
+        mTabImg3 = ((ImageView) findViewById(id.iv_impress));
+        mTab3 = ((LinearLayout) findViewById(id.ll_impress));
+        mTabImg4 = ((ImageView) findViewById(id.iv_settings));
+        mTab4 = ((LinearLayout) findViewById(id.ll_settings));
+        mTabImg2 = ((ImageView) findViewById(id.iv_maps));
+        mTabImg1 = ((ImageView) findViewById(id.iv_friends));
+        mTabPager = ((ViewPager) findViewById(id.tabpager));
+        mTabImg = ((ImageView) findViewById(id.iv_tab_now));
         mTab1 = ((LinearLayout) findViewById(id.ll_friends));
         init();
     }

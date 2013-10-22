@@ -36,11 +36,11 @@ public final class LoginActivity_
     }
 
     private void afterSetContentView_() {
-        btn_login = ((Button) findViewById(id.btn_login));
-        btn_login_more_pop = ((Button) findViewById(id.btn_login_more_pop));
-        et_login_username = ((EditText) findViewById(id.et_login_username));
-        iv_login_logo = ((ImageView) findViewById(id.iv_login_logo));
         et_login_pwd = ((EditText) findViewById(id.et_login_pwd));
+        btn_login_more_pop = ((Button) findViewById(id.btn_login_more_pop));
+        btn_login = ((Button) findViewById(id.btn_login));
+        iv_login_logo = ((ImageView) findViewById(id.iv_login_logo));
+        et_login_username = ((EditText) findViewById(id.et_login_username));
         {
             View view = findViewById(id.btn_login);
             if (view!= null) {

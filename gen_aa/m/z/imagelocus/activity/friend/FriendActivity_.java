@@ -37,9 +37,9 @@ public final class FriendActivity_
 
     private void afterSetContentView_() {
         lv_friend = ((ListView) findViewById(id.lv_friend));
-        tv_middle = ((TextView) findViewById(id.tv_middle));
-        btn_left = ((Button) findViewById(id.btn_left));
         btn_right = ((Button) findViewById(id.btn_right));
+        btn_left = ((Button) findViewById(id.btn_left));
+        tv_middle = ((TextView) findViewById(id.tv_middle));
         {
             View view = findViewById(id.btn_left);
             if (view!= null) {

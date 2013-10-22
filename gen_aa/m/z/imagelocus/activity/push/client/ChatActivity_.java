@@ -37,10 +37,10 @@ public final class ChatActivity_
     }
 
     private void afterSetContentView_() {
-        spn_push_userlist = ((Spinner) findViewById(id.spn_push_userlist));
-        et_chat_content = ((EditText) findViewById(id.et_chat_content));
-        lv_chat_view = ((ListView) findViewById(id.lv_chat_view));
         btn_chat_push = ((Button) findViewById(id.btn_chat_push));
+        et_chat_content = ((EditText) findViewById(id.et_chat_content));
+        spn_push_userlist = ((Spinner) findViewById(id.spn_push_userlist));
+        lv_chat_view = ((ListView) findViewById(id.lv_chat_view));
         {
             View view = findViewById(id.btn_chat_push);
             if (view!= null) {

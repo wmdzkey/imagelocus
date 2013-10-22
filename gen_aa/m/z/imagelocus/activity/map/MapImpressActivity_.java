@@ -36,28 +36,13 @@ public final class MapImpressActivity_
     }
 
     private void afterSetContentView_() {
-        tv_middle = ((TextView) findViewById(id.tv_middle));
-        mMapView = ((LocationMapView) findViewById(id.bmapView));
-        btn_test = ((Button) findViewById(id.btn_test));
-        btn_locate = ((Button) findViewById(id.btn_locate));
         btn_history_next = ((Button) findViewById(id.btn_history_next));
+        mMapView = ((LocationMapView) findViewById(id.bmapView));
+        tv_middle = ((TextView) findViewById(id.tv_middle));
         btn_history_before = ((Button) findViewById(id.btn_history_before));
+        btn_locate = ((Button) findViewById(id.btn_locate));
         btn_right = ((Button) findViewById(id.btn_right));
-        {
-            View view = findViewById(id.btn_history_next);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        MapImpressActivity_.this.btn_history_next_onClick();
-                    }
-
-                }
-                );
-            }
-        }
+        btn_test = ((Button) findViewById(id.btn_test));
         {
             View view = findViewById(id.btn_right);
             if (view!= null) {
@@ -67,6 +52,36 @@ public final class MapImpressActivity_
                     @Override
                     public void onClick(View view) {
                         MapImpressActivity_.this.btn_right_onClick();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = findViewById(id.btn_history_before);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        MapImpressActivity_.this.btn_history_before_onClick();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = findViewById(id.btn_history_next);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        MapImpressActivity_.this.btn_history_next_onClick();
                     }
 
                 }
@@ -97,21 +112,6 @@ public final class MapImpressActivity_
                     @Override
                     public void onClick(View view) {
                         MapImpressActivity_.this.btn_test_onClick();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = findViewById(id.btn_history_before);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        MapImpressActivity_.this.btn_history_before_onClick();
                     }
 
                 }

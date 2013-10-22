@@ -35,8 +35,8 @@ public final class PushDemoActivity_
     }
 
     private void afterSetContentView_() {
-        infoText = ((TextView) findViewById(id.text));
         initWithApiKey = ((Button) findViewById(id.btn_initAK));
+        infoText = ((TextView) findViewById(id.text));
         displayRichMedia = ((Button) findViewById(id.btn_rich));
         {
             View view = findViewById(id.btn_pushtest);

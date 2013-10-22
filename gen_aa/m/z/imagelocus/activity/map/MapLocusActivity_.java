@@ -37,11 +37,11 @@ public final class MapLocusActivity_
     }
 
     private void afterSetContentView_() {
-        mMapView = ((MapView) findViewById(id.bmapsView));
         spn_push_userlist = ((Spinner) findViewById(id.spn_push_userlist));
-        textView = ((TextView) findViewById(id.textView));
-        btn_right = ((Button) findViewById(id.btn_right));
+        mMapView = ((MapView) findViewById(id.bmapsView));
         tv_middle = ((TextView) findViewById(id.tv_middle));
+        btn_right = ((Button) findViewById(id.btn_right));
+        textView = ((TextView) findViewById(id.textView));
         {
             View view = findViewById(id.btn_right);
             if (view!= null) {
