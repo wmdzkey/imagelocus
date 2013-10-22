@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+        >
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+            >
+
+        <TextView
+                android:id="@+id/tv_location_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/popup_side"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:text="新疆乌鲁木齐沙依巴克区西北路134号新疆大学北校区"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+            >
+
+        <TextView
+                android:id="@+id/tv_location_time_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/popup_left"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:paddingLeft="10dip"
+                android:text="定位时间 :"/>
+
+        <TextView
+                android:id="@+id/tv_location_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/popup_right"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:paddingRight="10dip"
+                android:text="2013年10月15日 10:50:38 星期二"/>
+
+    </LinearLayout>
+
+</LinearLayout>

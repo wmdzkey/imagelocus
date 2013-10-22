@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/text_head"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Channel绑定信息："
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_head" />
+
+    <Button
+        android:id="@+id/btn_setTags"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:text="设置标签" />
+
+    <Button
+        android:id="@+id/btn_delTags"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_setTags"
+        android:text="删除标签" />
+
+
+    <Button
+        android:id="@+id/btn_rich"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_delTags"
+        android:text="查看富媒体消息" />
+    
+    <Button
+        android:id="@+id/btn_init"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_rich"
+        android:text="登陆百度账号初始化" />
+    
+    <Button
+        android:id="@+id/btn_initAK"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_init"
+        android:text="开启百度云推送" />
+
+    <Button
+            android:id="@+id/btn_pushtest"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_initAK"
+            android:text="推送测试" />
+
+    <ProgressBar android:id="@+id/pgb_demo_x3pgb"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center_vertical"
+                 android:layout_below="@id/btn_pushtest">
+    </ProgressBar>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="title_style">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="title_style_center" parent="@style/title_style">
+        <item name="android:textSize">20dip</item>
+        <item name="android:layout_marginLeft">10dip</item>
+        <item name="android:layout_marginRight">10dip</item>
+    </style>
+
+</resources>
