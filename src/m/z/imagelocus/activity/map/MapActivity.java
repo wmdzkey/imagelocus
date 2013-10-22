@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.EActivity;
+import com.googlecode.androidannotations.annotations.NoTitle;
 import m.z.imagelocus.R;
 
 /**
  * Created by Winnid on 13-10-22.
  */
+@NoTitle
 @EActivity(R.layout.activity_map)
 public class MapActivity extends Activity {
 
