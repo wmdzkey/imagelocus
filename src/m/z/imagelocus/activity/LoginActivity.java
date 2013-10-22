@@ -10,7 +10,6 @@ import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
 import m.z.common.X3ProgressBar;
 import m.z.imagelocus.R;
-import m.z.imagelocus.activity.map.MapImpressActivity_;
 import m.z.imagelocus.activity.push.tool.PushInitActivity_;
 import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.entity.User;
@@ -112,7 +111,7 @@ public class LoginActivity extends Activity {
         if (iv_login_logo_clickNum == 2) {
             iv_login_logo_clickNum = 0;
             CommonView.displayShort(instance, "有恒心，酒香不怕巷子深");
-            Intent intentToHide = new Intent(instance, MapImpressActivity_.class);
+            Intent intentToHide = new Intent(instance, MainActivity_.class);
             startActivity(intentToHide);
         } else {
             CommonView.displayShort(instance, "这个版本没有隐藏功能");

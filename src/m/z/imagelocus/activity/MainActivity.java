@@ -19,10 +19,9 @@ import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.NoTitle;
 import com.googlecode.androidannotations.annotations.ViewById;
 import m.z.imagelocus.R;
-import m.z.imagelocus.activity.demo.X3ProgressBarActivity_;
 import m.z.imagelocus.activity.friend.FriendActivity_;
-import m.z.imagelocus.activity.map.MapImpressActivity_;
-import m.z.imagelocus.activity.map.MapLocusActivity_;
+import m.z.imagelocus.activity.impress.ImpressActivity_;
+import m.z.imagelocus.activity.map.MapActivity_;
 import m.z.imagelocus.activity.setting.SettingActivity;
 
 import java.util.ArrayList;
@@ -89,14 +88,10 @@ public class MainActivity extends Activity {
 
         // 将要分页显示的View装入数组中
         final ArrayList<View> views = new ArrayList<View>();
-        Intent intent = new Intent(instance, FriendActivity_.class);
-        views.add(getView("密友", intent));
-        Intent intent2 = new Intent(instance, MapLocusActivity_.class);
-        views.add(getView("地图", intent2));
-        Intent intent3 = new Intent(instance, MapImpressActivity_.class);
-        views.add(getView("印象", intent3));
-        Intent intent4 = new Intent(instance, SettingActivity.class);
-        views.add(getView("设置", intent4));
+        views.add(getView("FRIEND", FriendActivity_.class));
+        views.add(getView("MAP", MapActivity_.class));
+        views.add(getView("IMPRESS", ImpressActivity_.class));
+        views.add(getView("SETTING",  SettingActivity.class));
 
         // 填充ViewPager的数据适配器
         PagerAdapter mPagerAdapter = new PagerAdapter() {
@@ -235,12 +230,26 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * 通过activity获取视图
-     * @param id
-     * @param intent
+     * 为启动Activity初始化Intent信息
+     * @param cls
      * @return
      */
-    private View getView(String id, Intent intent) {
-        return manager.startActivity(id, intent).getDecorView();
+    private Intent initIntent(Class<?> cls){
+        return new Intent(this,    cls).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    }
+
+    /**
+     * 供开发者在实现类中调用，能将Activity容器内的Activity移除，再将指定的某个Activity加入
+     * @param activityName 加载的Activity在localActivityManager中的名字
+     * @param activityClassTye    要加载Activity的类型
+     */
+    protected View getView(String activityName, Class<?> activityClassTye){
+        //移除内容部分全部的View
+        Activity contentActivity = manager.getActivity(activityName);
+        if (null == contentActivity) {
+            manager.startActivity(activityName, initIntent(activityClassTye));
+        }
+        //加载Activity
+        return  manager.getActivity(activityName).getWindow().getDecorView();
     }
 }

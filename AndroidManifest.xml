@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="m.z.imagelocus"
-          android:versionName="0.8.3">
+          android:versionName="0.8.4">
 
     <uses-sdk
             android:minSdkVersion="8"
@@ -93,6 +93,12 @@
                   android:configChanges="orientation|keyboardHidden" >
         </activity><!-- friend.end -->
 
+
+        <!-- impress -->
+        <activity android:name=".activity.impress.ImpressActivity_">
+        </activity><!-- impress.end -->
+
+
         <!-- push -->
         <activity
                 android:name="m.z.imagelocus.activity.push.tool.PushInitActivity_"
@@ -169,16 +175,15 @@
         <!-- push service end -->
 
         <!-- map -->
-        <activity android:name=".activity.map.MapLocusActivity_"
-                  android:screenOrientation="sensor"
-                  android:configChanges="orientation|keyboardHidden">
+        <activity android:name=".activity.map.MapActivity_">
+        </activity>
+        <activity android:name=".activity.map.MapLocusActivity_">
         </activity>
         <activity android:name=".activity.map.LbsHistoryActivity_">
         </activity>
-        <activity android:name=".activity.map.MapImpressActivity_"
-                  android:screenOrientation="sensor"
-                  android:configChanges="orientation|keyboardHidden">
-        </activity><!-- map.end -->
+        <activity android:name=".activity.map.MapImpressActivity_">
+        </activity>
+        <!-- map.end -->
 
 
 
