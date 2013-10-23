@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="m.z.imagelocus"
-          android:versionName="0.8.4">
+          android:versionName="0.8.5">
 
     <uses-sdk
             android:minSdkVersion="8"
@@ -177,6 +177,9 @@
         <!-- map -->
         <activity android:name=".activity.map.MapActivity_">
         </activity>
+        <activity android:name=".activity.map.MapFriendActivity_">
+        </activity>
+
         <activity android:name=".activity.map.MapLocusActivity_">
         </activity>
         <activity android:name=".activity.map.LbsHistoryActivity_">

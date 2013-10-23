@@ -138,9 +138,9 @@
 
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent" >
-            <m.z.imagelocus.view.map.LocationMapView android:id="@+id/bmapView"
-                                                           android:layout_width="fill_parent" android:layout_height="fill_parent"
-                                                           android:clickable="true"
+            <m.z.imagelocus.view.map.LocationMapView android:id="@+id/bmap_view"
+                                                     android:layout_width="fill_parent" android:layout_height="fill_parent"
+                                                     android:clickable="true"
                     />
             <LinearLayout
                     android:layout_width="wrap_content"

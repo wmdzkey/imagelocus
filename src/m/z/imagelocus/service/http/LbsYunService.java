@@ -26,7 +26,7 @@ public abstract class LbsYunService {
     public Context mContext;
 
     public static enum FunctionName {
-        sendBaiduServer, findLbsByApp_User_id;
+        sendBaiduServer, findAllLbs, findLbsByApp_User_id;
     }
 
     public LbsYunService(Context context, FunctionName functionName, Object... objects) {
@@ -34,6 +34,9 @@ public abstract class LbsYunService {
         switch (functionName) {
             case sendBaiduServer:
                 sendBaiduServer((Lbs) objects[0]);
+                break;
+            case findAllLbs:
+                findAllLbs();
                 break;
             case findLbsByApp_User_id:
                 findLbsByApp_User_id((String) objects[0]);
@@ -69,12 +72,42 @@ public abstract class LbsYunService {
         };
     }
 
+    public void findAllLbs() {
+        RequestParams params = new RequestParams();
+        params.addQueryStringParameter("ak",  SystemConfig.BDLbsKey);
+        params.addQueryStringParameter("geotable_id", SystemConfig.BDLbsTableId);
+        params.addQueryStringParameter("page_size", "200");
+
+
+        new X3HttpProgressBar(mContext, SystemConfig.BDLbsUrl_FIND, HttpRequest.HttpMethod.GET, params) {
+
+            @Override
+            public void doSuccess(String result) {
+                Map<String, Object> map = new HashMap<String, Object>();
+                Gson gson = new Gson();
+                LbsListYun lbsListYun = gson.fromJson(result, LbsListYun.class);
+                map.put("msg","查询结果:" + lbsListYun.getPois().length);
+
+                if(lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
+                    List<Lbs> lbsList = new ArrayList<Lbs>();
+                    for(LbsYun lbsYun : lbsListYun.getPois()) {
+                        lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
+                    }
+                    map.put("lbsList", lbsList);
+                }
+                doResult(map);
+            }
+
+        };
+    }
+
 
     public void findLbsByApp_User_id(String app_user_id) {
         RequestParams params = new RequestParams();
         params.addQueryStringParameter("ak",  SystemConfig.BDLbsKey);
         params.addQueryStringParameter("geotable_id", SystemConfig.BDLbsTableId);
         params.addQueryStringParameter("app_user_id", app_user_id);
+        params.addQueryStringParameter("page_size", "200");
 
         new X3HttpProgressBar(mContext, SystemConfig.BDLbsUrl_FIND, HttpRequest.HttpMethod.GET, params) {
 
@@ -105,6 +138,7 @@ public abstract class LbsYunService {
         params.addQueryStringParameter("ak",  SystemConfig.BDLbsKey);
         params.addQueryStringParameter("geotable_id", SystemConfig.BDLbsTableId);
         params.addQueryStringParameter("createTime", startTime.getTime() + "," + endTime.getTime());
+        params.addQueryStringParameter("page_size", "200");
 
         new X3HttpProgressBar(mContext, SystemConfig.BDLbsUrl_FIND, HttpRequest.HttpMethod.GET, params) {
 
@@ -134,6 +168,7 @@ public abstract class LbsYunService {
         params.addQueryStringParameter("geotable_id", SystemConfig.BDLbsTableId);
         params.addQueryStringParameter("app_user_id", app_user_id);
         params.addQueryStringParameter("createTime", startTime.getTime() + "," + endTime.getTime());
+        params.addQueryStringParameter("page_size", "200");
 
         new X3HttpProgressBar(mContext, SystemConfig.BDLbsUrl_FIND, HttpRequest.HttpMethod.GET, params) {
 

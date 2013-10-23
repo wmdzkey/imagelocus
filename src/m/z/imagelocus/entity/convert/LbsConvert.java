@@ -52,8 +52,8 @@ public class LbsConvert {
         _lbsYun.setDistrict(lbs.getDistrict());
         _lbsYun.setGeotable_id(lbs.getGeotable_id());
         _lbsYun.setId(lbs.getId());
-        _lbsYun.setLatitude(lbs.getLatitude());
         _lbsYun.setLocation(new double[]{lbs.getLongitude(), lbs.getLatitude()});
+        _lbsYun.setLatitude(lbs.getLatitude());
         _lbsYun.setLongitude(lbs.getLongitude());
         _lbsYun.setProvince(lbs.getProvince());
         _lbsYun.setState(lbs.getState());
@@ -104,8 +104,8 @@ public class LbsConvert {
         lbs.setDistrict(lbsYun.getDistrict());
         lbs.setGeotable_id(lbsYun.getGeotable_id());
         lbs.setId(lbsYun.getId());
-        lbs.setLatitude(lbsYun.getLatitude());
-        lbs.setLongitude(lbsYun.getLongitude());
+        lbs.setLatitude(lbsYun.getLocation()[1]);
+        lbs.setLongitude(lbsYun.getLocation()[0]);
         lbs.setProvince(lbsYun.getProvince());
         lbs.setState(lbsYun.getState());
         lbs.setTags(lbsYun.getTags());

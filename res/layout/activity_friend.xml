@@ -17,7 +17,8 @@
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="10dip"
                 android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:visibility="gone">
             <Button
                     android:id="@+id/btn_left"
                     android:layout_width="60dip"
@@ -75,7 +76,7 @@
                         android:background="@drawable/login_input_arrow"
                         android:layout_width="12.0dip"
                         android:layout_height="8.0dip"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         />
 
             </LinearLayout>
@@ -110,7 +111,7 @@
             <ImageView
                     android:id="@+id/iv_right_circle"
                     android:background="@drawable/bignotecircle"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_width="10.0dip"
                     android:layout_height="10.0dip"
                     android:layout_marginTop="6dip"

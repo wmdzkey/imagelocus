@@ -3,8 +3,10 @@ package m.z.imagelocus.view.map;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import com.baidu.mapapi.map.MapController;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.PopupOverlay;
+import com.baidu.platform.comapi.basestruct.GeoPoint;
 
 /**
  * @author Winnid
@@ -35,5 +37,9 @@ public class LocationMapView extends MapView {
                 pop.hidePop();
         }
         return true;
+    }
+
+    public void movePoint(MapController controller, double latitude, double longitude) {
+        controller.animateTo(new GeoPoint((int)(latitude* 1e6), (int)(longitude *  1e6)));
     }
 }

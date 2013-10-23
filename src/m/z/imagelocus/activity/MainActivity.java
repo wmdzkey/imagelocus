@@ -22,6 +22,7 @@ import m.z.imagelocus.R;
 import m.z.imagelocus.activity.friend.FriendActivity_;
 import m.z.imagelocus.activity.impress.ImpressActivity_;
 import m.z.imagelocus.activity.map.MapActivity_;
+import m.z.imagelocus.activity.map.MapImpressActivity_;
 import m.z.imagelocus.activity.setting.SettingActivity;
 
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ public class MainActivity extends Activity {
         final ArrayList<View> views = new ArrayList<View>();
         views.add(getView("FRIEND", FriendActivity_.class));
         views.add(getView("MAP", MapActivity_.class));
-        views.add(getView("IMPRESS", ImpressActivity_.class));
+        views.add(getView("IMPRESS", MapImpressActivity_.class));
         views.add(getView("SETTING",  SettingActivity.class));
 
         // 填充ViewPager的数据适配器

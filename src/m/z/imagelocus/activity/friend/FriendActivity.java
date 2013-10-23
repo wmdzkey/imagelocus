@@ -54,7 +54,7 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
 
     @AfterViews
     void init() {
-        tv_middle.setText("我的密友");
+        tv_middle.setText("我的朋友");
 
         list_friend = SystemStore.userData;
         x3ap_items_friend = new X3FriendAdapter(instance, list_friend);
@@ -66,14 +66,12 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
 
     @Click(R.id.btn_left)
     void btn_left_onClick() {
-        CommonView.displayShort(this, "左");
-        //finish();
+        CommonView.displayShort(this, "发起群聊");
     }
 
     @Click(R.id.btn_right)
     void btn_right_onClick() {
-        CommonView.displayShort(this, "右");
-        //finish();
+        CommonView.displayShort(this, "加密友");
     }
 
     @Override

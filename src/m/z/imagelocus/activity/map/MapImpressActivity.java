@@ -77,7 +77,7 @@ public class MapImpressActivity extends Activity{
 
     //地图相关，使用继承MapView的LocationMapView目的是重写touch事件实现泡泡处理
     //如果不处理touch事件，则无需继承，直接使用MapView即可
-    @ViewById(R.id.bmapView)
+    @ViewById(R.id.bmap_view)
     LocationMapView mMapView;	    // 地图View
     MapController mMapController = null;
 
