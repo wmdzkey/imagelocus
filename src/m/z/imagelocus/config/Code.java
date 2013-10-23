@@ -1,5 +1,7 @@
 package m.z.imagelocus.config;
 
+import java.util.AbstractMap;
+
 /**
  * @author Winnid
  * @Title: /双向绑定类型常量
@@ -9,27 +11,34 @@ package m.z.imagelocus.config;
  * Created by Winnid on 13-9-11.
  */
 public class Code {
+    private abstract static class AbstractCode {
+        public String[] KEYS;
+        public String[] NAMES;
+        public String keyOf(int value) {
+            return KEYS[value];
+        }
+        public String nameOf(int value) {
+            return NAMES[value];
+        }
+    }
 
-    /**
-     * 内容类型存储State 　;"Type1","Type2","Type3","Type4"
-     *
-     * @author Winnid
-     */
-    public static class State {
+    //状态
+    public static class State extends AbstractCode {
         public static final int NORMAL= 0;
         public static final int DELETE = 1;
         public static final int FREEZE = 2;
 
         public static final String[] KEYS = {"NORMAL", "DELETE", "FREEZE"};
         public static final String[] NAMES = {"正常", "删除", "冻结"};
-
-        public static String keyOf(int value) {
-            return KEYS[value];
-        }
-
-        public static String nameOf(int value) {
-            return NAMES[value];
-        }
-
     }
+
+    //性别
+    public static class Sex extends AbstractCode {
+        public static final int BOY= 0;
+        public static final int GIRL = 1;
+
+        public static final String[] KEYS = {"BOY", "GIRL"};
+        public static final String[] NAMES = {"男", "女"};
+    }
+
 }

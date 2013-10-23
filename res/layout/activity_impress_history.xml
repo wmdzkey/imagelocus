@@ -109,7 +109,7 @@
                     android:layout_centerVertical="true"
                     android:visibility="gone"/>
             <TextView
-                    android:id="@+id/iv_right"
+                    android:id="@+id/tv_right"
                     android:layout_width="60dip"
                     android:layout_height="30dip"
                     android:layout_centerVertical="true"

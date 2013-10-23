@@ -15,6 +15,7 @@ import m.z.imagelocus.entity.Lbs;
 import m.z.imagelocus.entity.convert.LbsConvert;
 import m.z.imagelocus.entity.yun.LbsListYun;
 import m.z.imagelocus.entity.yun.LbsYun;
+import m.z.imagelocus.entity.yun.UserLocListYun;
 
 import java.util.*;
 
@@ -77,6 +78,7 @@ public abstract class LbsYunService {
         params.addQueryStringParameter("ak",  SystemConfig.BDLbsKey);
         params.addQueryStringParameter("geotable_id", SystemConfig.BDLbsTableId);
         params.addQueryStringParameter("page_size", "200");
+        params.addQueryStringParameter("calldatz", new Date().getTime()+"");
 
 
         new X3HttpProgressBar(mContext, SystemConfig.BDLbsUrl_FIND, HttpRequest.HttpMethod.GET, params) {
@@ -86,14 +88,15 @@ public abstract class LbsYunService {
                 Map<String, Object> map = new HashMap<String, Object>();
                 Gson gson = new Gson();
                 LbsListYun lbsListYun = gson.fromJson(result, LbsListYun.class);
-                map.put("msg","查询结果:" + lbsListYun.getPois().length);
-
-                if(lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
+                if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
                     List<Lbs> lbsList = new ArrayList<Lbs>();
                     for(LbsYun lbsYun : lbsListYun.getPois()) {
                         lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
                     }
                     map.put("lbsList", lbsList);
+                    map.put("msg","查询结果:" + lbsListYun.getPois().length);
+                } else {
+                    map.put("msg","查询结果: 0");
                 }
                 doResult(map);
             }
@@ -108,6 +111,7 @@ public abstract class LbsYunService {
         params.addQueryStringParameter("geotable_id", SystemConfig.BDLbsTableId);
         params.addQueryStringParameter("app_user_id", app_user_id);
         params.addQueryStringParameter("page_size", "200");
+        params.addQueryStringParameter("calldatz", new Date().getTime()+"");
 
         new X3HttpProgressBar(mContext, SystemConfig.BDLbsUrl_FIND, HttpRequest.HttpMethod.GET, params) {
 
@@ -116,8 +120,7 @@ public abstract class LbsYunService {
                 Map<String, Object> map = new HashMap<String, Object>();
                 Gson gson = new Gson();
                 LbsListYun lbsListYun = gson.fromJson(result, LbsListYun.class);
-
-                if(lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
+                if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
                     List<Lbs> lbsList = new ArrayList<Lbs>();
                     for(LbsYun lbsYun : lbsListYun.getPois()) {
                         lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
@@ -139,6 +142,7 @@ public abstract class LbsYunService {
         params.addQueryStringParameter("geotable_id", SystemConfig.BDLbsTableId);
         params.addQueryStringParameter("createTime", startTime.getTime() + "," + endTime.getTime());
         params.addQueryStringParameter("page_size", "200");
+        params.addQueryStringParameter("calldatz", new Date().getTime()+"");
 
         new X3HttpProgressBar(mContext, SystemConfig.BDLbsUrl_FIND, HttpRequest.HttpMethod.GET, params) {
 
@@ -147,14 +151,15 @@ public abstract class LbsYunService {
                 Map<String, Object> map = new HashMap<String, Object>();
                 Gson gson = new Gson();
                 LbsListYun lbsListYun = gson.fromJson(result, LbsListYun.class);
-                map.put("msg","查询结果:" + lbsListYun.getPois().length);
-
-                if(lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
+                if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
                     List<Lbs> lbsList = new ArrayList<Lbs>();
                     for(LbsYun lbsYun : lbsListYun.getPois()) {
                         lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
                     }
                     map.put("lbsList", lbsList);
+                    map.put("msg","查询结果:" + lbsListYun.getPois().length);
+                } else {
+                    map.put("msg","查询结果: 0");
                 }
                 doResult(map);
             }
@@ -169,6 +174,7 @@ public abstract class LbsYunService {
         params.addQueryStringParameter("app_user_id", app_user_id);
         params.addQueryStringParameter("createTime", startTime.getTime() + "," + endTime.getTime());
         params.addQueryStringParameter("page_size", "200");
+        params.addQueryStringParameter("calldatz", new Date().getTime()+"");
 
         new X3HttpProgressBar(mContext, SystemConfig.BDLbsUrl_FIND, HttpRequest.HttpMethod.GET, params) {
 
@@ -177,14 +183,15 @@ public abstract class LbsYunService {
                 Map<String, Object> map = new HashMap<String, Object>();
                 Gson gson = new Gson();
                 LbsListYun lbsListYun = gson.fromJson(result, LbsListYun.class);
-                map.put("msg","查询结果:" + lbsListYun.getPois().length);
-
-                if(lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
+                if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
                     List<Lbs> lbsList = new ArrayList<Lbs>();
                     for(LbsYun lbsYun : lbsListYun.getPois()) {
                         lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
                     }
                     map.put("lbsList", lbsList);
+                    map.put("msg","查询结果:" + lbsListYun.getPois().length);
+                } else {
+                    map.put("msg","查询结果: 0");
                 }
                 doResult(map);
             }

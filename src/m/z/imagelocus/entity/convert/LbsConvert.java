@@ -4,6 +4,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.LocationData;
 import m.z.imagelocus.entity.Lbs;
 import m.z.imagelocus.entity.yun.LbsYun;
+import m.z.imagelocus.entity.yun.UserLocYun;
 
 import java.util.Date;
 
@@ -117,5 +118,13 @@ public class LbsConvert {
         lbs.setCreateTime(new Date(Math.round(lbsYun.getCreateTime())));
         lbs.setModifyTime(new Date(Math.round(lbsYun.getModifyTime())));
         return lbs;
+    }
+
+    public static UserLocYun BDLocation2UserLocYun(BDLocation bdLocation) {
+        UserLocYun userLocYun = new UserLocYun();
+        userLocYun.setLatitude(bdLocation.getLatitude());
+        userLocYun.setLongitude(bdLocation.getLongitude());
+        userLocYun.setAddress(bdLocation.getAddrStr());
+        return userLocYun;
     }
 }

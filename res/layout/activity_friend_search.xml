@@ -18,7 +18,7 @@
                 android:layout_marginLeft="10dip"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:visibility="gone">
+                android:visibility="visible">
             <Button
                     android:id="@+id/btn_left"
                     android:layout_width="60dip"
@@ -39,7 +39,7 @@
             <ImageView
                     android:id="@+id/iv_left_circle"
                     android:background="@drawable/bignotecircle"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_width="10.0dip"
                     android:layout_height="10.0dip"
                     android:layout_marginTop="6dip"
@@ -105,7 +105,16 @@
                     android:layout_marginLeft="15dip"
                     android:src="@drawable/mm_title_btn_add_contact_normal"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"/>
+            <TextView
+                    android:id="@+id/tv_right"
+                    android:layout_width="60dip"
+                    android:layout_height="30dip"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:text="按住查找"/>
 
             <!-- 如果有信息则在右上角显示小红点 -->
             <ImageView
@@ -189,6 +198,12 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/rl_title"
             android:gravity="center">
-
+        <ListView
+                android:id="@+id/lv_friend"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:listSelector="@color/transparence">
+        </ListView>
     </LinearLayout>
 </RelativeLayout>
