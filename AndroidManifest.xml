@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="m.z.imagelocus"
-          android:versionName="0.8.5">
+          android:versionName="0.8.8">
 
     <uses-sdk
             android:minSdkVersion="8"
@@ -91,11 +91,17 @@
         <activity android:name=".activity.friend.ChatActivity_"
                   android:launchMode="singleTask"
                   android:configChanges="orientation|keyboardHidden" >
+        </activity>
+        <activity android:name=".activity.friend.FriendSearchActivity_">
         </activity><!-- friend.end -->
 
 
         <!-- impress -->
         <activity android:name=".activity.impress.ImpressActivity_">
+        </activity>
+        <activity android:name=".activity.impress.ImpressMeActivity_">
+        </activity>
+        <activity android:name=".activity.impress.ImpressHistoryActivity_">
         </activity><!-- impress.end -->
 
 

@@ -1,29 +1,20 @@
-package m.z.imagelocus.activity.map;
+package m.z.imagelocus.activity.impress;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.map.*;
-import com.baidu.mapapi.map.MyLocationOverlay.LocationMode;
+import com.baidu.mapapi.map.MapController;
+import com.baidu.mapapi.map.PopupClickListener;
+import com.baidu.mapapi.map.PopupOverlay;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
 import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
 import m.z.imagelocus.R;
-import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.entity.Lbs;
-import m.z.imagelocus.entity.convert.LbsConvert;
-import m.z.imagelocus.service.Service;
 import m.z.imagelocus.service.http.LbsYunService;
 import m.z.imagelocus.view.map.LocationMapView;
 import m.z.imagelocus.view.map.LocationOverlay;
@@ -35,10 +26,10 @@ import java.util.List;
 import java.util.Map;
 
 @NoTitle
-@EActivity(R.layout.activity_map_friend)
-public class MapFriendActivity extends Activity{
+@EActivity(R.layout.activity_impress_history)
+public class ImpressHistoryActivity extends Activity{
 
-    public static MapFriendActivity instance = null;
+    public static ImpressHistoryActivity instance = null;
     private LayoutInflater inflater;
 
     @ViewById(R.id.tv_middle)
@@ -46,9 +37,15 @@ public class MapFriendActivity extends Activity{
     //右上角第一个按钮
     @ViewById(R.id.btn_right)
     Button btn_right;
+    //历史路径上一步下一步
+    @ViewById(R.id.btn_history_before)
+    Button btn_history_before;
+    @ViewById(R.id.btn_history_next)
+    Button btn_history_next;
 
-    List<Lbs> lbsList = null;    //位置数据
+    List<Lbs> lbsDataHistory = null;    //历史定位数据
     List<LocationOverlay> locationOverlayList = null;   //位置图层
+    int historyPoint = -1;
 
     //弹出泡泡图层
     private PopupOverlay pop  = null;     //弹出泡泡图层，浏览节点时使用
@@ -69,8 +66,7 @@ public class MapFriendActivity extends Activity{
 
     @AfterViews
     void init() {
-
-        tv_middle.setText("朋友们的位置");
+        tv_middle.setText("我的印象");
 
         //地图初始化
         mMapController = mMapView.getController();
@@ -78,10 +74,12 @@ public class MapFriendActivity extends Activity{
         mMapView.getController().enableClick(true);
         mMapView.setBuiltInZoomControls(true);
 
-        //创建弹出泡泡图层
+        //创建 弹出泡泡图层
         initPaopao();
+
         //创建位置数据
         readLbsData();
+
     }
 
     /**
@@ -96,10 +94,9 @@ public class MapFriendActivity extends Activity{
                 Log.v("click", "clickpaopao");
             }
         };
-        pop = new PopupOverlay(mMapView, popListener);
+        pop = new PopupOverlay(mMapView,popListener);
         mMapView.pop = pop;
     }
-
 
     /**
      * 创建位置数据
@@ -114,7 +111,7 @@ public class MapFriendActivity extends Activity{
             @Override
             public void doResult(Map<String, Object> resultMap) {
                 CommonView.displayShort(instance, (String) resultMap.get("msg"));
-                lbsList = (List<Lbs>) resultMap.get("lbsList");
+                lbsDataHistory = (List<Lbs>) resultMap.get("lbsList");
                 setLocationOverlay();
             }
         };
@@ -124,13 +121,15 @@ public class MapFriendActivity extends Activity{
      * 创建位置图层
      */
     private void setLocationOverlay() {
-        if(lbsList != null && lbsList.size() != 0) {
+        if(lbsDataHistory != null && lbsDataHistory.size() != 0) {
             //清除之前的位置数据
             mMapView.getOverlays().clear();
             locationOverlayList = new ArrayList<LocationOverlay>();
 
-            for(Lbs lbs : lbsList) {
-                LocationOverlay locOverlay = new LocationOverlay(mMapView, pop, popView, false);
+            historyPoint = lbsDataHistory.size()-1;
+
+            for(Lbs lbs : lbsDataHistory) {
+                LocationOverlay locOverlay = new LocationOverlay(mMapView, pop, popView);
                 //设置为0则不显示精度圈
                 lbs.setRadius(0);
                 locOverlay.setData(lbs);
@@ -141,6 +140,65 @@ public class MapFriendActivity extends Activity{
         }
         mMapView.refresh();
 
+    }
+
+    @Click(R.id.btn_history_before)
+    void btn_history_before_onClick() {
+        //读取上一个坐标点
+        //移动
+        //pop信息
+        if(historyPoint != -1) {
+            moveAndPopupHistory(1);
+        }
+
+    }
+
+    @Click(R.id.btn_history_next)
+    void btn_history_next_onClick() {
+        //读取下一个坐标点
+        //移动
+        //pop信息
+        if(historyPoint != -1) {
+            moveAndPopupHistory(-1);
+        }
+    }
+
+    /**
+     *移动,pop信息
+     * */
+    private void moveAndPopupHistory(int type) {
+        if(type == 1 && historyPoint > 0) {
+            Lbs lbs = lbsDataHistory.get(--historyPoint);
+            mMapController.animateTo(new GeoPoint((int)(lbs.getLatitude()* 1e6), (int)(lbs.getLongitude() *  1e6)));
+            popLbsInfo(lbs);
+        } else if(type == -1 && historyPoint < lbsDataHistory.size()-1) {
+            Lbs lbs = lbsDataHistory.get(++historyPoint);
+            mMapController.animateTo(new GeoPoint((int)(lbs.getLatitude()* 1e6), (int)(lbs.getLongitude() *  1e6)));
+            popLbsInfo(lbs);
+        } else {
+            CommonView.displayShort(instance, "没有记录了");
+        }
+    }
+
+    /**
+     *弹出pop信息
+     * */
+    void popLbsInfo(Lbs lbs) {
+        TextView tv_pop_locinfo =(TextView) popView.findViewById(R.id.tv_location_info);
+        TextView tv_pop_loctime =(TextView) popView.findViewById(R.id.tv_location_time);
+
+        if(lbs != null) {
+            tv_pop_locinfo.setText(lbs.getAddrStr());
+            tv_pop_loctime.setText(CalendarUtil.showSimpleTime(lbs.getCreateTime()));
+        } else {
+            tv_pop_locinfo.setText("我的位置");
+            tv_pop_loctime.setText("暂无记录");
+
+        }
+        //处理点击事件,弹出泡泡
+        pop.showPopup(ImageUtil.getBitmapFromView(popView),
+                new GeoPoint((int)(lbs.getLatitude()*1e6), (int)(lbs.getLongitude()*1e6)),
+                58);
     }
 
 

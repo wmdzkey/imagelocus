@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
 import m.z.imagelocus.R;
@@ -25,9 +28,9 @@ import java.util.Map;
  */
 @NoTitle
 @EActivity(R.layout.activity_friend)
-public class FriendActivity extends Activity implements AdapterView.OnItemClickListener {
+public class FriendSearchActivity extends Activity implements AdapterView.OnItemClickListener {
 
-    public static FriendActivity instance = null;
+    public static FriendSearchActivity instance = null;
 
     //左上角第一个按钮
     @ViewById(R.id.btn_left)
@@ -54,7 +57,7 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
 
     @AfterViews
     void init() {
-        tv_middle.setText("我的朋友");
+        tv_middle.setText("查找朋友");
 
         list_friend = SystemStore.userData;
         x3ap_items_friend = new X3FriendAdapter(instance, list_friend);
@@ -66,13 +69,12 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
 
     @Click(R.id.btn_left)
     void btn_left_onClick() {
-        CommonView.displayShort(this, "发起群聊");
+        CommonView.displayShort(this, "返回");
     }
 
     @Click(R.id.btn_right)
     void btn_right_onClick() {
-        Intent _intent = new Intent(instance, FriendSearchActivity_.class);
-        startActivity(_intent);
+        CommonView.displayShort(this, "加密友");
     }
 
     @Override
@@ -80,10 +82,11 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
         Map<String, Object> map_content = (Map<String, Object>) parent.getItemAtPosition(position);
         String app_user_id = map_content.get("app_user_id").toString();
         String username = map_content.get("name").toString();
-        Intent intentToChat = new Intent(instance, ChatActivity_.class);
-        intentToChat.putExtra("app_user_id", app_user_id);
-        intentToChat.putExtra("username", username);
-        intentToChat.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intentToChat);
+//        Intent intentToChat = new Intent(instance, ChatActivity_.class);
+//        intentToChat.putExtra("app_user_id", app_user_id);
+//        intentToChat.putExtra("username", username);
+//        intentToChat.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//        startActivity(intentToChat);
+        CommonView.displayShort(instance, app_user_id + " , " + username);
     }
 }

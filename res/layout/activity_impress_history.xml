@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".activity.friend.FriendActivity">
+
+    <RelativeLayout
+            android:id="@+id/rl_title"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="45dip"
+            android:background="@drawable/mmtitle_bg_alpha" >
+
+        <RelativeLayout
+                android:id="@+id/rl_left"
+                android:layout_width="70.0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="10dip"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone">
+            <Button
+                    android:id="@+id/btn_left"
+                    android:layout_width="60dip"
+                    android:layout_height="30dip"
+                    android:background="@drawable/button_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+            <ImageView
+                    android:id="@+id/iv_left"
+                    android:layout_width="30.0dip"
+                    android:layout_height="30.0dip"
+                    android:layout_marginLeft="15dip"
+                    android:src="@drawable/mm_title_btn_compose_normal"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+
+            <!-- 如果有信息则在右上角显示小红点 -->
+            <ImageView
+                    android:id="@+id/iv_left_circle"
+                    android:background="@drawable/bignotecircle"
+                    android:visibility="gone"
+                    android:layout_width="10.0dip"
+                    android:layout_height="10.0dip"
+                    android:layout_marginTop="6dip"
+                    android:layout_marginRight="6dip"
+                    android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout android:clickable="true"
+                        android:focusableInTouchMode="true"
+                        android:id="@+id/rl_middle"
+                        android:paddingLeft="15dip"
+                        android:paddingRight="15dip"
+                        android:clipToPadding="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:layout_centerInParent="true">
+
+            <TextView
+                    android:id="@+id/tv_middle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="标题"
+                    android:layout_centerInParent="true"
+                    style="@style/title_style_center"/>
+
+            <LinearLayout
+                    android:layout_width="24.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_middle"
+                    android:layout_centerVertical="true">
+
+                <Button
+                        android:id="@+id/btn_up_down_menu"
+                        android:background="@drawable/login_input_arrow"
+                        android:layout_width="12.0dip"
+                        android:layout_height="8.0dip"
+                        android:visibility="gone"
+                        />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_right"
+                android:layout_width="70.0dip"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="10dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true">
+
+            <Button
+                    android:id="@+id/btn_right"
+                    android:layout_width="60dip"
+                    android:layout_height="30dip"
+                    android:background="@drawable/button_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+            <ImageView
+                    android:id="@+id/iv_right"
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    android:layout_marginLeft="15dip"
+                    android:src="@drawable/mm_title_btn_add_contact_normal"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"/>
+            <TextView
+                    android:id="@+id/iv_right"
+                    android:layout_width="60dip"
+                    android:layout_height="30dip"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:text="刷新历史"/>
+
+            <!-- 如果有信息则在右上角显示小红点 -->
+            <ImageView
+                    android:id="@+id/iv_right_circle"
+                    android:background="@drawable/bignotecircle"
+                    android:visibility="gone"
+                    android:layout_width="10.0dip"
+                    android:layout_height="10.0dip"
+                    android:layout_marginTop="6dip"
+                    android:layout_marginRight="6dip"
+                    android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl_title"
+            android:gravity="center">
+
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+            <m.z.imagelocus.view.map.LocationMapView android:id="@+id/bmap_view"
+                                                     android:layout_width="fill_parent" android:layout_height="fill_parent"
+                                                     android:clickable="true"
+                    />
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:minWidth="100dip"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="#D000"
+                    android:orientation="vertical"
+                    android:padding="2dp"
+                    android:layout_marginTop="80dip"
+                    android:visibility="gone"
+                    >
+
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/btn_history_before"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/loc_pre_step"
+                    android:textColor="#FF000000" />
+            <Button
+                    android:id="@+id/btn_history_next"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/loc_next_step"
+                    android:textColor="#FF000000" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>

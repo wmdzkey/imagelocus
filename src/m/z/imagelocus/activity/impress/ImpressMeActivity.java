@@ -1,4 +1,4 @@
-package m.z.imagelocus.activity.map;
+package m.z.imagelocus.activity.impress;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -25,6 +25,7 @@ import m.z.imagelocus.entity.convert.LbsConvert;
 import m.z.imagelocus.service.Service;
 import m.z.imagelocus.service.http.LbsYunService;
 import m.z.imagelocus.view.map.LocationMapView;
+import m.z.imagelocus.view.map.LocationOverlay;
 import m.z.util.CalendarUtil;
 import m.z.util.ImageUtil;
 
@@ -33,9 +34,8 @@ import java.util.List;
 import java.util.Map;
 
 @NoTitle
-@EActivity(R.layout.activity_map_impress)
-public class MapImpressActivity extends Activity{
-
+@EActivity(R.layout.activity_impress_me)
+public class ImpressMeActivity extends Activity{
 
     private enum E_BUTTON_TYPE {
         LOC,
@@ -46,7 +46,7 @@ public class MapImpressActivity extends Activity{
     private E_BUTTON_TYPE mCurBtnType;
 
 
-    public static MapImpressActivity instance = null;
+    public static ImpressMeActivity instance = null;
     private LayoutInflater inflater;
 
     @ViewById(R.id.tv_middle)
@@ -54,22 +54,13 @@ public class MapImpressActivity extends Activity{
     //右上角第一个按钮
     @ViewById(R.id.btn_right)
     Button btn_right;
-    //历史路径上一步下一步
-    @ViewById(R.id.btn_history_before)
-    Button btn_history_before;
-    @ViewById(R.id.btn_history_next)
-    Button btn_history_next;
 
     // 定位相关
     LocationClient locClient;
     LocationListener locListener = new LocationListener();
-
+    LocationOverlay locOverlay = null;      // 定位图层
     LocationData locDataNow = null;    //定位数据
     Lbs lbsDataNow = null;    //定位数据
-    List<Lbs> lbsDataHistory = null;    //历史定位数据
-    int historyPoint = 0;    //历史定位数据
-
-    LocationOverlay locOverlay = null;      // 定位图层
 
     //弹出泡泡图层
     private PopupOverlay pop  = null;     //弹出泡泡图层，浏览节点时使用
@@ -87,14 +78,6 @@ public class MapImpressActivity extends Activity{
     boolean isRequest = false;//是否手动触发请求定位
     boolean isFirstLoc = true;//是否首次定位
 
-    //测试新功能;
-    @ViewById(R.id.btn_test)
-    Button btn_test;
-    @Click(R.id.btn_test)
-    void btn_test_onClick() {
-    }
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,9 +89,7 @@ public class MapImpressActivity extends Activity{
     void init() {
         mCurBtnType = E_BUTTON_TYPE.LOC;
 
-        tv_middle.setText("我的印迹");
-        btn_history_before.setVisibility(View.GONE);
-        btn_history_next.setVisibility(View.GONE);
+        tv_middle.setText("我的位置");
 
         //地图初始化
         mMapController = mMapView.getController();
@@ -117,9 +98,32 @@ public class MapImpressActivity extends Activity{
         mMapView.setBuiltInZoomControls(true);
 
         //创建 弹出泡泡图层
-        createPaopao();
-
+        initPaopao();
         //定位初始化
+        initLocation();
+    }
+
+    /**
+     * 创建弹出泡泡图层
+     */
+    public void initPaopao(){
+        popView = getLayoutInflater().inflate(R.layout.impress_paopao_view, null);
+        //泡泡点击响应回调
+        PopupClickListener popListener = new PopupClickListener(){
+            @Override
+            public void onClickedPopup(int index) {
+                Log.v("click", "clickpaopao");
+            }
+        };
+        pop = new PopupOverlay(mMapView,popListener);
+        mMapView.pop = pop;
+    }
+
+    /**
+     *初始化位置
+     */
+    private void initLocation() {
+
         locClient = new LocationClient( this );
         locClient.registerLocationListener( locListener );
         LocationClientOption option = new LocationClientOption();
@@ -135,11 +139,8 @@ public class MapImpressActivity extends Activity{
         locClient.setLocOption(option);
         locClient.start();
 
-        locDataNow = new LocationData();
-        lbsDataHistory = new ArrayList<Lbs>();
-
         //定位图层初始化
-        locOverlay = new LocationOverlay(mMapView);
+        locOverlay = new LocationOverlay(mMapView, pop, popView);
         //设置定位数据
         locOverlay.setData(locDataNow);
         //添加定位图层
@@ -148,17 +149,6 @@ public class MapImpressActivity extends Activity{
         //修改定位数据后刷新图层生效
         mMapView.refresh();
 
-        Drawable drawable = getResources().getDrawable(R.drawable.default_avatar_winnid);
-        Bitmap bitmap = ImageUtil.drawableToBitmap(drawable);
-        bitmap = ImageUtil.getRoundedCornerBitmap(bitmap, 90);
-        drawable = ImageUtil.bitmapToDrawable(bitmap);
-
-        View convertView = inflater.inflate(R.layout.impress_paopao_point, null);
-        TextView tv_name = (TextView)convertView.findViewById(R.id.tv_name);
-        ImageView iv_img = (ImageView)convertView.findViewById(R.id.iv_img);
-        tv_name.setText("Winnid");
-        iv_img.setImageDrawable(drawable);
-        modifyLocationOverlayIcon(ImageUtil.getBitmapFromView(convertView));
     }
 
     @Click(R.id.btn_locate)
@@ -198,21 +188,6 @@ public class MapImpressActivity extends Activity{
         locOverlay.setMarker(ImageUtil.bitmapToDrawable(bmp));
         //修改图层，需要刷新MapView生效
         mMapView.refresh();
-    }
-    /**
-     * 创建弹出泡泡图层
-     */
-    public void createPaopao(){
-        popView = getLayoutInflater().inflate(R.layout.impress_paopao_view, null);
-        //泡泡点击响应回调
-        PopupClickListener popListener = new PopupClickListener(){
-            @Override
-            public void onClickedPopup(int index) {
-                Log.v("click", "clickpaopao");
-            }
-        };
-        pop = new PopupOverlay(mMapView,popListener);
-        mMapView.pop = pop;
     }
 
 
@@ -280,103 +255,6 @@ public class MapImpressActivity extends Activity{
         }
     }
 
-    @Click(R.id.btn_right)
-    void btn_right_onClick() {
-        //读取历史记录
-        readLocData("843804516070431639");
-        //绘制历史信息
-        if(lbsDataHistory != null && lbsDataHistory.size() != 0) {
-
-            //标记点
-            for (Lbs lbs : lbsDataHistory) {
-                LocationOverlay locOverlay = new LocationOverlay(mMapView);
-                //设置为0则不显示精度圈
-                lbs.setRadius(0);
-                locOverlay.setData(lbs);
-                mMapView.getOverlays().add(locOverlay);
-            }
-            mMapView.refresh();
-
-            btn_history_before.setVisibility(View.VISIBLE);
-            btn_history_next.setVisibility(View.VISIBLE);
-            historyPoint = lbsDataHistory.size()-1;
-        }
-    }
-
-    @Click(R.id.btn_history_before)
-    void btn_history_before_onClick() {
-        //读取上一个坐标点
-        //移动
-        //pop信息
-        if(historyPoint != -1) {
-            moveAndPopupHistory(1);
-        }
-
-    }
-
-    @Click(R.id.btn_history_next)
-    void btn_history_next_onClick() {
-        //读取下一个坐标点
-        //移动
-        //pop信息
-        if(historyPoint != -1) {
-            moveAndPopupHistory(-1);
-        }
-    }
-
-    /**
-     *移动,pop信息
-     * */
-    private void moveAndPopupHistory(int type) {
-        if(type == 1 && historyPoint > 0) {
-            Lbs lbs = lbsDataHistory.get(--historyPoint);
-            mMapController.animateTo(new GeoPoint((int)(lbs.getLatitude()* 1e6), (int)(lbs.getLongitude() *  1e6)));
-            popLbsInfo(lbs);
-        } else if(type == -1 && historyPoint < lbsDataHistory.size()-1) {
-            Lbs lbs = lbsDataHistory.get(++historyPoint);
-            mMapController.animateTo(new GeoPoint((int)(lbs.getLatitude()* 1e6), (int)(lbs.getLongitude() *  1e6)));
-            popLbsInfo(lbs);
-        } else {
-            CommonView.displayShort(instance, "没有记录了");
-        }
-
-    }
-
-    /**
-     *弹出pop信息
-     * */
-    void popLbsInfo(Lbs lbs) {
-        TextView tv_pop_locinfo =(TextView) popView.findViewById(R.id.tv_location_info);
-        TextView tv_pop_loctime =(TextView) popView.findViewById(R.id.tv_location_time);
-
-        if(lbs != null) {
-            tv_pop_locinfo.setText(lbs.getAddrStr());
-            tv_pop_loctime.setText(CalendarUtil.showSimpleTime(lbs.getCreateTime()));
-        } else {
-            tv_pop_locinfo.setText("我的位置");
-            tv_pop_loctime.setText("暂无记录");
-
-        }
-        //处理点击事件,弹出泡泡
-        pop.showPopup(ImageUtil.getBitmapFromView(popView),
-                new GeoPoint((int)(lbs.getLatitude()*1e6), (int)(lbs.getLongitude()*1e6)),
-                58);
-    }
-
-    /**
-     * 读取定位数据
-     * */
-    private void readLocData(String app_user_id) {
-        //lbsDataHistory = Service.lbsService.findByUser_id(user_id);
-        new LbsYunService(instance, LbsYunService.FunctionName.findLbsByApp_User_id, app_user_id) {
-            @Override
-            public void doResult(Map<String, Object> resultMap) {
-                CommonView.displayShort(instance, (String) resultMap.get("msg"));
-                lbsDataHistory = (List<Lbs>) resultMap.get("lbsList");
-            }
-        };
-    }
-
     /**
      * 保存定位数据
      * */
@@ -384,8 +262,6 @@ public class MapImpressActivity extends Activity{
 
         Lbs lbs =  Service.lbsService.createLbs("843804516070431639", bdLocation);
         //Lbs lbs =  Service.lbsService.createLbs(SystemAdapter.currentUser.getApp_user_id(), bdLocation);
-        lbsDataNow = lbs;
-        lbsDataHistory.add(lbs);
 
         //本地保存
         // Service.lbsService.save(lbs);
@@ -396,42 +272,8 @@ public class MapImpressActivity extends Activity{
                 CommonView.displayShort(instance, (String) resultMap.get("msg"));
             }
         };
-    }
 
-
-    //继承MyLocationOverlay重写dispatchTap实现点击处理
-    public class LocationOverlay extends MyLocationOverlay{
-
-        public Lbs lbs = null;
-
-        public LocationOverlay(MapView mapView) {
-            super(mapView);
-        }
-        @Override
-        protected boolean dispatchTap() {
-
-            TextView tv_pop_locinfo =(TextView) popView.findViewById(R.id.tv_location_info);
-            TextView tv_pop_loctime =(TextView) popView.findViewById(R.id.tv_location_time);
-
-            if(lbs != null) {
-                tv_pop_locinfo.setText(lbs.getAddrStr());
-                tv_pop_loctime.setText(CalendarUtil.showSimpleTime(lbs.getCreateTime()));
-            } else {
-                tv_pop_locinfo.setText("我的位置");
-                tv_pop_loctime.setText("暂无记录");
-
-            }
-            //处理点击事件,弹出泡泡
-            pop.showPopup(ImageUtil.getBitmapFromView(popView),
-                    new GeoPoint((int)(lbs.getLatitude()*1e6), (int)(lbs.getLongitude()*1e6)),
-                    58);
-            return true;
-        }
-
-        public void setData(Lbs lbs) {
-            this.lbs = lbs;
-            super.setData(LbsConvert.Lbs2LocationData(lbs));
-        }
+        lbsDataNow = lbs;
 
     }
 

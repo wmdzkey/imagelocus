@@ -46,21 +46,7 @@ public class CalendarUtil {
      */
     public static String showSimpleTime(Date date) {
         String timeDesc = null;
-        SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        timeDesc = dfs.format(calendar.getTime());
-        return timeDesc;
-    }
-
-    /**
-     * 显示为自定义格式时间
-     * @param date
-     * @return
-     */
-    public static String showSimpleTime(Date date, String formatStr) {
-        String timeDesc = null;
-        SimpleDateFormat dfs = new SimpleDateFormat(formatStr);
+        SimpleDateFormat dfs = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         timeDesc = dfs.format(calendar.getTime());
