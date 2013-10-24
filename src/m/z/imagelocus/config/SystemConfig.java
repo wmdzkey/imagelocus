@@ -9,6 +9,9 @@ package m.z.imagelocus.config;
  * Created by Winnid on 13-9-11.
  */
 public class SystemConfig {
+
+    public static final String DBNameSQLite = "imagelocus";
+
     public static final String BDMapKey = "E361b2fdea2f4a4022a90a3692c4e55c";
     public static final String BDLbsKey = "B9273c7b2a68a44954d478576a63b27c";
     public static final String BDPushKey = "o41KM1NVn4sR2E1Guf2RSKTv";

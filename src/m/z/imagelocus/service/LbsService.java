@@ -7,6 +7,8 @@ import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
 import com.lidroid.xutils.exception.DbException;
+import m.z.imagelocus.config.SystemAdapter;
+import m.z.imagelocus.config.SystemConfig;
 import m.z.imagelocus.entity.Lbs;
 import m.z.imagelocus.entity.convert.LbsConvert;
 
@@ -26,7 +28,7 @@ public class LbsService {
     private DbUtils db;
 
     public LbsService(Context contextThis) {
-        db = DbUtils.create(contextThis, "imagelocus");
+        db = DbUtils.create(contextThis, SystemConfig.DBNameSQLite);
         context = contextThis;
     }
 
@@ -66,33 +68,5 @@ public class LbsService {
         return lbsList;
     }
 
-    public Lbs createLbs(Integer user_id, Object obj) {
-        Lbs lbs = null;
-        if(user_id == null || obj == null) {
-            return null;
-        }
-        if(obj instanceof BDLocation) {
-            lbs = LbsConvert.BDLocation2Lbs((BDLocation) obj);
-        } else if(obj instanceof LocationData) {
-            lbs =LbsConvert.LocationData2Lbs((LocationData) obj);
-        }
-        lbs.setUser_id(user_id);
-        lbs.setCreateTime(new Date());
-        return lbs;
-    }
 
-    public Lbs createLbs(String app_user_id, Object obj) {
-        Lbs lbs = null;
-        if(app_user_id == null || obj == null) {
-            return null;
-        }
-        if(obj instanceof BDLocation) {
-            lbs = LbsConvert.BDLocation2Lbs((BDLocation) obj);
-        } else if(obj instanceof LocationData) {
-            lbs =LbsConvert.LocationData2Lbs((LocationData) obj);
-        }
-        lbs.setApp_user_id(app_user_id);
-        lbs.setCreateTime(new Date());
-        return lbs;
-    }
 }

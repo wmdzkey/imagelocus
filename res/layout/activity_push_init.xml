@@ -8,6 +8,7 @@
         android:id="@+id/text_init_message"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="Channel绑定信息："
         android:textStyle="bold" />
     <Button
@@ -15,12 +16,14 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_init_message"
+            android:visibility="gone"
             android:text="查询我的云推id"/>
     <Button
             android:id="@+id/btn_init_go"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btn_init_getid"
+            android:visibility="gone"
             android:text="进入聊天界面"/>
 
 </RelativeLayout>

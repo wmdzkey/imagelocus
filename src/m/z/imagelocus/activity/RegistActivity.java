@@ -21,10 +21,10 @@ import java.util.Map;
  * 登陆界面activity
  */
 @NoTitle
-@EActivity(R.layout.activity_login)
-public class LoginActivity extends Activity {
+@EActivity(R.layout.activity_regist)
+public class RegistActivity extends Activity {
 
-    public static LoginActivity instance = null;
+    public static RegistActivity instance = null;
 
     @ViewById(R.id.iv_login_logo)
     ImageView iv_login_logo;
@@ -74,12 +74,12 @@ public class LoginActivity extends Activity {
             public void doResult(Map<String, Object> result) {
                 if (result.get("info") != null && result.get("info").toString().equals("存在")) {
                     CommonView.displayShort(instance, "欢迎你回来," + SystemAdapter.currentUser.getUsername());
-                    Intent intentToMain = new Intent(instance, PushInitActivity_.class);
-                    intentToMain.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(intentToMain);
                 } else {
-                    CommonView.displayShort(instance, "用户名或密码错误");
+                    CommonView.displayShort(instance, "欢迎你加入," + SystemAdapter.currentUser.getUsername());
                 }
+                Intent intentToMain = new Intent(instance, PushInitActivity_.class);
+                intentToMain.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intentToMain);
             }
         };
 
@@ -103,18 +103,17 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     * 登录页-logo点击3下功能
+     * logo点击3下功能
      */
     int iv_login_logo_clickNum = 0;
     @Click(R.id.iv_login_logo)
     void iv_login_logo_onClick() {
         if (iv_login_logo_clickNum == 2) {
             iv_login_logo_clickNum = 0;
+            CommonView.displayShort(instance, "这个版本没有隐藏功能");
 //            CommonView.displayShort(instance, "有恒心，酒香不怕巷子深");
 //            Intent intentToHide = new Intent(instance, MainActivity_.class);
 //            startActivity(intentToHide);
-        } else {
-            CommonView.displayShort(instance, "这个版本没有隐藏功能");
         }
         iv_login_logo_clickNum++;
     }

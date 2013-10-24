@@ -120,11 +120,33 @@ public class LbsConvert {
         return lbs;
     }
 
-    public static UserLocYun BDLocation2UserLocYun(BDLocation bdLocation) {
-        UserLocYun userLocYun = new UserLocYun();
-        userLocYun.setLatitude(bdLocation.getLatitude());
-        userLocYun.setLongitude(bdLocation.getLongitude());
-        userLocYun.setAddress(bdLocation.getAddrStr());
-        return userLocYun;
+    public static Lbs createLbs(Integer user_id, Object obj) {
+        Lbs lbs = null;
+        if(user_id == null || obj == null) {
+            return null;
+        }
+        if(obj instanceof BDLocation) {
+            lbs = LbsConvert.BDLocation2Lbs((BDLocation) obj);
+        } else if(obj instanceof LocationData) {
+            lbs =LbsConvert.LocationData2Lbs((LocationData) obj);
+        }
+        lbs.setUser_id(user_id);
+        lbs.setCreateTime(new Date());
+        return lbs;
+    }
+
+    public static Lbs createLbs(String app_user_id, Object obj) {
+        Lbs lbs = null;
+        if(app_user_id == null || obj == null) {
+            return null;
+        }
+        if(obj instanceof BDLocation) {
+            lbs = LbsConvert.BDLocation2Lbs((BDLocation) obj);
+        } else if(obj instanceof LocationData) {
+            lbs =LbsConvert.LocationData2Lbs((LocationData) obj);
+        }
+        lbs.setApp_user_id(app_user_id);
+        lbs.setCreateTime(new Date());
+        return lbs;
     }
 }

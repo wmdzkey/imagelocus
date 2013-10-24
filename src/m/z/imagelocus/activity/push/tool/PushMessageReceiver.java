@@ -128,7 +128,7 @@ public class PushMessageReceiver extends BroadcastReceiver {
         if (message.startsWith("[") && message.endsWith("]")){
             contentStr = message.substring(2,message.length()-2);
         }
-        CommonView.displayLong(context, contentStr);
+        //CommonView.displayLong(context, contentStr);
 
 
         //转化json对象

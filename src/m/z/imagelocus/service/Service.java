@@ -2,6 +2,7 @@ package m.z.imagelocus.service;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import m.z.imagelocus.entity.Friend;
 import m.z.imagelocus.entity.yun.LbsYun;
 import m.z.imagelocus.service.http.LbsYunService;
 
@@ -18,11 +19,13 @@ public class Service {
     public static UserService userService;
     public static UserInfoService userInfoService;
     public static LbsService lbsService;
+    public static FriendService friendService;
 
     public static void init(Context mContext) {
         userService = new UserService(mContext);
         userInfoService = new UserInfoService(mContext);
         lbsService = new LbsService(mContext);
+        friendService = new FriendService(mContext);
     }
 }
 

@@ -7,11 +7,17 @@ import android.view.View;
 import android.widget.*;
 import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
+import m.z.common.X3ProgressBar;
 import m.z.imagelocus.R;
+import m.z.imagelocus.activity.push.tool.PushInitActivity_;
 import m.z.imagelocus.adapter.friend.X3FriendAdapter;
+import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.config.SystemStore;
+import m.z.imagelocus.entity.Friend;
 import m.z.imagelocus.entity.User;
+import m.z.imagelocus.service.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -55,18 +61,46 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
     @AfterViews
     void init() {
         tv_middle.setText("我的朋友");
+        loadFriend();
+    }
 
-        list_friend = SystemStore.userData;
-        x3ap_items_friend = new X3FriendAdapter(instance, list_friend);
-        lv_friend.setAdapter(x3ap_items_friend);
-        lv_friend.setOnItemClickListener(this);
+    private void loadFriend() {
+        X3ProgressBar<List<User>> x3ProgressBar = new X3ProgressBar<List<User>>(instance, "获取好友列表...", false, null, false) {
+            @Override
+            public List<User> doWork() {
+                List<Friend> friendList = Service.friendService.find(SystemAdapter.currentUser.getApp_user_id());
+                List<User> userList = new ArrayList<User>();
+                if(friendList != null && friendList.size() != 0) {
+                    for (Friend friend : friendList) {
+                        User user = new User();
+                        user.setApp_user_id(friend.getApp_friend_user_id());
+                        user.setUsername(friend.getFriendname());
+                        userList.add(user);
+                    }
+                }
+                return userList;
+            }
 
+            @Override
+            public void doResult(List<User> result) {
+                if (result != null && result.size() != 0) {
+                    list_friend = result;
+                    x3ap_items_friend = new X3FriendAdapter(instance, list_friend);
+                    x3ap_items_friend.notifyDataSetChanged();
+                    lv_friend.setAdapter(x3ap_items_friend);
+                    lv_friend.setOnItemClickListener(instance);
+                } else {
+                    CommonView.displayShort(instance, "你还没有好友快去添加吧");
+                }
+            }
+        };
     }
 
 
     @Click(R.id.btn_left)
     void btn_left_onClick() {
-        CommonView.displayShort(this, "发起群聊");
+        loadFriend();
+        CommonView.displayShort(this, "已刷新");
     }
 
     @Click(R.id.btn_right)

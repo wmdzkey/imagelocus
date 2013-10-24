@@ -382,7 +382,7 @@ public class MapImpressActivity extends Activity{
      * */
     private void saveLocData(BDLocation bdLocation) {
 
-        Lbs lbs =  Service.lbsService.createLbs("843804516070431639", bdLocation);
+        Lbs lbs =  LbsConvert.createLbs("843804516070431639", bdLocation);
         //Lbs lbs =  Service.lbsService.createLbs(SystemAdapter.currentUser.getApp_user_id(), bdLocation);
         lbsDataNow = lbs;
         lbsDataHistory.add(lbs);

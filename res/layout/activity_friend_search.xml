@@ -1,9 +1,11 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context=".activity.friend.FriendActivity">
-
+                android:id="@+id/main_normal">
+    <RelativeLayout
+                    android:id="@+id/rl_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
     <RelativeLayout
             android:id="@+id/rl_title"
             android:orientation="vertical"
@@ -193,10 +195,14 @@
 
     </RelativeLayout>
     -->
+
     <LinearLayout
+            android:id="@+id/main_center"
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:layout_below="@+id/rl_title"
+            android:layout_above="@+id/main_bottom"
+            android:background="@color/whitesmoke"
             android:gravity="center">
         <ListView
                 android:id="@+id/lv_friend"
@@ -206,4 +212,55 @@
                 android:listSelector="@color/transparence">
         </ListView>
     </LinearLayout>
-</RelativeLayout>
+
+    <FrameLayout
+            android:id="@+id/main_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:background="@color/whitesmoke">
+
+            <ImageView
+                    android:id="@+id/iv_bottom_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    android:background="@drawable/mmfooter_bg_white"
+                    >
+            </ImageView>
+            <TextView
+                    android:id="@+id/tv_bottom_bg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center|bottom"
+                    android:textColor="@color/grayblack"
+                    android:text="按住按钮添加身边的朋友"
+                    >
+            </TextView>
+    </FrameLayout>
+
+    </RelativeLayout>
+    <TextView
+            android:id="@+id/tv_search_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:textColor="@color/grayblack"
+            >
+    </TextView>
+    <Button
+            android:id="@+id/btn_search"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical"
+            android:background="@drawable/chatting_setmode_voice_btn_normal"
+            >
+    </Button>
+
+</FrameLayout>

@@ -76,7 +76,7 @@
             android:layout_marginRight="42dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/login_button_select"
-            android:text="登陆"/>
+            android:text="注册"/>
 
 
 </RelativeLayout>

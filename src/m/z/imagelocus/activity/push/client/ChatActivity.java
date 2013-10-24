@@ -52,7 +52,7 @@ public class ChatActivity extends Activity {
         spn_push_userlist.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
             public void onItemSelected(AdapterView arg0, View arg1, int arg2, long arg3) {
                 sendUserId = userAdapter.getItem(arg2).getApp_user_id();
-                CommonView.displayLong(ChatActivity.this, "将要发送给" + userAdapter.getItem(arg2).getUsername());
+                //CommonView.displayLong(ChatActivity.this, "将要发送给" + userAdapter.getItem(arg2).getUsername());
             }
             public void onNothingSelected(AdapterView arg0) {
                 arg0.setVisibility(View.VISIBLE);

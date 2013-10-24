@@ -8,7 +8,7 @@ import com.lidroid.xutils.db.annotation.Table;
 import java.util.Date;
 
 /**
- * 用户详细信息
+ * 用户聊天
  *
  * @author Winnid
  */

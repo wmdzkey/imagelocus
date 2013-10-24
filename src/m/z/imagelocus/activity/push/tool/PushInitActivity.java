@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,9 @@ import com.baidu.android.pushservice.PushManager;
 import com.googlecode.androidannotations.annotations.*;
 import com.lidroid.xutils.util.LogUtils;
 import m.z.common.CommonView;
+import m.z.common.X3Dialog;
+import m.z.common.X3ProgressBar;
+import m.z.common.X3SimpleProgressBar;
 import m.z.imagelocus.R;
 import m.z.imagelocus.activity.MainActivity_;
 import m.z.imagelocus.activity.push.client.ChatActivity_;
@@ -25,9 +29,15 @@ import m.z.imagelocus.service.Service;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+
 @NoTitle
 @EActivity(R.layout.activity_push_init)
 public class PushInitActivity extends Activity {
+
+    public static PushInitActivity instance = null;
 
     @ViewById(R.id.text_init_message)
 	TextView text_init_message;
@@ -37,6 +47,15 @@ public class PushInitActivity extends Activity {
     @ViewById(R.id.btn_init_getid)
     Button btn_init_getid;
 
+    Timer timer;
+    X3SimpleProgressBar x3SimpleProgressBar;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        instance = this;
+    }
+
     @AfterViews
     void init() {
         // 以apikey的方式登录，一般放在主Activity的onCreate中
@@ -44,6 +63,19 @@ public class PushInitActivity extends Activity {
                 PushConstants.LOGIN_TYPE_API_KEY,
                 Utils.getMetaValue());
         btn_init_go.setClickable(false);
+
+        x3SimpleProgressBar = new X3SimpleProgressBar(instance);
+
+        timer = new Timer(true);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(PushManager.isConnected(instance)) {
+                    timer.cancel();
+                    x3SimpleProgressBar.stop();
+                }
+            }
+        }, 0, 100);
     }
 
 	@Override
@@ -166,30 +198,19 @@ public class PushInitActivity extends Activity {
     }
 
     protected void bindRetryDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(PushInitActivity.this);
-        builder.setMessage("绑定失败要重试么？");
-        builder.setTitle("提示");
-        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-
+        new X3Dialog(instance, "绑定失败要重试么？") {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void doConfirm() {
                 // 以apikey的方式登录，一般放在主Activity的onCreate中
                 PushManager.startWork(getApplicationContext(),
                         PushConstants.LOGIN_TYPE_API_KEY,
                         Utils.getMetaValue());
             }
-        });
-
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+            public void doCancel() {
 
-        builder.create().show();
+            }
+        };
     }
 
 

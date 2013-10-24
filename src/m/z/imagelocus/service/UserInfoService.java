@@ -5,6 +5,7 @@ import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
 import com.lidroid.xutils.exception.DbException;
+import m.z.imagelocus.config.SystemConfig;
 import m.z.imagelocus.entity.UserInfo;
 
 /**
@@ -21,7 +22,7 @@ public class UserInfoService {
     private DbUtils db;
 
     public UserInfoService(Context contextThis) {
-        db = DbUtils.create(contextThis, "imagelocus");
+        db = DbUtils.create(contextThis, SystemConfig.DBNameSQLite);
         context = contextThis;
     }
 

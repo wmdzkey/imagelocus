@@ -14,6 +14,8 @@ public class User {
     private Integer id;
     @Column(column = "username")
     private String username;
+    @Column(column = "userhead")
+    private String userhead;
     @Column(column = "password")
     private String password;
     @Column(column = "state")
@@ -60,6 +62,14 @@ public class User {
 
     public void setApp_user_id(String app_user_id) {
         this.app_user_id = app_user_id;
+    }
+
+    public String getUserhead() {
+        return userhead;
+    }
+
+    public void setUserhead(String userhead) {
+        this.userhead = userhead;
     }
 
     @Override

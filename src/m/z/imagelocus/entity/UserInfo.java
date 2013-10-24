@@ -27,10 +27,14 @@ public class UserInfo {
     @Column(column = "registerDate")
     private Date registerDate;
 
+    @Column(column = "state")
+    private int state = 0;
+
     @Column(column = "money")
     private Double money;
     @Column(column = "score")
     private Double score;
+
 
     /////////////getter and setter 不能省略哦///////////////
     public Integer getId() {
@@ -87,5 +91,13 @@ public class UserInfo {
 
     public void setUser_id(Integer user_id) {
         this.user_id = user_id;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

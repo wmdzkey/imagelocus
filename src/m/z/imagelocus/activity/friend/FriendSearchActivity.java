@@ -5,23 +5,26 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
+import m.z.common.X3Dialog;
 import m.z.imagelocus.R;
+import m.z.imagelocus.activity.push.tool.Utils;
 import m.z.imagelocus.adapter.friend.X3FriendAdapter;
 import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.config.SystemStore;
 import m.z.imagelocus.entity.User;
 import m.z.imagelocus.entity.convert.LbsConvert;
+import m.z.imagelocus.entity.convert.UserLocConvert;
 import m.z.imagelocus.entity.yun.UserLocYun;
+import m.z.imagelocus.service.Service;
 import m.z.imagelocus.service.http.SearchUserService;
 
 import java.util.*;
@@ -40,6 +43,14 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
 
     public static FriendSearchActivity instance = null;
 
+    //最顶端布局
+    @ViewById(R.id.main_normal)
+    FrameLayout main_normal;
+    //普通布局(按下之前)
+    @ViewById(R.id.rl_normal)
+    RelativeLayout rl_normal;
+
+
     //左上角第一个按钮
     @ViewById(R.id.btn_left)
     Button btn_left;
@@ -49,7 +60,9 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
     //右上角第一个按钮
     @ViewById(R.id.btn_right)
     Button btn_right;
-
+    //底部查询按钮
+    @ViewById(R.id.btn_search)
+    Button btn_search;
 
 
     //数据适配器装载List
@@ -75,7 +88,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
     @AfterViews
     void init() {
         tv_middle.setText("查找朋友");
-        btn_right.setOnTouchListener(btn_rightTouchListener);
+        btn_search.setOnTouchListener(btn_searchTouchListener);
 
         list_friend = SystemStore.userData;
         x3ap_items_friend = new X3FriendAdapter(instance, list_friend);
@@ -103,7 +116,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
             x3ap_items_friend.notifyDataSetChanged();
             lv_friend.setAdapter(x3ap_items_friend);
         }
-        CommonView.displayShort(instance, list_friend.size()+"");
+        CommonView.displayShortGravity(instance, "查找到" + list_friend.size() + "位陌生人");
 
     }
 
@@ -113,12 +126,14 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
         CommonView.displayShort(this, "返回");
     }
 
-    private OnTouchListener btn_rightTouchListener = new OnTouchListener() {
+    private OnTouchListener btn_searchTouchListener = new OnTouchListener() {
         public boolean onTouch(View v, MotionEvent event) {
 
             if(event.getAction() == MotionEvent.ACTION_DOWN){
                 //按住事件发生后执行代码的区域
-                CommonView.displayShort(instance, "按住");
+                //改变按钮和背景图片
+                setSearchBackground();
+
                 //开始请求定位
                 initLocation();
 
@@ -136,13 +151,35 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
             }
             if(event.getAction() == MotionEvent.ACTION_UP){
                 //松开事件发生后执行代码的区域
-                CommonView.displayShort(instance, "鬆開");
+                setNormalBackground();
                 //停止發送
                 timer.cancel();
             }
             return false;
         }
     };
+
+    /**
+     *设置为查询背景
+     * */
+    private void setSearchBackground() {
+        btn_search.setBackgroundResource(R.drawable.chatting_setmode_voice_btn_pressed);
+        //隐藏其他布局
+        rl_normal.setVisibility(View.GONE);
+        //改变背景
+        main_normal.setBackgroundResource(R.drawable.longmsgtip);
+    }
+
+    /**
+     *设置为普通背景
+     * */
+    private void setNormalBackground() {
+        btn_search.setBackgroundResource(R.drawable.chatting_setmode_voice_btn_normal);
+        //隐藏其他布局
+        rl_normal.setVisibility(View.VISIBLE);
+        //改变背景
+        main_normal.setBackgroundResource(R.color.whitesmoke);
+    }
 
     @UiThread
     void doInUIThread() {
@@ -152,7 +189,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
         new SearchUserService(instance, SearchUserService.FunctionName.sendUserLocServer, locDataNow) {
             @Override
             public void doResult(Map<String, Object> resultMap) {
-                CommonView.displayShort(instance, (String) resultMap.get("msg"));
+                //CommonView.displayShortGravity(instance, (String) resultMap.get("msg"));
             }
         };
 
@@ -160,7 +197,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
         new SearchUserService(instance, SearchUserService.FunctionName.findUserLoc) {
             @Override
             public void doResult(Map<String, Object> resultMap) {
-                CommonView.displayShort(instance, (String) resultMap.get("msg"));
+                //CommonView.displayShortGravity(instance, (String) resultMap.get("msg"));
                 List<UserLocYun> userLocYunList = (List<UserLocYun>) resultMap.get("userLocYunList");
                 addItem(userLocYunList);
             }
@@ -177,7 +214,32 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
 //        intentToChat.putExtra("username", username);
 //        intentToChat.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 //        startActivity(intentToChat);
-        CommonView.displayShort(instance, app_user_id + " , " + username);
+        //CommonView.displayShortGravity(instance, app_user_id + " , " + username);
+        //弹窗加好友
+        addFriend(app_user_id,username);
+    }
+
+    /**
+     * //弹窗加好友
+     * */
+    private void addFriend(final String friend_app_user_id, final String friendname) {
+
+        new X3Dialog(instance, "是否加为好友？") {
+            @Override
+            public void doConfirm() {
+                User user = new User();
+                user.setApp_user_id(friend_app_user_id);
+                user.setUsername(friendname);
+                Map<String, Object> result = Service.friendService.add(user);
+                if (result.get("info") != null) {
+                    CommonView.displayShort(instance, result.get("info").toString());
+                }
+            }
+            @Override
+            public void doCancel() {
+
+            }
+        };
     }
 
     /**
@@ -191,7 +253,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
         option.setOpenGps(true);//打开gps
         option.setAddrType("all");//返回的定位结果包含地址信息
         option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
-        option.setScanSpan(999);//设置发起定位请求的间隔时间为10000ms
+        option.setScanSpan(4999);//设置发起定位请求的间隔时间为10000ms
         option.disableCache(false);//禁止启用缓存定位
         option.setPriority(LocationClientOption.GpsFirst);
         option.setPoiNumber(2);    //最多返回POI个数
@@ -206,7 +268,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
      */
     public void requestLocClick(){
         locClient.requestLocation();
-        CommonView.displayLong(instance, "正在定位……");
+        CommonView.displayShortGravity(instance, "正在查找我附近的人……");
     }
 
     /**
@@ -219,7 +281,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
             if (bdLocation == null)
                 return ;
             //保存定位数据
-            locDataNow = LbsConvert.BDLocation2UserLocYun(bdLocation);
+            locDataNow = UserLocConvert.BDLocation2UserLocYun(bdLocation);
 //            locDataNow.setUsername("王明东");
 //            locDataNow.setApp_user_id("843804516070431639");
             locDataNow.setUsername(SystemAdapter.currentUser.getUsername());
