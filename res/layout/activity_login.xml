@@ -77,6 +77,17 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/login_button_select"
             android:text="登陆"/>
+    <Button
+            android:id="@+id/btn_regist"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_login"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="42dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_button_select"
+            android:text="注册"/>
+
 
 
 </RelativeLayout>

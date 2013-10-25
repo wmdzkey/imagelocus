@@ -8,17 +8,17 @@
     <LinearLayout android:orientation="horizontal"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content">
-        <LinearLayout android:id="@+id/ll_img"
+        <LinearLayout android:id="@+id/ll_friend_item_img"
                       android:background="@drawable/list_item_select"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content">
-            <ImageView android:id="@+id/iv_img"
+            <ImageView android:id="@+id/iv_friend_item_img"
                        android:layout_width="55.0dip"
                        android:layout_height="55.0dip"
                        android:layout_margin="5dip"
-                       android:src="@drawable/default_avatar_shadow"/>
+                       android:background="@drawable/default_avatar_shadow"/>
         </LinearLayout>
-        <LinearLayout android:id="@+id/ll_tv"
+        <LinearLayout android:id="@+id/ll_friend_item_tv"
                       android:orientation="vertical"
                       android:background="@drawable/list_item_select"
                       android:layout_width="fill_parent"
@@ -26,7 +26,7 @@
 
             <TextView android:textSize="@dimen/x_text_size"
                       android:textColor="@color/black"
-                      android:id="@+id/tv_name"
+                      android:id="@+id/tv_friend_item_name"
                       android:layout_width="fill_parent"
                       android:layout_height="65.0dip"
                       android:singleLine="true"
