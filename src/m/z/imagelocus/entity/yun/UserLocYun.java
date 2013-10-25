@@ -35,6 +35,7 @@ public class UserLocYun {
     //自定义字段
     private String app_user_id;
     private String username;
+    private String userhead;
     private int sex;
 
     public Integer getGeotable_id() {
@@ -179,5 +180,13 @@ public class UserLocYun {
 
     public void setSex(int sex) {
         this.sex = sex;
+    }
+
+    public String getUserhead() {
+        return userhead;
+    }
+
+    public void setUserhead(String userhead) {
+        this.userhead = userhead;
     }
 }

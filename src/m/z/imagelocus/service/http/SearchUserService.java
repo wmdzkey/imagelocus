@@ -53,6 +53,7 @@ public abstract class SearchUserService {
         params.addBodyParameter("app_user_id", userLocYun.getApp_user_id());//这里暂时先使用app_user_id
         params.addBodyParameter("username", userLocYun.getUsername());//这里暂时先使用app_user_id
         params.addBodyParameter("sex", userLocYun.getSex() + "");//这里暂时先使用app_user_id
+        params.addBodyParameter("userhead", userLocYun.getUserhead());//这里暂时先使用app_user_id
 
         new X3HttpUtil(mContext, SystemConfig.BDLbsUrl_ADD, HttpRequest.HttpMethod.POST, params) {
 

@@ -37,7 +37,8 @@ public class ChatActivity extends Activity {
     ChatAdapter chatAdapter = null;
 
     public static String sendUserId;
-    public static String username;
+    public static String sendUsername;
+    public static String sendUserhead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,28 +49,14 @@ public class ChatActivity extends Activity {
     @AfterViews
     void init() {
         sendUserId = getIntent().getStringExtra("app_user_id");
-        username = getIntent().getStringExtra("username");
-        CommonView.displayLong(instance, "将要发送给" + username);
+        sendUsername = getIntent().getStringExtra("username");
+        sendUserhead = getIntent().getStringExtra("userhead");
+        CommonView.displayLong(instance, "将要发送给" + sendUsername);
 
-        tv_middle.setText(username);
+        tv_middle.setText(sendUsername);
         btn_send.setText("发送");
 
         chatList = new ArrayList<Chat>();
-        Chat chat = null;
-        for (int i = 0; i < 2; i++) {
-            chat= new Chat();
-            if (i % 2 == 0) {
-                chat.setComeMsg(false);
-                chat.setContent("Hello");
-                chat.setChatTime(new Date());
-            }else {
-                chat.setComeMsg(true);
-                chat.setContent("Hello,nice to meet you!");
-                chat.setChatTime(new Date());
-            }
-            chatList.add(chat);
-        }
-
         chatAdapter = new ChatAdapter(this,chatList);
         lv_chat.setAdapter(chatAdapter);
     }
@@ -130,6 +117,9 @@ public class ChatActivity extends Activity {
         chat.setChatTime(new Date());
         chat.setContent(chat_msg);
         chat.setComeMsg(false);
+        chat.setUsername(SystemAdapter.currentUser.getUsername());
+        chat.setUserhead(SystemAdapter.currentUser.getUserhead());
+        chat.setUser_id(SystemAdapter.currentUser.getId());
 
         jsonMap.put("chat_msg", gson.toJson(chat));
         String msg = gson.toJson(jsonMap);

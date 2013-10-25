@@ -2,6 +2,7 @@ package m.z.imagelocus.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import m.z.common.X3ProgressBar;
 import m.z.imagelocus.R;
 import m.z.imagelocus.activity.push.tool.PushInitActivity_;
 import m.z.imagelocus.config.SystemAdapter;
+import m.z.imagelocus.config.SystemConfig;
 import m.z.imagelocus.entity.User;
 import m.z.imagelocus.service.Service;
 
@@ -64,6 +66,9 @@ public class LoginActivity extends Activity {
         if (!nullChecked()) return;
         user.setUsername(et_login_username.getText().toString());
         user.setPassword(et_login_pwd.getText().toString());
+        login();
+    }
+    void login() {
         X3ProgressBar<Map<String, Object>> x3ProgressBar = new X3ProgressBar<Map<String, Object>>(instance, "正在登录...", false, null, false) {
             @Override
             public Map<String, Object> doWork() {
@@ -77,12 +82,40 @@ public class LoginActivity extends Activity {
                     Intent intentToMain = new Intent(instance, PushInitActivity_.class);
                     intentToMain.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intentToMain);
+                    remenberUser();
                 } else {
                     CommonView.displayShort(instance, "用户名或密码错误");
                 }
             }
         };
+    }
 
+    /**检测是否注册过*/
+    private void remenberUser() {
+        //获取到sharepreference 对象， 参数一为xml文件名，参数为文件的可操作模式
+        SharedPreferences sp = this.getSharedPreferences(SystemConfig.SPName, MODE_APPEND);
+        //获取到编辑对象
+        SharedPreferences.Editor edit = sp.edit();
+        //添加新的值，可见是键值对的形式添加
+        edit.putString("USERNAME", user.getUsername());
+        edit.putString("PASSWORD", user.getPassword());
+        edit.putString("ISREMENBER", "YES");
+        //提交.
+        edit.commit();
+    }
+
+    /**检测是否注册过*/
+    private void cancelRemenberUser() {
+        //获取到sharepreference 对象， 参数一为xml文件名，参数为文件的可操作模式
+        SharedPreferences sp = this.getSharedPreferences(SystemConfig.SPName, MODE_APPEND);
+        //获取到编辑对象
+        SharedPreferences.Editor edit = sp.edit();
+        //添加新的值，可见是键值对的形式添加
+        edit.putString("USERNAME", "none");
+        edit.putString("PASSWORD", "none");
+        edit.putString("ISREMENBER", "NO");
+        //提交.
+        edit.commit();
     }
 
     /**
@@ -117,5 +150,12 @@ public class LoginActivity extends Activity {
             CommonView.displayShort(instance, "这个版本没有隐藏功能");
         }
         iv_login_logo_clickNum++;
+    }
+
+    @Click(R.id.btn_regist)
+    public void btn_regist_onClick() {
+        cancelRemenberUser();
+        Intent intent = new Intent(instance, RegistActivity_.class);
+        startActivity(intent);
     }
 }

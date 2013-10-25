@@ -1,6 +1,7 @@
 package m.z.imagelocus.adapter.friend;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import m.z.imagelocus.R;
+import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.entity.Chat;
+import m.z.imagelocus.entity.convert.UserConvert;
 import m.z.util.CalendarUtil;
 
 import java.util.List;
@@ -22,16 +25,16 @@ import java.util.List;
  * Created by Winnid on 13-10-13.
  */
 public class ChatAdapter extends BaseAdapter {
-    private Context context = null;
+    private Context mContext = null;
     private List<Chat> chatList = null;
     private LayoutInflater inflater = null;
     private int COME_MSG = 0;
     private int TO_MSG = 1;
 
     public ChatAdapter(Context context,List<Chat> chatList){
-        this.context = context;
+        this.mContext = context;
         this.chatList = chatList;
-        inflater = LayoutInflater.from(this.context);
+        inflater = LayoutInflater.from(this.mContext);
     }
 
     @Override
@@ -85,9 +88,14 @@ public class ChatAdapter extends BaseAdapter {
             chatHolder = (ChatHolder)convertView.getTag();
         }
 
-        chatHolder.timeTextView.setText(CalendarUtil.showNaturalTime(chatList.get(position).getChatTime()));
+        chatHolder.timeTextView.setText(CalendarUtil.showSimpleTime(chatList.get(position).getChatTime()));
         chatHolder.contentTextView.setText(chatList.get(position).getContent());
-        //chatHolder.userImageView.setImageResource(chatList.get(position).getUserImage());
+        if (chatList.get(position).isComeMsg()) {
+            chatHolder.userImageView.setImageDrawable(UserConvert.getUserHead(mContext, (chatList.get(position).getUserhead())));
+        }else {
+            chatHolder.userImageView.setImageDrawable(UserConvert.getUserHead(mContext, (SystemAdapter.currentUser.getUserhead())));
+        }
+
         return convertView;
     }
 

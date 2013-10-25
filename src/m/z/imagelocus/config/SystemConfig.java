@@ -10,6 +10,7 @@ package m.z.imagelocus.config;
  */
 public class SystemConfig {
 
+    public static final String SPName = "imagelocus";
     public static final String DBNameSQLite = "imagelocus";
 
     public static final String BDMapKey = "E361b2fdea2f4a4022a90a3692c4e55c";
@@ -22,4 +23,5 @@ public class SystemConfig {
 
     public static final String BDLbsUrl_ADD = "http://api.map.baidu.com/geodata/v2/poi/create";
     public static final String BDLbsUrl_FIND = "http://api.map.baidu.com/geodata/v2/poi/list";
+
 }

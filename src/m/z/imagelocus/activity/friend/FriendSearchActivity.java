@@ -107,6 +107,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
                         User user = new User();
                         user.setApp_user_id(userLocYun.getApp_user_id());
                         user.setUsername(userLocYun.getUsername());
+                        user.setUserhead(userLocYun.getUserhead());
                         list_friend.add(user);
                         uniqueAppUserIdList.add(userLocYun.getApp_user_id());
                     }
@@ -134,6 +135,8 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
                 //改变按钮和背景图片
                 setSearchBackground();
 
+                //清空之前的数据
+                list_friend.clear();
                 //开始请求定位
                 initLocation();
 
@@ -144,8 +147,9 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
                     public void run() {
                         //確定我的位置
                         if(locDataNow != null) {
-                            doInUIThread();
+                            doInUIThreadSend();
                         }
+                        doInUIThreadFind();
                     }
                 }, 0, 5*1000);
             }
@@ -182,17 +186,19 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
     }
 
     @UiThread
-    void doInUIThread() {
+    void doInUIThreadSend() {
         //CommonView.displayShort(instance, "可以执行");
         //必須要獲取的成功
         //發送我的數據
         new SearchUserService(instance, SearchUserService.FunctionName.sendUserLocServer, locDataNow) {
             @Override
             public void doResult(Map<String, Object> resultMap) {
-                //CommonView.displayShortGravity(instance, (String) resultMap.get("msg"));
+                CommonView.displayShortGravity(instance, "正在发送我的位置...");
             }
         };
-
+    }
+    @UiThread
+    void doInUIThreadFind() {
         //同時獲取我周圍的數據
         new SearchUserService(instance, SearchUserService.FunctionName.findUserLoc) {
             @Override
@@ -209,6 +215,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
         Map<String, Object> map_content = (Map<String, Object>) parent.getItemAtPosition(position);
         String app_user_id = map_content.get("app_user_id").toString();
         String username = map_content.get("name").toString();
+        String userhead = map_content.get("img").toString();
 //        Intent intentToChat = new Intent(instance, ChatActivity_.class);
 //        intentToChat.putExtra("app_user_id", app_user_id);
 //        intentToChat.putExtra("username", username);
@@ -216,13 +223,13 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
 //        startActivity(intentToChat);
         //CommonView.displayShortGravity(instance, app_user_id + " , " + username);
         //弹窗加好友
-        addFriend(app_user_id,username);
+        addFriend(app_user_id,username,userhead);
     }
 
     /**
      * //弹窗加好友
      * */
-    private void addFriend(final String friend_app_user_id, final String friendname) {
+    private void addFriend(final String friend_app_user_id, final String friendname, final String friendhead) {
 
         new X3Dialog(instance, "是否加为好友？") {
             @Override
@@ -230,6 +237,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
                 User user = new User();
                 user.setApp_user_id(friend_app_user_id);
                 user.setUsername(friendname);
+                user.setUserhead(friendhead);
                 Map<String, Object> result = Service.friendService.add(user);
                 if (result.get("info") != null) {
                     CommonView.displayShort(instance, result.get("info").toString());
@@ -285,6 +293,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
 //            locDataNow.setUsername("王明东");
 //            locDataNow.setApp_user_id("843804516070431639");
             locDataNow.setUsername(SystemAdapter.currentUser.getUsername());
+            locDataNow.setUserhead(SystemAdapter.currentUser.getUserhead());
             locDataNow.setApp_user_id(SystemAdapter.currentUser.getApp_user_id());
             locDataNow.setSex(0);
         }

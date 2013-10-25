@@ -81,6 +81,7 @@ public class FriendService {
                 friend.setApp_friend_user_id(user.getApp_user_id());
                 friend.setFriend_user_id(user.getId());
                 friend.setFriendname(user.getUsername());
+                friend.setFriendhead(user.getUserhead());
                 db.saveOrUpdate(friend);
                 mapInfo.put("friend", friend);
                 mapInfo.put("info", "添加成功");

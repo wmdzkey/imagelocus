@@ -3,12 +3,15 @@ package m.z.imagelocus.adapter.friend;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import m.z.common.CommonView;
 import m.z.imagelocus.R;
 import m.z.imagelocus.entity.User;
+import m.z.imagelocus.entity.convert.UserConvert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +31,7 @@ public class X3FriendAdapter extends SimpleAdapter {
     //需要配置的信息
     private static int mResource =  R.layout.friend_item;
     private static String[] mFrom = new String[]{"name","img"};
-    private static int[] mTo = new int[]{R.id.tv_name,R.id.iv_img};
+    private static int[] mTo = new int[]{R.id.tv_friend_item_name,R.id.iv_friend_item_img};
 
 
     private Context mContext;
@@ -43,9 +46,40 @@ public class X3FriendAdapter extends SimpleAdapter {
         super(context, data, mResource, mFrom, mTo);
         this.mContext = context;
         this.mData = data;
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    /**
+     * @see android.widget.Adapter#getView(int, View, ViewGroup)
+     */
+    public View getView(int position, View convertView, ViewGroup parent) {
+        return createViewFromResource(position, convertView, parent, mResource);
+    }
+    private View createViewFromResource(int position, View convertView,
+                                        ViewGroup parent, int resource) {
+        View v;
+        if (convertView == null) {
+            v = mInflater.inflate(resource, parent, false);
+
+            final int[] to = mTo;
+            final int count = to.length;
+            final View[] holder = new View[count];
+
+            for (int i = 0; i < count; i++) {
+                holder[i] = v.findViewById(to[i]);
+            }
+
+            v.setTag(holder);
+        } else {
+            v = convertView;
+        }
+        bindView(position, v);
+
+        return v;
     }
 
     //数据和布局自定义绑定
+
     private void bindView(int position, View view) {
         final Map dataSet = mData.get(position);
         if (dataSet == null) {
@@ -95,10 +129,9 @@ public class X3FriendAdapter extends SimpleAdapter {
 
                     } else if (v instanceof ImageView) {
 
-//                        if ( (v.getId() == R.id.iv_img) ) {
-//                            //使用默认的
-//                        } else
-                        if (data instanceof Integer) {
+                        if (v.getId() == R.id.iv_friend_item_img) {
+                            ((ImageView) v).setImageDrawable(UserConvert.getUserHead(mContext, data));
+                        } else if (data instanceof Integer) {
                             setViewImage((ImageView) v, (Integer) data);
                         } else if (data instanceof byte[]) {
                             byte[] image = (byte[]) data;
@@ -107,7 +140,6 @@ public class X3FriendAdapter extends SimpleAdapter {
                                 ((ImageView) v).setImageBitmap(bmp);
                             }
                         }
-
                     } else if (v instanceof Button) {
                         final Button button = (Button) v;
                         button.setOnClickListener(new View.OnClickListener() {
@@ -151,10 +183,11 @@ public class X3FriendAdapter extends SimpleAdapter {
             User u = (User) o;
             map.put("app_user_id", u.getApp_user_id());
             map.put("name", u.getUsername());
-            map.put("img", R.drawable.default_avatar_shadow);
+            map.put("img", u.getUserhead());
             return map;
         } else {
             return null;
         }
     }
+
 }

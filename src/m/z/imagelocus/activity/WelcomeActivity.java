@@ -23,7 +23,7 @@ public class WelcomeActivity extends Activity {
 
     @AfterViews
     void init() {
-        final Intent intent = new Intent(WelcomeActivity.this, LoginActivity_.class);
+        final Intent intent = new Intent(WelcomeActivity.this, RegistActivity_.class);
         //系统会为需要启动的activity寻找与当前activity不同的task;
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

@@ -58,6 +58,12 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
         instance = this;
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //loadFriend();
+    }
+
     @AfterViews
     void init() {
         tv_middle.setText("我的朋友");
@@ -75,6 +81,7 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
                         User user = new User();
                         user.setApp_user_id(friend.getApp_friend_user_id());
                         user.setUsername(friend.getFriendname());
+                        user.setUserhead(friend.getFriendhead());
                         userList.add(user);
                     }
                 }
@@ -114,9 +121,11 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
         Map<String, Object> map_content = (Map<String, Object>) parent.getItemAtPosition(position);
         String app_user_id = map_content.get("app_user_id").toString();
         String username = map_content.get("name").toString();
+        String userhead = map_content.get("img").toString();
         Intent intentToChat = new Intent(instance, ChatActivity_.class);
         intentToChat.putExtra("app_user_id", app_user_id);
         intentToChat.putExtra("username", username);
+        intentToChat.putExtra("userhead", userhead);
         intentToChat.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intentToChat);
     }

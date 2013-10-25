@@ -19,6 +19,10 @@ public class Chat {
 
     @Column(column = "user_id")
     private Integer user_id;
+    @Column(column = "userhead")
+    private String userhead;
+    @Column(column = "username")
+    private String username;
 
     @Column(column = "content")
     private String content;
@@ -68,4 +72,19 @@ public class Chat {
         this.chatTime = chatTime;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUserhead() {
+        return userhead;
+    }
+
+    public void setUserhead(String userhead) {
+        this.userhead = userhead;
+    }
 }

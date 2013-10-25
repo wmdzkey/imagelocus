@@ -1,6 +1,7 @@
 package m.z.imagelocus.service;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
@@ -141,6 +142,7 @@ public class UserService {
         } catch (DbException e) {
             e.printStackTrace();
         }
+        SystemAdapter.currentUser = user;
     }
 
 }
