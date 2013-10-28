@@ -1,6 +1,7 @@
 package m.z.imagelocus.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,23 +9,37 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import com.baidu.android.pushservice.PushManager;
+import com.baidu.android.pushservice.PushService;
+import com.baidu.android.pushservice.PushServiceReceiver;
 import com.googlecode.androidannotations.annotations.AfterViews;
 import com.googlecode.androidannotations.annotations.EActivity;
 import com.googlecode.androidannotations.annotations.NoTitle;
 import com.googlecode.androidannotations.annotations.ViewById;
+import com.lidroid.xutils.util.LogUtils;
+import m.z.common.CommonView;
+import m.z.common.X3Dialog;
 import m.z.imagelocus.R;
 import m.z.imagelocus.activity.friend.FriendActivity_;
 import m.z.imagelocus.activity.impress.ImpressActivity_;
 import m.z.imagelocus.activity.map.MapActivity_;
+import m.z.imagelocus.activity.push.tool.PushInitActivity;
+import m.z.imagelocus.activity.push.tool.PushInitActivity_;
+import m.z.imagelocus.activity.push.tool.PushMessageReceiver;
 import m.z.imagelocus.activity.setting.SettingActivity;
+import m.z.imagelocus.activity.setting.SettingActivity_;
+import m.z.imagelocus.entity.User;
+import m.z.imagelocus.service.Service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 @NoTitle
 @EActivity(R.layout.activity_main)
@@ -91,7 +106,7 @@ public class MainActivity extends Activity {
         views.add(getView("FRIEND", FriendActivity_.class));
         views.add(getView("MAP", MapActivity_.class));
         views.add(getView("IMPRESS", ImpressActivity_.class));
-        views.add(getView("SETTING",  SettingActivity.class));
+        views.add(getView("SETTING",  SettingActivity_.class));
 
         // 填充ViewPager的数据适配器
         PagerAdapter mPagerAdapter = new PagerAdapter() {
@@ -251,5 +266,32 @@ public class MainActivity extends Activity {
         }
         //加载Activity
         return  manager.getActivity(activityName).getWindow().getDecorView();
+    }
+
+
+    /**
+     * 退出（重写onKeyDown是监听不到返回键）
+     */
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN
+                && event.getRepeatCount() == 0) {
+            new X3Dialog(instance, "是否退出程序?") {
+                @Override
+                public void doConfirm() {
+                    /**正常结束*/
+                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                    intent.addCategory(Intent.CATEGORY_HOME);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                }
+                @Override
+                public void doCancel() {
+                }
+            };
+        }
+        return super.dispatchKeyEvent(event);
     }
 }

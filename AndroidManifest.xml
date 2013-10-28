@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="m.z.imagelocus"
-          android:versionName="0.9.4">
+          android:versionName="1.0.3">
 
     <uses-sdk
             android:minSdkVersion="8"
@@ -66,24 +66,9 @@
         </activity> <!--注册登录主界面.end -->
 
         <!-- setting -->
-        <activity android:name=".activity.setting.SettingActivity"
-                  android:label="设置与帮助"
+        <activity android:name=".activity.setting.SettingActivity_"
+                  android:label="设置"
                   android:configChanges="keyboardHidden|orientation" >
-        </activity>
-
-        <activity android:name=".activity.setting.SkinActivity"
-                  android:alwaysRetainTaskState="true"
-                  android:theme="@android:style/Theme.NoTitleBar"
-                  android:configChanges="keyboardHidden|orientation" >
-        </activity>
-
-        <activity android:name=".activity.setting.TrafficStatActivity"
-                  android:theme="@android:style/Theme.NoTitleBar" >
-        </activity>
-
-        <activity android:name=".activity.setting.FriendInfoActivity"
-                  android:theme="@android:style/Theme.NoTitleBar"
-                  android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity><!-- setting end -->
 
 

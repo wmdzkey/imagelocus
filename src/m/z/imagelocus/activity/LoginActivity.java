@@ -83,6 +83,7 @@ public class LoginActivity extends Activity {
                     intentToMain.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intentToMain);
                     remenberUser();
+                    finish();
                 } else {
                     CommonView.displayShort(instance, "用户名或密码错误");
                 }

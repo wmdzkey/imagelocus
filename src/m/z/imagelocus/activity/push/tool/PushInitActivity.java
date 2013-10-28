@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -161,6 +162,10 @@ public class PushInitActivity extends Activity {
 
 					showChannelIds();
 
+                    if(SystemAdapter.currentUser == null) {
+                        return;
+                    }
+
                     //保存app_user_id
                     savePushUserId(userid);
 
@@ -216,8 +221,9 @@ public class PushInitActivity extends Activity {
 
     private void goActivity() {
         Intent intentToMain = new Intent(PushInitActivity.this, MainActivity_.class);
-        intentToMain.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intentToMain);
+        intentToMain.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivityForResult(intentToMain, 0);
+        finish();
     }
 
 
@@ -228,4 +234,8 @@ public class PushInitActivity extends Activity {
         Service.userService.saveOrUpdate(user);
     }
 
+    @Override
+    public void onBackPressed() {
+        CommonView.displayShort(instance, "稍等片刻...");
+    }
 }

@@ -124,6 +124,7 @@ public class RegistActivity extends Activity {
                     intentToMain.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intentToMain);
                     remenberUser();
+                    finish();
                 }
             }
         };
@@ -143,6 +144,7 @@ public class RegistActivity extends Activity {
                     Intent intentToMain = new Intent(instance, PushInitActivity_.class);
                     intentToMain.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intentToMain);
+                    finish();
                 } else {
                     CommonView.displayShort(instance, "用户名或密码错误");
                     Intent intent = new Intent(instance, LoginActivity_.class);

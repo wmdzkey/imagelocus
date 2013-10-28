@@ -20,6 +20,7 @@ import com.baidu.platform.comapi.basestruct.GeoPoint;
 import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
 import m.z.imagelocus.R;
+import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.entity.Lbs;
 import m.z.imagelocus.entity.convert.LbsConvert;
 import m.z.imagelocus.service.Service;
@@ -179,22 +180,8 @@ public class ImpressMeActivity extends Activity{
         locClient.requestLocation();
         CommonView.displayLong(instance, "正在定位……");
     }
-    /**
-     * 修改位置图标
-     * @param bmp
-     */
-    public void modifyLocationOverlayIcon(Bitmap bmp){
-        //当传入marker为null时，使用默认图标绘制
-        locOverlay.setMarker(ImageUtil.bitmapToDrawable(bmp));
-        //修改图层，需要刷新MapView生效
-        mMapView.refresh();
-    }
 
-
-    /*****************************************************************************/
     /********************************Listener*************************************/
-    /*****************************************************************************/
-
     /**
      * 定位SDK监听函数
      */
@@ -253,23 +240,21 @@ public class ImpressMeActivity extends Activity{
             }
             CommonView.displayLong(instance, sb.toString());
         }
-    }
+    }/********************************Listener.end*************************************/
 
     /**
      * 保存定位数据
      * */
     private void saveLocData(BDLocation bdLocation) {
 
-        Lbs lbs =  LbsConvert.createLbs("843804516070431639", bdLocation);
-        //Lbs lbs =  Service.lbsService.createLbs(SystemAdapter.currentUser.getApp_user_id(), bdLocation);
-
+        Lbs lbs =  LbsConvert.createLbs(SystemAdapter.currentUser.getApp_user_id(), bdLocation);
         //本地保存
         // Service.lbsService.save(lbs);
         //保存到云端
         new LbsYunService(instance, LbsYunService.FunctionName.sendBaiduServer, lbs) {
             @Override
             public void doResult(Map<String, Object> resultMap) {
-                CommonView.displayShort(instance, (String) resultMap.get("msg"));
+                //CommonView.displayShort(instance, (String) resultMap.get("msg"));
             }
         };
 

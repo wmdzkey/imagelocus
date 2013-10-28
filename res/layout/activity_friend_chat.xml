@@ -17,7 +17,8 @@
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="10dip"
                 android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:visibility="gone">
             <Button
                     android:id="@+id/btn_left"
                     android:layout_width="60dip"
@@ -88,7 +89,8 @@
                 android:layout_marginRight="10dip"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:visibility="gone">
 
             <Button
                     android:id="@+id/btn_right"

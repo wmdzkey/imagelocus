@@ -90,7 +90,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
         tv_middle.setText("查找朋友");
         btn_search.setOnTouchListener(btn_searchTouchListener);
 
-        list_friend = SystemStore.userData;
+        list_friend = new ArrayList<User>();
         x3ap_items_friend = new X3FriendAdapter(instance, list_friend);
         lv_friend.setAdapter(x3ap_items_friend);
         lv_friend.setOnItemClickListener(this);

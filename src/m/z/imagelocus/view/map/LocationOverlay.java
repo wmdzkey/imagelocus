@@ -12,8 +12,13 @@ import com.baidu.mapapi.map.PopupOverlay;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
 import m.z.common.CommonView;
 import m.z.imagelocus.R;
+import m.z.imagelocus.config.SystemAdapter;
+import m.z.imagelocus.entity.Friend;
 import m.z.imagelocus.entity.Lbs;
+import m.z.imagelocus.entity.User;
 import m.z.imagelocus.entity.convert.LbsConvert;
+import m.z.imagelocus.entity.convert.UserConvert;
+import m.z.imagelocus.service.Service;
 import m.z.util.CalendarUtil;
 import m.z.util.ImageUtil;
 
@@ -82,10 +87,17 @@ public class LocationOverlay extends MyLocationOverlay {
     public void drawOverlayPoint() {
 
         if(!useNative) {
-            //String app_user_id = SystemAdapter.currentUser.getApp_user_id();
+            Drawable drawable_head = null;
+            String app_user_id = lbs.getApp_user_id();
+            User user;
+            if(app_user_id.equals(SystemAdapter.currentUser.getApp_user_id())) {
+                //构建用户头像缩小图片变成圆角
+                user = SystemAdapter.currentUser;
+            } else {
+                user = Service.friendService.findUserByFriendAppUserId(app_user_id);
+            }
 
-            //构建用户头像缩小图片变成圆角
-            Drawable drawable_head = mapView.getResources().getDrawable(R.drawable.default_avatar_winnid);
+            drawable_head = UserConvert.getUserHead(mapView.getContext(), user.getUserhead());
             Bitmap bitmap_head = ImageUtil.drawableToBitmap(drawable_head);
             bitmap_head = ImageUtil.getRoundedCornerBitmap(bitmap_head, 90);
             drawable_head = ImageUtil.bitmapToDrawable(bitmap_head);
@@ -94,7 +106,7 @@ public class LocationOverlay extends MyLocationOverlay {
             View convertView = inflater.inflate(R.layout.impress_paopao_point, null);
             TextView tv_name = (TextView)convertView.findViewById(R.id.tv_name);
             ImageView iv_img = (ImageView)convertView.findViewById(R.id.iv_img);
-            tv_name.setText("Winnid");
+            tv_name.setText(user.getUsername());
             iv_img.setImageDrawable(drawable_head);
             Bitmap bmp = ImageUtil.getBitmapFromView(convertView);
             Drawable dw = ImageUtil.bitmapToDrawable(bmp);

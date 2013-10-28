@@ -11,11 +11,14 @@ import com.lidroid.xutils.util.LogUtils;
 import m.z.common.CommonView;
 import m.z.common.X3HttpProgressBar;
 import m.z.imagelocus.config.SystemConfig;
+import m.z.imagelocus.entity.Friend;
 import m.z.imagelocus.entity.Lbs;
 import m.z.imagelocus.entity.convert.LbsConvert;
 import m.z.imagelocus.entity.yun.LbsListYun;
 import m.z.imagelocus.entity.yun.LbsYun;
 import m.z.imagelocus.entity.yun.UserLocListYun;
+import m.z.imagelocus.service.FriendService;
+import m.z.imagelocus.service.Service;
 
 import java.util.*;
 
@@ -27,7 +30,7 @@ public abstract class LbsYunService {
     public Context mContext;
 
     public static enum FunctionName {
-        sendBaiduServer, findAllLbs, findLbsByApp_User_id;
+        sendBaiduServer, findAllLbs, findLbsByApp_User_id, findLbsMyFriendByApp_User_id;
     }
 
     public LbsYunService(Context context, FunctionName functionName, Object... objects) {
@@ -42,6 +45,9 @@ public abstract class LbsYunService {
             case findLbsByApp_User_id:
                 findLbsByApp_User_id((String) objects[0]);
                 break;
+            case findLbsMyFriendByApp_User_id:
+                findLbsMyFriendByApp_User_id((String) objects[0]);
+                break;
         }
     }
     public void sendBaiduServer(Lbs lbs) {
@@ -50,7 +56,7 @@ public abstract class LbsYunService {
         params.addBodyParameter("geotable_id", SystemConfig.BDLbsTableId);
         params.addBodyParameter("latitude", lbs.getLatitude()+"");
         params.addBodyParameter("longitude", lbs.getLongitude()+"");
-        params.addBodyParameter("coord_type", 1+"");
+        params.addBodyParameter("coord_type", 3+"");
         params.addBodyParameter("ak", SystemConfig.BDLbsKey);
         params.addBodyParameter("address", lbs.getAddrStr());
         params.addBodyParameter("app_user_id", lbs.getApp_user_id());//这里暂时先使用app_user_id
@@ -197,6 +203,46 @@ public abstract class LbsYunService {
             }
 
         };
+    }
+
+    public void findLbsMyFriendByApp_User_id(String app_user_id) {
+        //读取FriendAppUserId
+        List<Friend> friendList = Service.friendService.find(app_user_id);
+
+        if(friendList != null && friendList.size() != 0) {
+            for(Friend friend : friendList) {
+                //循环检索
+                String friend_app_user_id = friend.getApp_friend_user_id();
+                RequestParams params = new RequestParams();
+                params.addQueryStringParameter("ak",  SystemConfig.BDLbsKey);
+                params.addQueryStringParameter("geotable_id", SystemConfig.BDLbsTableId);
+                params.addQueryStringParameter("app_user_id", friend_app_user_id);
+                params.addQueryStringParameter("page_size", "200");
+                params.addQueryStringParameter("calldatz", new Date().getTime()+"");
+
+                new X3HttpProgressBar(mContext, SystemConfig.BDLbsUrl_FIND, HttpRequest.HttpMethod.GET, params) {
+
+                    @Override
+                    public void doSuccess(String result) {
+                        Map<String, Object> map = new HashMap<String, Object>();
+                        Gson gson = new Gson();
+                        LbsListYun lbsListYun = gson.fromJson(result, LbsListYun.class);
+                        if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
+                            List<Lbs> lbsList = new ArrayList<Lbs>();
+                            for(LbsYun lbsYun : lbsListYun.getPois()) {
+                                lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
+                            }
+                            map.put("lbsList", lbsList);
+                            map.put("msg","查询结果:" + lbsListYun.getPois().length);
+                        } else {
+                            map.put("msg","查询结果: 0");
+                        }
+                        doResult(map);
+                    }
+
+                };
+            }
+        }
     }
 
     abstract public void doResult(Map<String, Object> resultMap);

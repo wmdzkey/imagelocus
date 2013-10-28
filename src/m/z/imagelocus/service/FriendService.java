@@ -109,6 +109,28 @@ public class FriendService {
         return friendList;
     }
 
+    public User findUserByFriendAppUserId(String friend_app_user_id) {
+        User user = new User();
+        //空检查
+        if (friend_app_user_id == null) {
+            throw new NullPointerException();
+        }
+        //数据验证
+
+        try {
+            Friend friend = db.findFirst(Selector.from(Friend.class).where(WhereBuilder.b("app_friend_user_id", "=", friend_app_user_id)));
+            if(friend != null) {
+                user.setId(friend.getFriend_user_id());
+                user.setApp_user_id(friend.getApp_friend_user_id());
+                user.setUsername(friend.getFriendname());
+                user.setUserhead(friend.getFriendhead());
+            }
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
     public Map<String, Object> delete(User user) {
         //空检查
         if (user == null) {

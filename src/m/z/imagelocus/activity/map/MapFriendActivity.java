@@ -31,6 +31,7 @@ import m.z.util.CalendarUtil;
 import m.z.util.ImageUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,8 +48,8 @@ public class MapFriendActivity extends Activity{
     @ViewById(R.id.btn_right)
     Button btn_right;
 
-    List<Lbs> lbsList = null;    //位置数据
-    List<LocationOverlay> locationOverlayList = null;   //位置图层
+    List<Lbs> friendLbs = null;    //位置数据
+    Map<String, Lbs> friendLbsMap = new HashMap<String, Lbs>();   //位置数据
 
     //弹出泡泡图层
     private PopupOverlay pop  = null;     //弹出泡泡图层，浏览节点时使用
@@ -59,6 +60,13 @@ public class MapFriendActivity extends Activity{
     @ViewById(R.id.bmap_view)
     LocationMapView mMapView;	    // 地图View
     MapController mMapController = null;
+
+    // 定位相关
+    LocationClient locClient;
+    LocationListener locListener = new LocationListener();
+    LocationOverlay locOverlay = null;      // 定位图层
+    LocationData locDataNow = null;    //定位数据
+    Lbs lbsDataNow = null;    //定位数据
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,7 +90,42 @@ public class MapFriendActivity extends Activity{
         initPaopao();
         //创建位置数据
         readLbsData();
+
+        //定位初始化
+        initLocation();
+
     }
+
+    /**
+     *初始化位置
+     */
+    private void initLocation() {
+
+        locClient = new LocationClient( this );
+        locClient.registerLocationListener( locListener );
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true);//打开gps
+        option.setAddrType("all");//返回的定位结果包含地址信息
+        option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
+        option.setScanSpan(999);//设置发起定位请求的间隔时间为10000ms
+        option.disableCache(false);//禁止启用缓存定位
+        option.setPriority(LocationClientOption.GpsFirst);
+        option.setPoiNumber(2);    //最多返回POI个数
+        option.setPoiDistance(500); //poi查询距离
+        option.setPoiExtraInfo(true); //是否需要POI的电话和地址等详细信息
+        locClient.setLocOption(option);
+        locClient.start();
+
+        //定位图层初始化
+        locOverlay = new LocationOverlay(mMapView, pop, popView);
+        //设置定位数据
+        locOverlay.setData(locDataNow);
+        //添加定位图层
+        mMapView.getOverlays().add(locOverlay);
+        //修改定位数据后刷新图层生效
+        mMapView.refresh();
+    }
+
 
     /**
      * 创建弹出泡泡图层
@@ -110,11 +153,14 @@ public class MapFriendActivity extends Activity{
 
         //String app_user_id = SystemAdapter.currentUser.getApp_user_id();
         //new LbsYunService(instance, LbsYunService.FunctionName.findLbsByApp_User_id, app_user_id) {
-        new LbsYunService(instance, LbsYunService.FunctionName.findAllLbs) {
+
+        //清除之前的位置数据
+        mMapView.getOverlays().clear();
+        new LbsYunService(instance, LbsYunService.FunctionName.findLbsMyFriendByApp_User_id, SystemAdapter.currentUser.getApp_user_id()) {
             @Override
             public void doResult(Map<String, Object> resultMap) {
                 CommonView.displayShort(instance, (String) resultMap.get("msg"));
-                lbsList = (List<Lbs>) resultMap.get("lbsList");
+                friendLbs = (List<Lbs>) resultMap.get("lbsList");
                 setLocationOverlay();
             }
         };
@@ -124,23 +170,36 @@ public class MapFriendActivity extends Activity{
      * 创建位置图层
      */
     private void setLocationOverlay() {
-        if(lbsList != null && lbsList.size() != 0) {
-            //清除之前的位置数据
-            mMapView.getOverlays().clear();
-            locationOverlayList = new ArrayList<LocationOverlay>();
-
-            for(Lbs lbs : lbsList) {
-                LocationOverlay locOverlay = new LocationOverlay(mMapView, pop, popView, false);
-                //设置为0则不显示精度圈
-                lbs.setRadius(0);
-                locOverlay.setData(lbs);
-                locationOverlayList.add(locOverlay);
-            }
-
-            mMapView.getOverlays().addAll(locationOverlayList);
+        if(friendLbs != null && friendLbs.size() != 0) {
+            Lbs lbs = friendLbs.get(0);
+            //如果这个lbs数据里的好友不在List中，则直接加入，如果在则替换掉
+            friendLbsMap.put(lbs.getApp_user_id(), lbs);
+            LocationOverlay _locOverlay = new LocationOverlay(mMapView, pop, popView, false);
+            //设置为0则不显示精度圈
+            lbs.setRadius(0);
+            _locOverlay.setData(lbs);
+            mMapView.getOverlays().add(_locOverlay);
+            mMapView.refresh();
         }
-        mMapView.refresh();
+    }
 
+
+    /**
+     * 手动触发一次定位请求
+     */
+    public void requestLocClick(){
+        locClient.requestLocation();
+        CommonView.displayLong(instance, "正在定位……");
+    }
+
+    @Click(R.id.btn_right)
+    void btn_right_onClick() {
+        readLbsData();
+    }
+
+    @Click(R.id.btn_locate)
+    void btn_locate_onClick() {
+        requestLocClick();
     }
 
 
@@ -175,6 +234,61 @@ public class MapFriendActivity extends Activity{
         mMapView.onRestoreInstanceState(savedInstanceState);
     }
 
+
+    /********************************Listener*************************************/
+    /**
+     * 定位SDK监听函数
+     */
+    public class LocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+            if (bdLocation == null)
+                return ;
+
+            //转换定位数据
+            Lbs lbs =  LbsConvert.createLbs(SystemAdapter.currentUser.getApp_user_id(), bdLocation);
+            lbsDataNow = lbs;
+
+            //更新定位数据
+            locOverlay.setData(lbsDataNow);
+            //更新图层数据执行刷新后生效
+            mMapView.refresh();
+            //是手动触发请求或首次定位时，移动到定位点
+            //移动地图到定位点
+            Log.d("LocationOverlay", "receive location, animate to it");
+            mMapController.animateTo(new GeoPoint((int)(lbsDataNow.getLatitude()* 1e6), (int)(lbsDataNow.getLongitude() *  1e6)));
+            locOverlay.setLocationMode(LocationMode.NORMAL);
+        }
+
+        public void onReceivePoi(BDLocation poiLocation) {
+            if (poiLocation == null){
+                return ;
+            }
+            StringBuffer sb = new StringBuffer(256);
+            sb.append("Poi time : ");
+            sb.append(poiLocation.getTime());
+            sb.append("\nerror code : ");
+            sb.append(poiLocation.getLocType());
+            sb.append("\nlatitude : ");
+            sb.append(poiLocation.getLatitude());
+            sb.append("\nlontitude : ");
+            sb.append(poiLocation.getLongitude());
+            sb.append("\nradius : ");
+            sb.append(poiLocation.getRadius());
+            if (poiLocation.getLocType() == BDLocation.TypeNetWorkLocation) {
+                sb.append("\naddr : ");
+                sb.append(poiLocation.getAddrStr());
+            }
+            if (poiLocation.hasPoi()) {
+                sb.append("\nPoi:");
+                sb.append(poiLocation.getPoi());
+            } else {
+                sb.append("noPoi information");
+            }
+            CommonView.displayLong(instance, sb.toString());
+        }
+    }/********************************Listener.end*************************************/
 }
 
 
