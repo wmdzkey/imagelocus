@@ -22,6 +22,8 @@ public class User {
     private int state = 0;
     @Column(column = "app_user_id")
     private String app_user_id;
+    @Column(column = "phone")
+    private String phone;
 
 
     public Integer getId() {
@@ -70,6 +72,14 @@ public class User {
 
     public void setUserhead(String userhead) {
         this.userhead = userhead;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override

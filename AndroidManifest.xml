@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="m.z.imagelocus"
-          android:versionName="1.0.3">
+          android:versionName="1.0.3-SP1">
 
     <uses-sdk
             android:minSdkVersion="8"
             android:targetSdkVersion="17"/>
-
     <!--使用网络功能所需权限  -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!-- 网络状态检测权限  根据需要添加-->
@@ -171,6 +170,8 @@
         <activity android:name=".activity.map.MapActivity_">
         </activity>
         <activity android:name=".activity.map.MapFriendActivity_">
+        </activity>
+        <activity android:name=".activity.map.MapPeripheryActivity_">
         </activity>
 
         <activity android:name=".activity.map.MapLocusActivity_">

@@ -26,6 +26,8 @@ public class Friend {
     private String friendname;
     @Column(column = "friendhead")
     private String friendhead;
+    @Column(column = "friendphone")
+    private String friendphone;
 
     public Integer getId() {
         return id;
@@ -89,6 +91,14 @@ public class Friend {
 
     public void setFriendhead(String friendhead) {
         this.friendhead = friendhead;
+    }
+
+    public String getFriendphone() {
+        return friendphone;
+    }
+
+    public void setFriendphone(String friendphone) {
+        this.friendphone = friendphone;
     }
 
 }

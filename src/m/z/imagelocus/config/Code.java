@@ -41,4 +41,12 @@ public class Code {
         public static final String[] NAMES = {"男", "女"};
     }
 
+    //周边分类
+    public static class Periphery extends AbstractCode {
+        public static final int HOTEL= 0;
+        public static final int RESTAURANT = 1;
+
+        public static final String[] KEYS = {"HOTEL", "RESTAURANT"};
+        public static final String[] NAMES = {"酒店", "餐厅"};
+    }
 }

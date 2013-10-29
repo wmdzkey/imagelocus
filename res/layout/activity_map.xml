@@ -135,7 +135,7 @@
                 android:orientation="horizontal">
             <FrameLayout
                     android:layout_width="220dp"
-                    android:layout_height="110dp"
+                    android:layout_height="330dp"
                     android:background="#3399ff">
                 <Button
                         android:id="@+id/btn_metor_1"
@@ -160,14 +160,14 @@
             </FrameLayout>
             <FrameLayout
                     android:layout_width="110dp"
-                    android:layout_height="110dp"
+                    android:layout_height="330dp"
                     android:layout_marginLeft="10dp"
                     android:background="#3399ff">
                 <Button
                         android:id="@+id/btn_metor_2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/map_default_bg_small_unuse"/>
+                        android:background="@drawable/map_default_bg_small"/>
                 <TextView
                         android:id="@+id/tv_metor_title_2"
                         android:layout_width="match_parent"
@@ -201,7 +201,7 @@
                         android:id="@+id/btn_metor_3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/map_default_bg_large_unuse"/>
+                        android:background="@drawable/map_default_bg_large"/>
                 <TextView
                         android:id="@+id/tv_metor_title_3"
                         android:layout_width="match_parent"

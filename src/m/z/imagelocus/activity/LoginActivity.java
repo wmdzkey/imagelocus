@@ -105,7 +105,7 @@ public class LoginActivity extends Activity {
         edit.commit();
     }
 
-    /**检测是否注册过*/
+    /**取消记住用户信息*/
     private void cancelRemenberUser() {
         //获取到sharepreference 对象， 参数一为xml文件名，参数为文件的可操作模式
         SharedPreferences sp = this.getSharedPreferences(SystemConfig.SPName, MODE_APPEND);

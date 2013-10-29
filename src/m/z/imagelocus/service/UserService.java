@@ -10,6 +10,7 @@ import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.config.SystemConfig;
 import m.z.imagelocus.entity.Friend;
 import m.z.imagelocus.entity.User;
+import m.z.util.SIMCardUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,12 +25,12 @@ import java.util.Map;
  */
 public class UserService {
 
-    private Context context;
+    private Context mContext;
     private DbUtils db;
 
     public UserService(Context contextThis) {
         db = DbUtils.create(contextThis, SystemConfig.DBNameSQLite);
-        context = contextThis;
+        mContext = contextThis;
     }
 
     /**
@@ -76,6 +77,8 @@ public class UserService {
             }
             //不存在 -保存
             else {
+                refreshUserInfo(user);
+
                 db.saveOrUpdate(user);
                 mapInfo.put("user", user);
                 mapInfo.put("info", "不存在");
@@ -105,6 +108,7 @@ public class UserService {
         }
         //不存在 -保存
         else {
+            refreshUserInfo(user);
             mapInfo.put("user", user);
             mapInfo.put("info", "不存在");
         }
@@ -143,6 +147,17 @@ public class UserService {
             e.printStackTrace();
         }
         SystemAdapter.currentUser = user;
+    }
+
+    public void refreshUserInfo(User user) {
+        SIMCardUtil siminfo = new SIMCardUtil(mContext);
+        String phone = siminfo.getNativePhoneNumber();
+        user.setPhone(phone);
+        try {
+            db.saveOrUpdate(user);
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
     }
 
 }

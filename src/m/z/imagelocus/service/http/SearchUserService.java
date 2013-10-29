@@ -51,9 +51,10 @@ public abstract class SearchUserService {
         params.addBodyParameter("ak", SystemConfig.BDLbsKey);
         params.addBodyParameter("address", userLocYun.getAddress());
         params.addBodyParameter("app_user_id", userLocYun.getApp_user_id());//这里暂时先使用app_user_id
-        params.addBodyParameter("username", userLocYun.getUsername());//这里暂时先使用app_user_id
-        params.addBodyParameter("sex", userLocYun.getSex() + "");//这里暂时先使用app_user_id
-        params.addBodyParameter("userhead", userLocYun.getUserhead());//这里暂时先使用app_user_id
+        params.addBodyParameter("username", userLocYun.getUsername());
+        params.addBodyParameter("sex", userLocYun.getSex() + "");
+        params.addBodyParameter("userhead", userLocYun.getUserhead());
+        params.addBodyParameter("phone", userLocYun.getPhone());
 
         new X3HttpUtil(mContext, SystemConfig.BDLbsUrl_ADD, HttpRequest.HttpMethod.POST, params) {
 

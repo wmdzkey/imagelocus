@@ -38,7 +38,7 @@ public class MapInitApplication extends Application {
             mBMapManager = new BMapManager(context);
         }
 
-        if (!mBMapManager.init(strKey,new BaiduMapGeneralListener())) {
+        if (!mBMapManager.init(strKey, new BaiduMapGeneralListener())) {
              CommonView.displayLong(MapInitApplication.getInstance().getApplicationContext(), "地图模块  初始化错误!");
         }
     }

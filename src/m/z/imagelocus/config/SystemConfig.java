@@ -10,6 +10,8 @@ package m.z.imagelocus.config;
  */
 public class SystemConfig {
 
+    public static final boolean DebugMode = true;
+
     public static final String SPName = "imagelocus";
     public static final String DBNameSQLite = "imagelocus";
 

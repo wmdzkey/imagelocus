@@ -17,6 +17,7 @@ import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.config.SystemConfig;
 import m.z.imagelocus.entity.User;
 import m.z.imagelocus.service.Service;
+import m.z.util.SIMCardUtil;
 
 import java.util.Map;
 
@@ -78,7 +79,7 @@ public class RegistActivity extends Activity {
         }
     }
 
-    /**检测是否注册过*/
+    /**记住用户信息*/
     private void remenberUser() {
         //获取到sharepreference 对象， 参数一为xml文件名，参数为文件的可操作模式
         SharedPreferences sp = this.getSharedPreferences(SystemConfig.SPName, MODE_APPEND);
@@ -99,7 +100,7 @@ public class RegistActivity extends Activity {
     }
 
 
-    @Click(R.id.btn_login)
+    @Click(R.id.btn_regist)
     public void btn_regist_onClick() {
         if (!nullChecked()) return;
         user.setUsername(et_login_username.getText().toString());

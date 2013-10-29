@@ -2,12 +2,14 @@ package m.z.imagelocus.view.map;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationOverlay;
+import com.baidu.mapapi.map.PopupClickListener;
 import com.baidu.mapapi.map.PopupOverlay;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
 import m.z.common.CommonView;
@@ -31,31 +33,45 @@ public class LocationOverlay extends MyLocationOverlay {
     public Lbs lbs = null;
     private PopupOverlay pop  = null;     //弹出泡泡图层，浏览节点时使用
     private View popView = null;     //泡泡图层样式
+
     public MapView mapView;
     private LayoutInflater inflater;
     private boolean useNative;
 
-    public LocationOverlay(MapView mapView, PopupOverlay pop, View popView) {
+    public LocationOverlay(MapView mapView, PopupOverlay pop) {
         super(mapView);
+        this.inflater = LayoutInflater.from(mapView.getContext());
         this.mapView = mapView;
         this.pop = pop;
-        this.popView = popView;
-        this.inflater = LayoutInflater.from(mapView.getContext());
+        this.popView = createPopView();
         this.useNative = true;
     }
-
-    public LocationOverlay(MapView mapView, PopupOverlay pop, View popView, boolean useNative) {
+    public LocationOverlay(MapView mapView, PopupOverlay pop, boolean useNative) {
         super(mapView);
+        this.inflater = LayoutInflater.from(mapView.getContext());
         this.mapView = mapView;
         this.pop = pop;
-        this.popView = popView;
-        this.inflater = LayoutInflater.from(mapView.getContext());
+        this.popView = createPopView();
         this.useNative = useNative;
     }
 
+    private View createPopView() {
+        return inflater.inflate(R.layout.impress_paopao_view, null);
+    }
+
+    /**
+     * 点击后弹出显示
+     * */
     @Override
     protected boolean dispatchTap() {
+        showPopView();
+        return true;
+    }
 
+    /**
+     *显示popview
+     * */
+    private void showPopView() {
         TextView tv_pop_locinfo = (TextView) popView.findViewById(R.id.tv_location_info);
         TextView tv_pop_loctime = (TextView) popView.findViewById(R.id.tv_location_time);
 
@@ -72,7 +88,6 @@ public class LocationOverlay extends MyLocationOverlay {
                 new GeoPoint((int)(lbs.getLatitude()*1e6), (int)(lbs.getLongitude()*1e6)),
                 58);
         CommonView.displayLong(mapView.getContext(), (int) (lbs.getLatitude() * 1e6) + " , " + (int) (lbs.getLongitude() * 1e6));
-        return true;
     }
 
     public void setData(Lbs lbs) {
@@ -116,4 +131,5 @@ public class LocationOverlay extends MyLocationOverlay {
         }
 
     }
+
 }

@@ -52,7 +52,7 @@ public class MapActivity extends Activity {
     @ViewById(R.id.tv_metor_title_3)
     TextView tv_metor_title_3;
     @ViewById(R.id.tv_metor_content_3)
-    TextView tv_metor_content_4;
+    TextView tv_metor_content_3;
     @ViewById(R.id.btn_metor_4)
     Button btn_metor_4;
     @ViewById(R.id.tv_metor_title_4)
@@ -70,21 +70,29 @@ public class MapActivity extends Activity {
     void init() {
         tv_middle.setText("地图");
 
-        tv_metor_title_1.setText("朋友们的位置");
-        tv_metor_content_1.setText("看看朋友们都在哪");
+        tv_metor_title_1.setText("身边的信息");
+        tv_metor_content_1.setText("看看我的周围有什么");
+        tv_metor_title_2.setText("朋友们的位置");
+        tv_metor_content_2.setText("看看朋友们都在哪");
+        tv_metor_title_3.setText("猜你喜欢");
+        tv_metor_content_3.setText("看看有没有你需要的");
     }
 
 
     @Click(R.id.btn_metor_1)
     void btn_metor_1_onClick() {
-        Intent _intent = new Intent(instance, MapFriendActivity_.class);
+        Intent _intent = new Intent(instance, MapPeripheryActivity_.class);
         startActivity(_intent);
     }
     @Click(R.id.btn_metor_2)
     void btn_metor_2_onClick() {
+        Intent _intent = new Intent(instance, MapFriendActivity_.class);
+        startActivity(_intent);
     }
     @Click(R.id.btn_metor_3)
     void btn_metor_3_onClick() {
+        Intent _intent = new Intent(instance, MapFriendActivity_.class);
+        startActivity(_intent);
     }
     @Click(R.id.btn_metor_4)
     void btn_metor_4_onClick() {

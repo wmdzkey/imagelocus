@@ -30,8 +30,8 @@ public class X3FriendAdapter extends SimpleAdapter {
 
     //需要配置的信息
     private static int mResource =  R.layout.friend_item;
-    private static String[] mFrom = new String[]{"name","img"};
-    private static int[] mTo = new int[]{R.id.tv_friend_item_name,R.id.iv_friend_item_img};
+    private static String[] mFrom = new String[]{"name","img","phone","app_user_id"};
+    private static int[] mTo = new int[]{R.id.tv_friend_item_name,R.id.iv_friend_item_img,R.id.tv_friend_item_phone,R.id.tv_friend_item_id};
 
 
     private Context mContext;
@@ -114,8 +114,11 @@ public class X3FriendAdapter extends SimpleAdapter {
                         }
 
                     } else if (v instanceof TextView) {
-                        ((TextView) v).setText(text);
-
+                        if(v.getId() == R.id.tv_friend_item_id) {
+                            ((TextView) v).setText("(" + text + ")");
+                        } else {
+                            ((TextView) v).setText(text);
+                        }
                     } else if (v instanceof RatingBar) {
                         if (data instanceof Number) {
                             final RatingBar rtb = (RatingBar) v;
@@ -184,6 +187,7 @@ public class X3FriendAdapter extends SimpleAdapter {
             map.put("app_user_id", u.getApp_user_id());
             map.put("name", u.getUsername());
             map.put("img", u.getUserhead());
+            map.put("phone", u.getPhone());
             return map;
         } else {
             return null;

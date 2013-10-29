@@ -47,10 +47,6 @@ public class ImpressHistoryActivity extends Activity{
     List<LocationOverlay> locationOverlayList = null;   //位置图层
     int historyPoint = -1;
 
-    //弹出泡泡图层
-    private PopupOverlay pop  = null;     //弹出泡泡图层，浏览节点时使用
-    private View popView = null;    //泡泡view
-
     //地图相关，使用继承MapView的LocationMapView目的是重写touch事件实现泡泡处理
     //如果不处理touch事件，则无需继承，直接使用MapView即可
     @ViewById(R.id.bmap_view)
@@ -74,28 +70,9 @@ public class ImpressHistoryActivity extends Activity{
         mMapView.getController().enableClick(true);
         mMapView.setBuiltInZoomControls(true);
 
-        //创建 弹出泡泡图层
-        initPaopao();
-
         //创建位置数据
         readLbsData();
 
-    }
-
-    /**
-     * 创建弹出泡泡图层
-     */
-    public void initPaopao(){
-        popView = getLayoutInflater().inflate(R.layout.impress_paopao_view, null);
-        //泡泡点击响应回调
-        PopupClickListener popListener = new PopupClickListener(){
-            @Override
-            public void onClickedPopup(int index) {
-                Log.v("click", "clickpaopao");
-            }
-        };
-        pop = new PopupOverlay(mMapView,popListener);
-        mMapView.pop = pop;
     }
 
     /**
@@ -129,7 +106,7 @@ public class ImpressHistoryActivity extends Activity{
             historyPoint = lbsDataHistory.size()-1;
 
             for(Lbs lbs : lbsDataHistory) {
-                LocationOverlay locOverlay = new LocationOverlay(mMapView, pop, popView);
+                LocationOverlay locOverlay = new LocationOverlay(mMapView, mMapView.pop);
                 //设置为0则不显示精度圈
                 lbs.setRadius(0);
                 locOverlay.setData(lbs);
@@ -184,6 +161,7 @@ public class ImpressHistoryActivity extends Activity{
      *弹出pop信息
      * */
     void popLbsInfo(Lbs lbs) {
+        View popView = inflater.inflate(R.layout.impress_paopao_view, null);
         TextView tv_pop_locinfo =(TextView) popView.findViewById(R.id.tv_location_info);
         TextView tv_pop_loctime =(TextView) popView.findViewById(R.id.tv_location_time);
 
@@ -196,7 +174,7 @@ public class ImpressHistoryActivity extends Activity{
 
         }
         //处理点击事件,弹出泡泡
-        pop.showPopup(ImageUtil.getBitmapFromView(popView),
+        mMapView.pop.showPopup(ImageUtil.getBitmapFromView(popView),
                 new GeoPoint((int)(lbs.getLatitude()*1e6), (int)(lbs.getLongitude()*1e6)),
                 58);
     }

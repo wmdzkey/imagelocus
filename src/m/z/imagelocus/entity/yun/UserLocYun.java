@@ -36,6 +36,7 @@ public class UserLocYun {
     private String app_user_id;
     private String username;
     private String userhead;
+    private String phone;
     private int sex;
 
     public Integer getGeotable_id() {
@@ -188,5 +189,13 @@ public class UserLocYun {
 
     public void setUserhead(String userhead) {
         this.userhead = userhead;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

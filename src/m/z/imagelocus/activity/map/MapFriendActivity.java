@@ -51,10 +51,6 @@ public class MapFriendActivity extends Activity{
     List<Lbs> friendLbs = null;    //位置数据
     Map<String, Lbs> friendLbsMap = new HashMap<String, Lbs>();   //位置数据
 
-    //弹出泡泡图层
-    private PopupOverlay pop  = null;     //弹出泡泡图层，浏览节点时使用
-    private View popView = null;    //泡泡view
-
     //地图相关，使用继承MapView的LocationMapView目的是重写touch事件实现泡泡处理
     //如果不处理touch事件，则无需继承，直接使用MapView即可
     @ViewById(R.id.bmap_view)
@@ -86,8 +82,6 @@ public class MapFriendActivity extends Activity{
         mMapView.getController().enableClick(true);
         mMapView.setBuiltInZoomControls(true);
 
-        //创建弹出泡泡图层
-        initPaopao();
         //创建位置数据
         readLbsData();
 
@@ -117,7 +111,7 @@ public class MapFriendActivity extends Activity{
         locClient.start();
 
         //定位图层初始化
-        locOverlay = new LocationOverlay(mMapView, pop, popView);
+        locOverlay = new LocationOverlay(mMapView, mMapView.pop);
         //设置定位数据
         locOverlay.setData(locDataNow);
         //添加定位图层
@@ -125,24 +119,6 @@ public class MapFriendActivity extends Activity{
         //修改定位数据后刷新图层生效
         mMapView.refresh();
     }
-
-
-    /**
-     * 创建弹出泡泡图层
-     */
-    public void initPaopao(){
-        popView = getLayoutInflater().inflate(R.layout.impress_paopao_view, null);
-        //泡泡点击响应回调
-        PopupClickListener popListener = new PopupClickListener(){
-            @Override
-            public void onClickedPopup(int index) {
-                Log.v("click", "clickpaopao");
-            }
-        };
-        pop = new PopupOverlay(mMapView, popListener);
-        mMapView.pop = pop;
-    }
-
 
     /**
      * 创建位置数据
@@ -174,7 +150,7 @@ public class MapFriendActivity extends Activity{
             Lbs lbs = friendLbs.get(0);
             //如果这个lbs数据里的好友不在List中，则直接加入，如果在则替换掉
             friendLbsMap.put(lbs.getApp_user_id(), lbs);
-            LocationOverlay _locOverlay = new LocationOverlay(mMapView, pop, popView, false);
+            LocationOverlay _locOverlay = new LocationOverlay(mMapView, mMapView.pop, false);
             //设置为0则不显示精度圈
             lbs.setRadius(0);
             _locOverlay.setData(lbs);
