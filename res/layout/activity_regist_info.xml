@@ -138,8 +138,7 @@
                     />
             <Spinner android:layout_height="40dp"
                      android:layout_width="fill_parent"
-                     android:id="@+id/province_spinner"
-                     android:textColor="@color/black"/>
+                     android:id="@+id/province_spinner"/>
         </LinearLayout>
 
         <LinearLayout
@@ -158,8 +157,8 @@
                     android:enabled="false"
                     />
             <Spinner android:layout_height="40dp"
-                     android:id="@+id/city_spinner"
-                     android:layout_width="fill_parent"/>
+                     android:layout_width="fill_parent"
+                     android:id="@+id/city_spinner"/>
         </LinearLayout>
 
         <LinearLayout
@@ -178,8 +177,8 @@
                     android:enabled="false"
                     />
             <Spinner android:layout_height="40dp"
-                     android:layout_width="wrap_content"
-                     android:id="@+id/fill_parent"/>
+                     android:layout_width="fill_parent"
+                     android:id="@+id/county_spinner"/>
         </LinearLayout>
 
     </LinearLayout>
