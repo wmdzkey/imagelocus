@@ -290,6 +290,85 @@ public class RegistInfoActivity extends Activity {
     }
 
 
+    @ViewById(R.id.iv_user_head_1)
+    ImageView iv_user_head_1;
+    @ViewById(R.id.iv_user_head_2)
+    ImageView iv_user_head_2;
+    @ViewById(R.id.iv_user_head_3)
+    ImageView iv_user_head_3;
+    @ViewById(R.id.iv_user_head_4)
+    ImageView iv_user_head_4;
+    @ViewById(R.id.iv_user_head_5)
+    ImageView iv_user_head_5;
+    @ViewById(R.id.iv_user_head_6)
+    ImageView iv_user_head_6;
+    @ViewById(R.id.iv_user_head_7)
+    ImageView iv_user_head_7;
+    @ViewById(R.id.iv_user_head_8)
+    ImageView iv_user_head_8;
+    @ViewById(R.id.iv_user_head_9)
+    ImageView iv_user_head_9;
+    @ViewById(R.id.iv_user_head_10)
+    ImageView iv_user_head_10;
+
+
+    @Click({R.id.iv_user_head_1,R.id.iv_user_head_2,R.id.iv_user_head_3,R.id.iv_user_head_4,R.id.iv_user_head_5,
+            R.id.iv_user_head_6,R.id.iv_user_head_7,R.id.iv_user_head_8,R.id.iv_user_head_9,R.id.iv_user_head_10})
+    void iv_head_onClick(View view) {
+        iv_user_head_1.setImageDrawable(null);
+        iv_user_head_2.setImageDrawable(null);
+        iv_user_head_3.setImageDrawable(null);
+        iv_user_head_4.setImageDrawable(null);
+        iv_user_head_5.setImageDrawable(null);
+        iv_user_head_6.setImageDrawable(null);
+        iv_user_head_7.setImageDrawable(null);
+        iv_user_head_8.setImageDrawable(null);
+        iv_user_head_9.setImageDrawable(null);
+        iv_user_head_10.setImageDrawable(null);
+        switch (view.getId()) {
+            case R.id.iv_user_head_1:
+                iv_user_head_1.setImageResource(R.drawable.select);
+                user.setUserhead("1");
+                break;
+            case R.id.iv_user_head_2:
+                iv_user_head_2.setImageResource(R.drawable.select);
+                user.setUserhead("2");
+                break;
+            case R.id.iv_user_head_3:
+                iv_user_head_3.setImageResource(R.drawable.select);
+                user.setUserhead("3");
+                break;
+            case R.id.iv_user_head_4:
+                iv_user_head_4.setImageResource(R.drawable.select);
+                user.setUserhead("4");
+                break;
+            case R.id.iv_user_head_5:
+                iv_user_head_5.setImageResource(R.drawable.select);
+                user.setUserhead("5");
+                break;
+            case R.id.iv_user_head_6:
+                iv_user_head_6.setImageResource(R.drawable.select);
+                user.setUserhead("6");
+                break;
+            case R.id.iv_user_head_7:
+                iv_user_head_7.setImageResource(R.drawable.select);
+                user.setUserhead("7");
+                break;
+            case R.id.iv_user_head_8:
+                iv_user_head_8.setImageResource(R.drawable.select);
+                user.setUserhead("8");
+                break;
+            case R.id.iv_user_head_9:
+                iv_user_head_9.setImageResource(R.drawable.select);
+                user.setUserhead("9");
+                break;
+            case R.id.iv_user_head_10:
+                iv_user_head_10.setImageResource(R.drawable.select);
+                user.setUserhead("10");
+                break;
+        }
+    }
+
     @Click(R.id.btn_more_pop)
     void btn_more_pop_onClick() {
         CommonView.displayShort(instance, "尽请期待");
