@@ -61,6 +61,8 @@
         </activity>
         <activity android:name=".activity.RegistActivity_">
         </activity>
+        <activity android:name=".activity.RegistInfoActivity_">
+        </activity>
         <activity android:name=".activity.MainActivity_">
         </activity> <!--注册登录主界面.end -->
 

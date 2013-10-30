@@ -179,6 +179,7 @@ public class MapGuessActivity extends Activity{
 
     @Click(R.id.btn_right)
     void btn_right_onClick() {
+
     }
 
     @Click(R.id.btn_locate)

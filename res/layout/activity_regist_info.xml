@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_write"
+                android:orientation="vertical">
+
+    <LinearLayout
+            android:id="@+id/ll_regist_head"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="42dp"
+            android:background="@drawable/login_input"
+            android:orientation="vertical">
+        <EditText
+                android:id="@+id/et_head"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="请选择头像"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:paddingLeft="10dp"
+                android:enabled="false"
+                />
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_1"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_1">
+            </ImageView>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_2"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_2">
+            </ImageView>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_3"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_3">
+            </ImageView>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_4"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_4">
+            </ImageView>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_5"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_5">
+            </ImageView>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_6"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_6">
+            </ImageView>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_7"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_7">
+            </ImageView>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_8"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_8">
+            </ImageView>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_9"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_9">
+            </ImageView>
+            <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:id="@+id/iv_user_head_10"
+                    android:clickable="true"
+                    android:background="@drawable/user_head_system_10">
+            </ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <EditText
+                    android:id="@+id/et_province"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:hint="省份："
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:paddingLeft="10dp"
+                    android:enabled="false"
+                    />
+            <Spinner android:layout_height="40dp"
+                     android:layout_width="fill_parent"
+                     android:id="@+id/province_spinner"
+                     android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <EditText
+                    android:id="@+id/et_city"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:hint="城市："
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:paddingLeft="10dp"
+                    android:enabled="false"
+                    />
+            <Spinner android:layout_height="40dp"
+                     android:id="@+id/city_spinner"
+                     android:layout_width="fill_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <EditText
+                    android:id="@+id/et_county"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:hint="县区："
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:paddingLeft="10dp"
+                    android:enabled="false"
+                    />
+            <Spinner android:layout_height="40dp"
+                     android:layout_width="wrap_content"
+                     android:id="@+id/fill_parent"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TableLayout android:id="@+id/tableLayout1"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:stretchColumns="1"
+                 android:layout_below="@+id/ll_regist_head">
+        <EditText android:focusableInTouchMode="false"
+                  android:id="@+id/display_edit"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:hint="输出结果"/>
+    </TableLayout>
+
+    <Button
+            android:id="@+id/btn_regist"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tableLayout1"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="42dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_button_select"
+            android:text="完成"/>
+
+
+</RelativeLayout>
