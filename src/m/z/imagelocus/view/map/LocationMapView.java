@@ -54,6 +54,17 @@ public class LocationMapView extends MapView {
         controller.animateTo(new GeoPoint((int)(latitude* 1e6), (int)(longitude *  1e6)));
     }
 
+
+    /**
+     * 添加定位标记
+     */
+    public void addLocationMarker(Lbs lbs) {
+        LocationOverlay locOverlay = new LocationOverlay(this, this.pop);
+        locOverlay.setData(lbs);
+        this.getOverlays().add(locOverlay);
+        this.refresh();
+    }
+
     List<LocationOverlay> locationOverlayList = new ArrayList<LocationOverlay>();
     /**
      * 添加所有标记

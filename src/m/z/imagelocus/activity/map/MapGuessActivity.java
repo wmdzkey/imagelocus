@@ -3,39 +3,42 @@ package m.z.imagelocus.activity.map;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
+import com.baidu.android.pushservice.PushManager;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.map.*;
+import com.baidu.mapapi.map.MKEvent;
+import com.baidu.mapapi.map.MapController;
 import com.baidu.mapapi.map.MyLocationOverlay.LocationMode;
+import com.baidu.mapapi.map.PoiOverlay;
 import com.baidu.mapapi.search.*;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
-import com.google.gson.Gson;
 import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
 import m.z.imagelocus.R;
 import m.z.imagelocus.application.MapInitApplication;
 import m.z.imagelocus.config.SystemAdapter;
+import m.z.imagelocus.config.SystemStore;
 import m.z.imagelocus.entity.Lbs;
+import m.z.imagelocus.entity.LbsDo;
 import m.z.imagelocus.entity.convert.LbsConvert;
 import m.z.imagelocus.entity.yun.PoiList;
-import m.z.imagelocus.service.http.LbsYunService;
 import m.z.imagelocus.view.map.LocationMapView;
 import m.z.imagelocus.view.map.LocationOverlay;
+import m.z.util.CalendarUtil;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @NoTitle
-@EActivity(R.layout.activity_map_periphery)
-public class MapPeripheryActivity extends Activity{
+@EActivity(R.layout.activity_map_guess)
+public class MapGuessActivity extends Activity{
 
-    public static MapPeripheryActivity instance = null;
+    public static MapGuessActivity instance = null;
+
+    public Timer timer;
 
     @ViewById(R.id.tv_middle)
     TextView tv_middle;
@@ -93,7 +96,7 @@ public class MapPeripheryActivity extends Activity{
     @AfterViews
     void init() {
 
-        tv_middle.setText("周边生活");
+        tv_middle.setText("猜你喜欢");
 
         //地图初始化
         mMapController = mMapView.getController();
@@ -107,6 +110,19 @@ public class MapPeripheryActivity extends Activity{
         //搜索初始化
         mMKSearch = new MKSearch();
         mMKSearch.init(MapInitApplication.getInstance().mBMapManager, new MapSearchListener());//注意，MKSearchListener只支持一个，以最后一次设置为准
+
+        timer = new Timer(true);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                for (LbsDo lbsDo : SystemStore.lbsDoData) {
+                    if(CalendarUtil.compareTime(new Date(System.currentTimeMillis()), lbsDo.getTime()) == 0) {
+                        search(lbsDo.getKeyword());
+                    }
+                }
+
+            }
+        }, 0, 10000);
     }
 
     /**
@@ -190,32 +206,35 @@ public class MapPeripheryActivity extends Activity{
 
     @Click(R.id.ll_category_food)
     void btn_category_food_onClick() {
-        mMKSearch.poiSearchNearBy("餐厅", lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+        search("餐厅");
     }
 
     @Click(R.id.ll_category_hostel)
     void btn_category_hostel_onClick() {
-        mMKSearch.poiSearchNearBy("酒店", lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+        search("酒店");
     }
 
     @Click(R.id.ll_category_ktv)
     void btn_category_ktv_onClick() {
-        mMKSearch.poiSearchNearBy("KTV", lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+        search("KTV");
     }
 
     @Click(R.id.ll_category_leisure)
      void btn_category_leisure_onClick() {
-        mMKSearch.poiSearchNearBy("电影院", lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+        search("电影院");
     }
 
     @Click(R.id.btn_poi_search)
     void btn_poi_search_onClick() {
         if(et_poi_search.getText() != null && !et_poi_search.getText().toString().equals("")) {
-            mMKSearch.poiSearchNearBy(et_poi_search.getText().toString(), lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+            search(et_poi_search.getText().toString());
         } else {
             CommonView.displayShortGravity(instance, "写点什么在搜吧~");
-            CommonView.displayShort(instance, "sb_poi_distance.getProgress():" + (sb_poi_distance.getProgress()+1)*100);
         }
+    }
+
+    private void search(String keyword) {
+        mMKSearch.poiSearchNearBy(keyword, lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
     }
 
 

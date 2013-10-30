@@ -111,7 +111,7 @@ public class MapFriendActivity extends Activity{
         locClient.start();
 
         //定位图层初始化
-        locOverlay = new LocationOverlay(mMapView, mMapView.pop);
+        locOverlay = new LocationOverlay(mMapView, mMapView.pop, false);
         //设置定位数据
         locOverlay.setData(locDataNow);
         //添加定位图层

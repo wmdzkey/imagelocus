@@ -1,5 +1,6 @@
 package m.z.imagelocus.entity;
 
+import com.baidu.platform.comapi.basestruct.GeoPoint;
 import com.lidroid.xutils.db.annotation.Column;
 import com.lidroid.xutils.db.annotation.Id;
 import com.lidroid.xutils.db.annotation.Table;
@@ -78,7 +79,6 @@ public class Lbs {
     //自定义字段
     @Column(column = "state")
     private int state = 0;//状态
-
 
     public Lbs() {}
 
@@ -272,5 +272,9 @@ public class Lbs {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public GeoPoint getGeoPoint() {
+        return new GeoPoint((int) (this.latitude * 1E6), (int) (this.longitude * 1E6));
     }
 }

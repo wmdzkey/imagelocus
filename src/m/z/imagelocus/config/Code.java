@@ -24,29 +24,32 @@ public class Code {
 
     //状态
     public static class State extends AbstractCode {
-        public static final int NORMAL= 0;
-        public static final int DELETE = 1;
-        public static final int FREEZE = 2;
+        public static final int Normal= 0;
+        public static final int Delete = 1;
+        public static final int Freeze = 2;
 
-        public static final String[] KEYS = {"NORMAL", "DELETE", "FREEZE"};
+        public static final String[] KEYS = {"Normal", "Delete", "Freeze"};
         public static final String[] NAMES = {"正常", "删除", "冻结"};
     }
 
     //性别
     public static class Sex extends AbstractCode {
-        public static final int BOY= 0;
-        public static final int GIRL = 1;
+        public static final int Boy = 0;
+        public static final int Girl = 1;
 
-        public static final String[] KEYS = {"BOY", "GIRL"};
+        public static final String[] KEYS = {"Boy", "Girl"};
         public static final String[] NAMES = {"男", "女"};
     }
 
     //周边分类
-    public static class Periphery extends AbstractCode {
-        public static final int HOTEL= 0;
-        public static final int RESTAURANT = 1;
+    public static class Category extends AbstractCode {
+        public static CodeDetail.Hotel Hotel;
+        public static CodeDetail.Restaurant Restaurant;
 
-        public static final String[] KEYS = {"HOTEL", "RESTAURANT"};
-        public static final String[] NAMES = {"酒店", "餐厅"};
+        public static final int Hotel_0 = 0;
+        public static final int Restaurant_1 = 1;
+
+        public static final String[] KEYS = {"Hotel", "Restaurant"};
+        public static final String[] NAMES = {"酒店", "美食"};
     }
 }

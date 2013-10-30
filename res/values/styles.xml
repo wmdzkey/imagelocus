@@ -19,4 +19,5 @@
         <item name="android:layout_marginLeft">5dip</item>
         <item name="android:layout_marginRight">5dip</item>
     </style>
+
 </resources>

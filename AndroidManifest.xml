@@ -173,6 +173,8 @@
         </activity>
         <activity android:name=".activity.map.MapPeripheryActivity_">
         </activity>
+        <activity android:name=".activity.map.MapGuessActivity_">
+        </activity>
 
         <activity android:name=".activity.map.MapLocusActivity_">
         </activity>

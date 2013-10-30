@@ -91,7 +91,7 @@ public class MapActivity extends Activity {
     }
     @Click(R.id.btn_metor_3)
     void btn_metor_3_onClick() {
-        Intent _intent = new Intent(instance, MapFriendActivity_.class);
+        Intent _intent = new Intent(instance, MapGuessActivity_.class);
         startActivity(_intent);
     }
     @Click(R.id.btn_metor_4)

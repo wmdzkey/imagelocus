@@ -17,13 +17,11 @@ import m.z.imagelocus.service.http.LbsYunService;
 public class Service {
 
     public static UserService userService;
-    public static UserInfoService userInfoService;
     public static LbsService lbsService;
     public static FriendService friendService;
 
     public static void init(Context mContext) {
         userService = new UserService(mContext);
-        userInfoService = new UserInfoService(mContext);
         lbsService = new LbsService(mContext);
         friendService = new FriendService(mContext);
     }

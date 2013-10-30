@@ -1,8 +1,8 @@
 package m.z.imagelocus.config;
 
+import com.google.gson.Gson;
 import m.z.imagelocus.entity.Lbs;
 import m.z.imagelocus.entity.User;
-import m.z.imagelocus.entity.UserInfo;
 
 /**
  * @author Winnid
@@ -13,7 +13,8 @@ import m.z.imagelocus.entity.UserInfo;
  * Created by Winnid on 13-9-11.
  */
 public class SystemAdapter {
+    public static Gson gson = new Gson();
+
     public static User currentUser;
-    public static UserInfo currentUserInfo;
     public static Lbs currentUserLbs;
 }

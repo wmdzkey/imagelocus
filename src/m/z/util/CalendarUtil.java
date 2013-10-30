@@ -53,6 +53,47 @@ public class CalendarUtil {
         return timeDesc;
     }
 
+    public static Date createDate(int year, int month, int day) {
+        return createDate(year, month, day, 0, 0, 0);
+    }
+    public static Date createDate(int year, int month, int day, int hour, int minute, int second) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day, hour, minute, second);
+        return calendar.getTime();
+    }
+    public static Date createTime(int hour, int minute, int second) {
+        return createDate(0, 0, 0, hour, minute, second);
+    }
+    public static Date createTime(int hour, int minute) {
+        return createDate(0, 0, 0, hour, minute, 0);
+    }
+
+    public static int compareTime(Date date1, Date date2) {
+        int compare = 0;
+        Calendar calendar1 = Calendar.getInstance();
+        Calendar calendar2 = Calendar.getInstance();
+        calendar1.setTime(date1);
+        calendar2.setTime(date2);
+        int hour1 = calendar1.get(Calendar.HOUR_OF_DAY);
+        int hour2 = calendar2.get(Calendar.HOUR_OF_DAY);
+        int minute1 = calendar1.get(Calendar.MINUTE);
+        int minute2 = calendar2.get(Calendar.MINUTE);
+        if(hour1 > hour2) {
+            compare = 1;
+        } else if (hour1 < hour2){
+            compare = -1;
+        } else if (hour1 == hour2){
+            if(minute1 > minute2) {
+                compare = 1;
+            } else if (minute1 < minute2){
+                compare = -1;
+            } else if (minute1 == minute2){
+                compare = 0;
+            }
+        }
+        return compare;
+    }
+
     public static void main(String[] args) {
         Calendar c = Calendar.getInstance();
         CalendarUtil.showNaturalTime(c.getTime());

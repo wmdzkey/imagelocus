@@ -1,11 +1,10 @@
 package m.z.imagelocus.config;
 
+import m.z.imagelocus.entity.LbsDo;
 import m.z.imagelocus.entity.User;
+import m.z.util.CalendarUtil;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Winnid
@@ -18,6 +17,33 @@ import java.util.Map;
 public class SystemStore {
     //存放临时数据
     public static Map<String, Object> TempData = new HashMap<String, Object>();
+
+    //存放自动推送数据
+    public static List<LbsDo> lbsDoData = new ArrayList<LbsDo>();
+
+    static {
+        LbsDo lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(9, 0, 0));
+        lbsDo.setCategory(Code.Category.NAMES[Code.Category.Restaurant_1]);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(500);
+        lbsDo.setKeyword("美食");
+        lbsDoData.add(lbsDo);
+        LbsDo lbsDo2 = new LbsDo();
+        lbsDo2.setTime(CalendarUtil.createTime(13, 0, 0));
+        lbsDo2.setCategory(Code.Category.NAMES[Code.Category.Restaurant_1]);
+        lbsDo2.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo2.setDistance(500);
+        lbsDo2.setKeyword("美食");
+        lbsDoData.add(lbsDo2);
+        LbsDo lbsDo3 = new LbsDo();
+        lbsDo3.setTime(CalendarUtil.createTime(19, 25, 0));
+        lbsDo3.setCategory(Code.Category.NAMES[Code.Category.Restaurant_1]);
+        lbsDo3.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo3.setDistance(500);
+        lbsDo3.setKeyword("美食");
+        lbsDoData.add(lbsDo3);
+    }
 
     //存放用户数据(暂时)
     public static List<User> userData = new ArrayList<User>();

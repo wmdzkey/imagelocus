@@ -37,6 +37,27 @@ public class CommonView {
     }
 
     /**
+     * 短时间显示自定义位置（中间）
+     */
+    public static void displayShortGravity(Context context, String msg) {
+        Toast toast = Toast.makeText(context,msg, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
+
+    /**
+     * 长时间显示自定义位置（中间）
+     */
+    public static void displayLongGravity(Context context, String msg) {
+        Toast toast = Toast.makeText(context,msg, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
+
+
+
+
+    /**
      * 短时间显示view
      */
     public static void displayViewShort(Context context, View view) {
@@ -56,21 +77,5 @@ public class CommonView {
         toast.show();
     }
 
-    /**
-     * 短时间显示自定义位置（中间）
-     */
-    public static void displayShortGravity(Context context, String msg) {
-        Toast toast = Toast.makeText(context,msg, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
-    }
 
-    /**
-     * 长时间显示自定义位置（中间）
-     */
-    public static void displayLongGravity(Context context, String msg) {
-        Toast toast = Toast.makeText(context,msg, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
-    }
 }

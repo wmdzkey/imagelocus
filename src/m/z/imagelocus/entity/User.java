@@ -25,6 +25,12 @@ public class User {
     @Column(column = "phone")
     private String phone;
 
+    @Column(column = "province")
+    private String province;//省
+    @Column(column = "city")
+    private String city;//城市名
+    @Column(column = "district")
+    private String district;//区名
 
     public Integer getId() {
         return id;
@@ -80,6 +86,30 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
     @Override
