@@ -58,7 +58,7 @@ public class MapActivity extends Activity {
     @ViewById(R.id.tv_metor_title_4)
     TextView tv_metor_title_4;
     @ViewById(R.id.tv_metor_content_4)
-    TextView tv_metor_content_;
+    TextView tv_metor_content_4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,8 @@ public class MapActivity extends Activity {
         tv_metor_content_2.setText("看看朋友们都在哪");
         tv_metor_title_3.setText("猜你喜欢");
         tv_metor_content_3.setText("看看有没有你需要的");
+        tv_metor_title_4.setText("信息雷达");
+        tv_metor_content_4.setText("看看身边的人都在找什么");
     }
 
 
@@ -96,5 +98,7 @@ public class MapActivity extends Activity {
     }
     @Click(R.id.btn_metor_4)
     void btn_metor_4_onClick() {
+        Intent _intent = new Intent(instance, MapRadarActivity_.class);
+        startActivity(_intent);
     }
 }

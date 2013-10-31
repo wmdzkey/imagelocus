@@ -1,6 +1,7 @@
 package m.z.imagelocus.activity.map;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +26,12 @@ import m.z.imagelocus.config.SystemStore;
 import m.z.imagelocus.entity.Lbs;
 import m.z.imagelocus.entity.LbsDo;
 import m.z.imagelocus.entity.convert.LbsConvert;
+import m.z.imagelocus.entity.convert.LbsYunConvert;
+import m.z.imagelocus.entity.yun.LbsDoPoiYun;
 import m.z.imagelocus.entity.yun.PoiList;
+import m.z.imagelocus.entity.yun.UserLocYun;
+import m.z.imagelocus.service.http.SearchPoiService;
+import m.z.imagelocus.service.http.SearchUserService;
 import m.z.imagelocus.view.map.LocationMapView;
 import m.z.imagelocus.view.map.LocationOverlay;
 import m.z.util.CalendarUtil;
@@ -117,7 +123,7 @@ public class MapGuessActivity extends Activity{
             public void run() {
                 for (LbsDo lbsDo : SystemStore.lbsDoData) {
                     if(CalendarUtil.compareTime(new Date(System.currentTimeMillis()), lbsDo.getTime()) == 0) {
-                        search(lbsDo.getKeyword());
+                        search(lbsDo.getKeyword(), 1000);
                     }
                 }
 
@@ -164,6 +170,7 @@ public class MapGuessActivity extends Activity{
     /**
      * 手动触发一次定位请求
      */
+    boolean firstStart = true;
     public void requestLocClick(){
         locClient.requestLocation();
         CommonView.displayLong(instance, "正在定位……");
@@ -187,55 +194,32 @@ public class MapGuessActivity extends Activity{
         requestLocClick();
     }
 
-    boolean poiOpenState = false;
-    @Click(R.id.btn_poi)
-    void btn_poi_onClick() {
-        if(!poiOpenState) {
-            poiOpenState = true;
-            btn_poi.setBackgroundResource(R.drawable.poi_smallest);
-            ll_poi_category.setVisibility(View.VISIBLE);
+    @UiThread
+    void search(String keyword, Integer distance) {
+        if(lbsDataNow != null) {
+            CommonView.displayShort(instance,  "你现在需不需要关于" + keyword + "的消息呢？");
+            mMKSearch.poiSearchNearBy(keyword, lbsDataNow.getGeoPoint(), distance);//1000米       范围
+
+            sendSearchInfo(lbsDataNow, keyword, distance);
+
         } else {
-            smallestPoi();
+            locClient.requestLocation();
+            CommonView.displayLong(instance, "正在定位……");
         }
     }
 
-    void smallestPoi() {
-        poiOpenState = false;
-        btn_poi.setBackgroundResource(R.drawable.poi_near);
-        ll_poi_category.setVisibility(View.GONE);
-    }
+    void sendSearchInfo(Lbs lbs, String keyword, Integer distance) {
 
-    @Click(R.id.ll_category_food)
-    void btn_category_food_onClick() {
-        search("餐厅");
-    }
+        LbsDoPoiYun lbsDoPoiYun = LbsYunConvert.Lbs2LbsDoPoiYun(lbsDataNow);
+        lbsDoPoiYun.setKeyword(keyword);
+        lbsDoPoiYun.setDistance(distance);
 
-    @Click(R.id.ll_category_hostel)
-    void btn_category_hostel_onClick() {
-        search("酒店");
-    }
-
-    @Click(R.id.ll_category_ktv)
-    void btn_category_ktv_onClick() {
-        search("KTV");
-    }
-
-    @Click(R.id.ll_category_leisure)
-     void btn_category_leisure_onClick() {
-        search("电影院");
-    }
-
-    @Click(R.id.btn_poi_search)
-    void btn_poi_search_onClick() {
-        if(et_poi_search.getText() != null && !et_poi_search.getText().toString().equals("")) {
-            search(et_poi_search.getText().toString());
-        } else {
-            CommonView.displayShortGravity(instance, "写点什么在搜吧~");
-        }
-    }
-
-    private void search(String keyword) {
-        mMKSearch.poiSearchNearBy(keyword, lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+        new SearchPoiService(instance, SearchPoiService.FunctionName.sendBaiduServer, lbsDoPoiYun) {
+            @Override
+            public void doResult(Map<String, Object> resultMap) {
+                CommonView.displayShort(instance, (String) resultMap.get("msg"));
+            }
+        };
     }
 
 
@@ -349,9 +333,6 @@ public class MapGuessActivity extends Activity{
                 CommonView.displayLong(instance, "搜索出错了..");
                 return;
             }
-
-            //缩小搜索框
-            smallestPoi();
 
             mMapView.removeAllMarker();
             mMapView.addLocationMarker(lbsDataNow);

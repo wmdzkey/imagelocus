@@ -6,8 +6,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.*;
-import com.baidu.android.pushservice.PushConstants;
-import com.baidu.android.pushservice.PushManager;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -16,13 +14,10 @@ import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
 import m.z.common.X3Dialog;
 import m.z.imagelocus.R;
-import m.z.imagelocus.activity.push.tool.Utils;
 import m.z.imagelocus.adapter.friend.X3FriendAdapter;
 import m.z.imagelocus.config.SystemAdapter;
-import m.z.imagelocus.config.SystemStore;
 import m.z.imagelocus.entity.User;
-import m.z.imagelocus.entity.convert.LbsConvert;
-import m.z.imagelocus.entity.convert.UserLocConvert;
+import m.z.imagelocus.entity.convert.LbsYunConvert;
 import m.z.imagelocus.entity.yun.UserLocYun;
 import m.z.imagelocus.service.Service;
 import m.z.imagelocus.service.http.SearchUserService;
@@ -289,7 +284,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
             if (bdLocation == null)
                 return ;
             //保存定位数据
-            locDataNow = UserLocConvert.BDLocation2UserLocYun(bdLocation);
+            locDataNow = LbsYunConvert.BDLocation2UserLocYun(bdLocation);
 //            locDataNow.setUsername("王明东");
 //            locDataNow.setApp_user_id("843804516070431639");
             locDataNow.setUsername(SystemAdapter.currentUser.getUsername());

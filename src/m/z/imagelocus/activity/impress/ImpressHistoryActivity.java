@@ -2,14 +2,11 @@ package m.z.imagelocus.activity.impress;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.baidu.mapapi.map.MapController;
-import com.baidu.mapapi.map.PopupClickListener;
-import com.baidu.mapapi.map.PopupOverlay;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
 import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
@@ -161,7 +158,7 @@ public class ImpressHistoryActivity extends Activity{
      *弹出pop信息
      * */
     void popLbsInfo(Lbs lbs) {
-        View popView = inflater.inflate(R.layout.impress_paopao_view, null);
+        View popView = inflater.inflate(R.layout.view_paopao_map_user, null);
         TextView tv_pop_locinfo =(TextView) popView.findViewById(R.id.tv_location_info);
         TextView tv_pop_loctime =(TextView) popView.findViewById(R.id.tv_location_time);
 

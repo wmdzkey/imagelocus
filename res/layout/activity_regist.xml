@@ -21,6 +21,8 @@
             android:layout_marginLeft="42dp"
             android:layout_marginRight="42dp"
             android:background="@drawable/login_input"
+            android:textColor="@color/white"
+            android:textSize="@dimen/l_text_size"
             android:orientation="vertical">
 
         <LinearLayout
@@ -36,6 +38,7 @@
                     android:inputType="text"
                     android:layout_weight="1"
                     android:textColor="@color/black"
+                    android:background="@color/transparence"
                     android:paddingLeft="10dp"
                     />
 
@@ -63,6 +66,7 @@
                 android:hint="请输入密码"
                 android:inputType="textPassword"
                 android:textColor="@color/black"
+                android:background="@color/transparence"
                 android:paddingLeft="10dp"
                 />
     </LinearLayout>
@@ -70,11 +74,13 @@
     <Button
             android:id="@+id/btn_regist"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_below="@id/ll_form"
             android:layout_marginLeft="42dp"
             android:layout_marginRight="42dp"
             android:background="@drawable/login_button_select"
+            android:textColor="@color/white"
+            android:textSize="@dimen/l_text_size"
             android:text="注册"/>
 
 

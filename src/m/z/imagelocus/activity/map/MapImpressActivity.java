@@ -22,7 +22,6 @@ import m.z.common.CommonView;
 import m.z.imagelocus.R;
 import m.z.imagelocus.entity.Lbs;
 import m.z.imagelocus.entity.convert.LbsConvert;
-import m.z.imagelocus.service.Service;
 import m.z.imagelocus.service.http.LbsYunService;
 import m.z.imagelocus.view.map.LocationMapView;
 import m.z.util.CalendarUtil;
@@ -153,7 +152,7 @@ public class MapImpressActivity extends Activity{
         bitmap = ImageUtil.getRoundedCornerBitmap(bitmap, 90);
         drawable = ImageUtil.bitmapToDrawable(bitmap);
 
-        View convertView = inflater.inflate(R.layout.impress_paopao_point, null);
+        View convertView = inflater.inflate(R.layout.view_paopao_map_point, null);
         TextView tv_name = (TextView)convertView.findViewById(R.id.tv_name);
         ImageView iv_img = (ImageView)convertView.findViewById(R.id.iv_img);
         tv_name.setText("Winnid");
@@ -203,7 +202,7 @@ public class MapImpressActivity extends Activity{
      * 创建弹出泡泡图层
      */
     public void createPaopao(){
-        popView = getLayoutInflater().inflate(R.layout.impress_paopao_view, null);
+        popView = getLayoutInflater().inflate(R.layout.view_paopao_map_user, null);
         //泡泡点击响应回调
         PopupClickListener popListener = new PopupClickListener(){
             @Override

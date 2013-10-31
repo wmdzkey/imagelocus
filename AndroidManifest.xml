@@ -57,39 +57,50 @@
         </activity>
 
         <!--注册登录主界面 -->
-        <activity android:name=".activity.LoginActivity_">
+        <activity android:name=".activity.LoginActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.RegistActivity_">
+        <activity android:name=".activity.RegistActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.RegistInfoActivity_">
+        <activity android:name=".activity.RegistInfoActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.MainActivity_">
+        <activity android:name=".activity.MainActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity> <!--注册登录主界面.end -->
 
         <!-- setting -->
         <activity android:name=".activity.setting.SettingActivity_"
                   android:label="设置"
-                  android:configChanges="keyboardHidden|orientation" >
+                  android:configChanges="keyboardHidden|orientation"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity><!-- setting end -->
 
 
         <!-- friend -->
-        <activity android:name=".activity.friend.FriendActivity_">
+        <activity android:name=".activity.friend.FriendActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity android:name=".activity.friend.ChatActivity_"
                   android:launchMode="singleTask"
-                  android:configChanges="orientation|keyboardHidden" >
+                  android:configChanges="orientation|keyboardHidden"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.friend.FriendSearchActivity_">
+        <activity android:name=".activity.friend.FriendSearchActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity><!-- friend.end -->
 
 
         <!-- impress -->
-        <activity android:name=".activity.impress.ImpressActivity_">
+        <activity android:name=".activity.impress.ImpressActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.impress.ImpressMeActivity_">
+        <activity android:name=".activity.impress.ImpressMeActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.impress.ImpressHistoryActivity_">
+        <activity android:name=".activity.impress.ImpressHistoryActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity><!-- impress.end -->
 
 
@@ -97,19 +108,23 @@
         <activity
                 android:name="m.z.imagelocus.activity.push.tool.PushInitActivity_"
                 android:launchMode="singleTask"
-                android:configChanges="orientation|keyboardHidden" >
+                android:configChanges="orientation|keyboardHidden"
+                android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
                 android:name="m.z.imagelocus.activity.push.client.ChatActivity_"
-                android:configChanges="orientation|keyboardHidden" >
+                android:configChanges="orientation|keyboardHidden"
+                android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
                 android:name="m.z.imagelocus.activity.push.demo.PushDemoActivity_"
-                android:configChanges="orientation|keyboardHidden" >
+                android:configChanges="orientation|keyboardHidden"
+                android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <!-- 自定义消息通知显示 -->
         <activity
-                android:name="m.z.imagelocus.activity.push.demo.CustomActivity" >
+                android:name="m.z.imagelocus.activity.push.demo.CustomActivity"
+                android:theme="@android:style/Theme.NoTitleBar">
         </activity>
 
 
@@ -117,13 +132,15 @@
         <activity
                 android:name="com.baidu.android.pushservice.richmedia.MediaViewActivity"
                 android:configChanges="orientation|keyboardHidden"
-                android:label="MediaViewActivity" >
+                android:label="MediaViewActivity"
+                android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity
                 android:name="com.baidu.android.pushservice.richmedia.MediaListActivity"
                 android:configChanges="orientation|keyboardHidden"
                 android:label="MediaListActivity"
-                android:launchMode="singleTask" >
+                android:launchMode="singleTask"
+                android:theme="@android:style/Theme.NoTitleBar">
         </activity>
 
         <!-- push service client -->
@@ -169,23 +186,38 @@
         <!-- push service end -->
 
         <!-- map -->
-        <activity android:name=".activity.map.MapActivity_">
+        <activity android:name=".activity.map.MapActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.map.MapFriendActivity_">
+        <activity android:name=".activity.map.MapFriendActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.map.MapPeripheryActivity_">
+        <activity android:name=".activity.map.MapPeripheryActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.map.MapGuessActivity_">
+        <activity android:name=".activity.map.MapGuessActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity android:name=".activity.map.MapRadarActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
 
-        <activity android:name=".activity.map.MapLocusActivity_">
+        <activity android:name=".activity.map.MapLocusActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.map.LbsHistoryActivity_">
+        <activity android:name=".activity.map.LbsHistoryActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".activity.map.MapImpressActivity_">
+        <activity android:name=".activity.map.MapImpressActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <!-- map.end -->
-
+        <!-- mappoi -->
+        <activity android:name="com.baidu.mapapi.search.PlaceCaterActivity"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <!-- mappoi.end -->
 
 
         <!-- 定位 -->
@@ -193,7 +225,8 @@
         </service><!-- 定位.end -->
 
         <!--测试Demo -->
-        <activity android:name="m.z.imagelocus.activity.demo.X3ProgressBarActivity_" >
+        <activity android:name="m.z.imagelocus.activity.demo.X3ProgressBarActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity><!-- 测试Demo.end -->
     </application>
 </manifest>

@@ -61,7 +61,7 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
     @Override
     protected void onStart() {
         super.onStart();
-        //loadFriend();
+        loadFriend();
     }
 
     @AfterViews

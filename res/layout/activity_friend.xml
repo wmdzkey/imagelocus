@@ -18,7 +18,7 @@
                 android:layout_marginLeft="10dip"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:visibility="gone">
+                android:visibility="visible">
             <Button
                     android:id="@+id/btn_left"
                     android:layout_width="60dip"
@@ -31,7 +31,7 @@
                     android:layout_width="30.0dip"
                     android:layout_height="30.0dip"
                     android:layout_marginLeft="15dip"
-                    android:src="@drawable/mm_title_btn_compose_normal"
+                    android:src="@drawable/mm_title_btn_refresh_normal"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"/>
 
@@ -39,7 +39,7 @@
             <ImageView
                     android:id="@+id/iv_left_circle"
                     android:background="@drawable/bignotecircle"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_width="10.0dip"
                     android:layout_height="10.0dip"
                     android:layout_marginTop="6dip"

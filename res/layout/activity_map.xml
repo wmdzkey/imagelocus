@@ -125,17 +125,19 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
+            android:padding="10dp"
             android:layout_below="@+id/rl_title">
 
         <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="fill_parent"
                 android:gravity="center"
+                android:layout_weight="1"
                 android:orientation="horizontal">
             <FrameLayout
-                    android:layout_width="220dp"
-                    android:layout_height="330dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
                     android:background="#3399ff">
                 <Button
                         android:id="@+id/btn_metor_1"
@@ -159,14 +161,15 @@
                 </TextView>
             </FrameLayout>
             <FrameLayout
-                    android:layout_width="110dp"
-                    android:layout_height="330dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2"
                     android:layout_marginLeft="10dp"
                     android:background="#3399ff">
                 <Button
                         android:id="@+id/btn_metor_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
                         android:background="@drawable/map_default_bg_small"/>
                 <TextView
                         android:id="@+id/tv_metor_title_2"
@@ -188,14 +191,15 @@
 
         <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:gravity="center"
+                android:layout_weight="2"
                 android:orientation="horizontal">
             <FrameLayout
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
                     android:background="#953399ff">
                 <Button
                         android:id="@+id/btn_metor_3"
@@ -219,15 +223,16 @@
                 </TextView>
             </FrameLayout>
             <FrameLayout
-                    android:layout_width="110dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="2"
                     android:layout_marginLeft="10dp"
                     android:background="#953399ff">
                 <Button
                         android:id="@+id/btn_metor_4"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/map_default_bg_small_unuse"/>
+                        android:background="@drawable/map_default_bg_small"/>
                 <TextView
                         android:id="@+id/tv_metor_title_4"
                         android:layout_width="match_parent"

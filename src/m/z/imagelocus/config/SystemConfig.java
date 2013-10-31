@@ -24,6 +24,7 @@ public class SystemConfig {
 
     public static final String BDLbsTableId = "36212";
     public static final String BDSearchUserTableId = "37595";
+    public static final String BDSearchPoiTableId = "39300";
 
     public static final String BDLbsUrl_ADD = "http://api.map.baidu.com/geodata/v2/poi/create";
     public static final String BDLbsUrl_FIND = "http://api.map.baidu.com/geodata/v2/poi/list";

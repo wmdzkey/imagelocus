@@ -10,7 +10,7 @@ public class LbsDo {
     private Date time;
     private Lbs lbs;
     private String keyword;
-    private String category;
+    private Integer category;
     private Integer categoryDetail;
     private double distance;
 
@@ -38,11 +38,11 @@ public class LbsDo {
         this.keyword = keyword;
     }
 
-    public String getCategory() {
+    public Integer getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Integer category) {
         this.category = category;
     }
 

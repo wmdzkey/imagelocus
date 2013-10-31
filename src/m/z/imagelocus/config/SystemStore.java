@@ -22,27 +22,86 @@ public class SystemStore {
     public static List<LbsDo> lbsDoData = new ArrayList<LbsDo>();
 
     static {
-        LbsDo lbsDo = new LbsDo();
+        LbsDo lbsDo;
+        lbsDo = new LbsDo();
         lbsDo.setTime(CalendarUtil.createTime(9, 0, 0));
-        lbsDo.setCategory(Code.Category.NAMES[Code.Category.Restaurant_1]);
+        lbsDo.setCategory(Code.Category.Restaurant_1);
         lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
-        lbsDo.setDistance(500);
+        lbsDo.setDistance(1000);
         lbsDo.setKeyword("美食");
         lbsDoData.add(lbsDo);
-        LbsDo lbsDo2 = new LbsDo();
-        lbsDo2.setTime(CalendarUtil.createTime(13, 0, 0));
-        lbsDo2.setCategory(Code.Category.NAMES[Code.Category.Restaurant_1]);
-        lbsDo2.setCategoryDetail(Code.Category.Restaurant.All);
-        lbsDo2.setDistance(500);
-        lbsDo2.setKeyword("美食");
-        lbsDoData.add(lbsDo2);
-        LbsDo lbsDo3 = new LbsDo();
-        lbsDo3.setTime(CalendarUtil.createTime(19, 25, 0));
-        lbsDo3.setCategory(Code.Category.NAMES[Code.Category.Restaurant_1]);
-        lbsDo3.setCategoryDetail(Code.Category.Restaurant.All);
-        lbsDo3.setDistance(500);
-        lbsDo3.setKeyword("美食");
-        lbsDoData.add(lbsDo3);
+
+        lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(11, 15, 0));
+        lbsDo.setCategory(Code.Category.Restaurant_1);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(1000);
+        lbsDo.setKeyword("小吃");
+        lbsDoData.add(lbsDo);
+
+        lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(12, 0, 0));
+        lbsDo.setCategory(Code.Category.Restaurant_1);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(1000);
+        lbsDo.setKeyword("美食");
+        lbsDoData.add(lbsDo);
+
+        lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(13, 0, 0));
+        lbsDo.setCategory(Code.Category.Restaurant_1);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(1000);
+        lbsDo.setKeyword("美食");
+        lbsDoData.add(lbsDo);
+
+        lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(15, 0, 0));
+        lbsDo.setCategory(Code.Category.Restaurant_1);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(1000);
+        lbsDo.setKeyword("下午茶");
+        lbsDoData.add(lbsDo);
+
+        lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(17, 0, 0));
+        lbsDo.setCategory(Code.Category.Restaurant_1);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(1000);
+        lbsDo.setKeyword("美食");
+        lbsDoData.add(lbsDo);
+
+        lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(19, 0, 0));
+        lbsDo.setCategory(Code.Category.Restaurant_1);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(1000);
+        lbsDo.setKeyword("美食");
+        lbsDoData.add(lbsDo);
+
+        lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(21, 0, 0));
+        lbsDo.setCategory(Code.Category.Restaurant_1);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(1000);
+        lbsDo.setKeyword("夜宵");
+        lbsDoData.add(lbsDo);
+
+        lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(22, 30, 0));
+        lbsDo.setCategory(Code.Category.Restaurant_1);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(1000);
+        lbsDo.setKeyword("夜宵");
+        lbsDoData.add(lbsDo);
+
+        lbsDo = new LbsDo();
+        lbsDo.setTime(CalendarUtil.createTime(20, 0, 0));
+        lbsDo.setCategory(Code.Category.Restaurant_1);
+        lbsDo.setCategoryDetail(Code.Category.Restaurant.All);
+        lbsDo.setDistance(1000);
+        lbsDo.setKeyword("酒店");
+        lbsDoData.add(lbsDo);
     }
 
     //存放用户数据(暂时)

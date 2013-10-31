@@ -89,8 +89,7 @@
             android:layout_marginRight="10dip"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone">
+            android:layout_centerVertical="true">
 
         <Button
                 android:id="@+id/btn_right"
@@ -152,8 +151,6 @@
                 android:layout_marginTop="10dip"
                 android:background="@drawable/custom_loc"
                 android:textColor="#FF000000" />
-
-
     </RelativeLayout>
 
 </LinearLayout>

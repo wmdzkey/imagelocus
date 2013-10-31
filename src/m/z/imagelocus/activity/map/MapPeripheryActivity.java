@@ -22,8 +22,11 @@ import m.z.imagelocus.application.MapInitApplication;
 import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.entity.Lbs;
 import m.z.imagelocus.entity.convert.LbsConvert;
+import m.z.imagelocus.entity.convert.LbsYunConvert;
+import m.z.imagelocus.entity.yun.LbsDoPoiYun;
 import m.z.imagelocus.entity.yun.PoiList;
 import m.z.imagelocus.service.http.LbsYunService;
+import m.z.imagelocus.service.http.SearchPoiService;
 import m.z.imagelocus.view.map.LocationMapView;
 import m.z.imagelocus.view.map.LocationOverlay;
 
@@ -65,6 +68,8 @@ public class MapPeripheryActivity extends Activity{
 
     @ViewById(R.id.sb_poi_distance)
     SeekBar sb_poi_distance;
+    @ViewById(R.id.tv_category_range)
+    TextView tv_category_range;
 
     //存储获得的分类信息
     Map<Integer, List<Lbs>> peripheryLbsMap  = new HashMap<Integer, List<Lbs>>();;
@@ -107,6 +112,24 @@ public class MapPeripheryActivity extends Activity{
         //搜索初始化
         mMKSearch = new MKSearch();
         mMKSearch.init(MapInitApplication.getInstance().mBMapManager, new MapSearchListener());//注意，MKSearchListener只支持一个，以最后一次设置为准
+
+        //seekbar初始化
+        sb_poi_distance.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                tv_category_range.setText("当前范围：" + ((progress+1)*100) + "米");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     /**
@@ -170,7 +193,7 @@ public class MapPeripheryActivity extends Activity{
         requestLocClick();
     }
 
-    boolean poiOpenState = false;
+    boolean poiOpenState = true;
     @Click(R.id.btn_poi)
     void btn_poi_onClick() {
         if(!poiOpenState) {
@@ -190,34 +213,60 @@ public class MapPeripheryActivity extends Activity{
 
     @Click(R.id.ll_category_food)
     void btn_category_food_onClick() {
-        mMKSearch.poiSearchNearBy("餐厅", lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+        search("餐厅", (sb_poi_distance.getProgress() + 1) * 100);
     }
 
     @Click(R.id.ll_category_hostel)
     void btn_category_hostel_onClick() {
-        mMKSearch.poiSearchNearBy("酒店", lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+        search("酒店", (sb_poi_distance.getProgress() + 1) * 100);
     }
 
     @Click(R.id.ll_category_ktv)
     void btn_category_ktv_onClick() {
-        mMKSearch.poiSearchNearBy("KTV", lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+        search("KTV", (sb_poi_distance.getProgress() + 1) * 100);
     }
 
     @Click(R.id.ll_category_leisure)
      void btn_category_leisure_onClick() {
-        mMKSearch.poiSearchNearBy("电影院", lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+        search("电影院", (sb_poi_distance.getProgress() + 1) * 100);
     }
 
     @Click(R.id.btn_poi_search)
     void btn_poi_search_onClick() {
         if(et_poi_search.getText() != null && !et_poi_search.getText().toString().equals("")) {
-            mMKSearch.poiSearchNearBy(et_poi_search.getText().toString(), lbsDataNow.getGeoPoint(), (sb_poi_distance.getProgress()+1)*100);//5000米       范围
+            search(et_poi_search.getText().toString(), (sb_poi_distance.getProgress() + 1) * 100);
         } else {
             CommonView.displayShortGravity(instance, "写点什么在搜吧~");
-            CommonView.displayShort(instance, "sb_poi_distance.getProgress():" + (sb_poi_distance.getProgress()+1)*100);
         }
     }
 
+
+    @UiThread
+    void search(String keyword, Integer distance) {
+        if(lbsDataNow != null) {
+            mMKSearch.poiSearchNearBy(keyword, lbsDataNow.getGeoPoint(), distance);//1000米       范围
+
+            sendSearchInfo(lbsDataNow, keyword, distance);
+
+        } else {
+            locClient.requestLocation();
+            CommonView.displayLong(instance, "正在定位……");
+        }
+    }
+
+    void sendSearchInfo(Lbs lbs, String keyword, Integer distance) {
+
+        LbsDoPoiYun lbsDoPoiYun = LbsYunConvert.Lbs2LbsDoPoiYun(lbsDataNow);
+        lbsDoPoiYun.setKeyword(keyword);
+        lbsDoPoiYun.setDistance(distance);
+
+        new SearchPoiService(instance, SearchPoiService.FunctionName.sendBaiduServer, lbsDoPoiYun) {
+            @Override
+            public void doResult(Map<String, Object> resultMap) {
+                CommonView.displayShort(instance, (String) resultMap.get("msg"));
+            }
+        };
+    }
 
     @Override
     protected void onPause() {
@@ -347,6 +396,10 @@ public class MapPeripheryActivity extends Activity{
                     mMapView.getController().animateTo(info.pt);
                     break;
                 }
+            }
+            if (result.getAllPoi().get(0).hasCaterDetails == true){
+                mMKSearch.poiDetailSearch(result.getAllPoi().get(0).uid);
+                // 其中，poi 对象可由常规poi检索返回
             }
         }
         @Override

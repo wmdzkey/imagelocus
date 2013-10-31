@@ -2,22 +2,15 @@ package m.z.imagelocus.service.http;
 
 import android.content.Context;
 import com.google.gson.Gson;
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.lidroid.xutils.http.client.RequestParams;
-import com.lidroid.xutils.util.LogUtils;
-import m.z.common.CommonView;
 import m.z.common.X3HttpProgressBar;
 import m.z.imagelocus.config.SystemConfig;
 import m.z.imagelocus.entity.Friend;
 import m.z.imagelocus.entity.Lbs;
-import m.z.imagelocus.entity.convert.LbsConvert;
+import m.z.imagelocus.entity.convert.LbsYunConvert;
 import m.z.imagelocus.entity.yun.LbsListYun;
 import m.z.imagelocus.entity.yun.LbsYun;
-import m.z.imagelocus.entity.yun.UserLocListYun;
-import m.z.imagelocus.service.FriendService;
 import m.z.imagelocus.service.Service;
 
 import java.util.*;
@@ -97,7 +90,7 @@ public abstract class LbsYunService {
                 if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
                     List<Lbs> lbsList = new ArrayList<Lbs>();
                     for(LbsYun lbsYun : lbsListYun.getPois()) {
-                        lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
+                        lbsList.add(LbsYunConvert.LbsYun2Lbs(lbsYun));
                     }
                     map.put("lbsList", lbsList);
                     map.put("msg","查询结果:" + lbsListYun.getPois().length);
@@ -129,7 +122,7 @@ public abstract class LbsYunService {
                 if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
                     List<Lbs> lbsList = new ArrayList<Lbs>();
                     for(LbsYun lbsYun : lbsListYun.getPois()) {
-                        lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
+                        lbsList.add(LbsYunConvert.LbsYun2Lbs(lbsYun));
                     }
                     map.put("lbsList", lbsList);
                     map.put("msg","查询结果:" + lbsListYun.getPois().length);
@@ -160,7 +153,7 @@ public abstract class LbsYunService {
                 if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
                     List<Lbs> lbsList = new ArrayList<Lbs>();
                     for(LbsYun lbsYun : lbsListYun.getPois()) {
-                        lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
+                        lbsList.add(LbsYunConvert.LbsYun2Lbs(lbsYun));
                     }
                     map.put("lbsList", lbsList);
                     map.put("msg","查询结果:" + lbsListYun.getPois().length);
@@ -192,7 +185,7 @@ public abstract class LbsYunService {
                 if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
                     List<Lbs> lbsList = new ArrayList<Lbs>();
                     for(LbsYun lbsYun : lbsListYun.getPois()) {
-                        lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
+                        lbsList.add(LbsYunConvert.LbsYun2Lbs(lbsYun));
                     }
                     map.put("lbsList", lbsList);
                     map.put("msg","查询结果:" + lbsListYun.getPois().length);
@@ -230,7 +223,7 @@ public abstract class LbsYunService {
                         if(lbsListYun != null && lbsListYun.getPois() != null && lbsListYun.getPois().length != 0) {
                             List<Lbs> lbsList = new ArrayList<Lbs>();
                             for(LbsYun lbsYun : lbsListYun.getPois()) {
-                                lbsList.add(LbsConvert.LbsYun2Lbs(lbsYun));
+                                lbsList.add(LbsYunConvert.LbsYun2Lbs(lbsYun));
                             }
                             map.put("lbsList", lbsList);
                             map.put("msg","查询结果:" + lbsListYun.getPois().length);

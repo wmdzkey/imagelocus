@@ -39,8 +39,6 @@ public class RegistInfoActivity extends Activity {
     Spinner city_spinner;
     @ViewById(R.id.county_spinner)
     Spinner county_spinner;
-    @ViewById(R.id.display_edit)
-    EditText display;
     Integer provinceId, cityId;
     String strProvince, strCity, strCounty;
 
@@ -79,9 +77,9 @@ public class RegistInfoActivity extends Activity {
     private int[] countyOfQingHai = {R.array.xining_city_item, R.array.haidong_city_item, R.array.haibai_city_item, R.array.huangnan_city_item, R.array.hainan_city_item, R.array.guluo_city_item, R.array.yushu_city_item, R.array.haixi_city_item};
     private int[] countyOfNingXia = {R.array.yinchuan_city_item, R.array.shizuishan_city_item, R.array.wuzhong_city_item, R.array.guyuan_city_item, R.array.zhongwei_city_item};
     private int[] countyOfXinJiang = {R.array.wulumuqi_city_item, R.array.kelamayi_city_item, R.array.tulyfan_city_item, R.array.hami_city_item, R.array.changji_city_item, R.array.boertala_city_item, R.array.bayinguolen_city_item, R.array.akesu_city_item, R.array.kemuleisu_city_item, R.array.geshen_city_item, R.array.hetian_city_item, R.array.yili_city_item, R.array.tacheng_city_item, R.array.aleitai_city_item, R.array.shihezi_city_item, R.array.alaer_city_item, R.array.tumushihe_city_item, R.array.wujiaqu_city_item};
-    private int[] countyOfHongKong = {};
-    private int[] countyOfAoMen = {};
-    private int[] countyOfTaiWan = {};
+    private int[] countyOfHongKong = {R.array.hongkong_city_item};
+    private int[] countyOfAoMen = {R.array.aomen_city_item};
+    private int[] countyOfTaiWan = {R.array.taiwan_city_item};
 
     private ArrayAdapter<CharSequence> province_adapter;
     private ArrayAdapter<CharSequence> city_adapter;
@@ -105,7 +103,7 @@ public class RegistInfoActivity extends Activity {
     private void loadSpinner()
     {
         province_spinner.setPrompt("请选择省份");
-        province_adapter = ArrayAdapter.createFromResource(this, R.array.province_item, android.R.layout.simple_spinner_item);
+        province_adapter = ArrayAdapter.createFromResource(this, R.array.province_item, R.layout.view_spinner_dropdown_item);
         province_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         province_spinner.setAdapter(province_adapter);
         //select(province_spinner, province_adapter, R.array.province_item);
@@ -249,7 +247,6 @@ public class RegistInfoActivity extends Activity {
                                             AdapterView<?> arg0, View arg1,
                                             int arg2, long arg3) {
                                         strCounty = county_spinner.getSelectedItem().toString();
-                                        display.setText(strProvince+"-"+strCity+"-"+strCounty);
                                     }
 
                                     @Override
@@ -265,8 +262,6 @@ public class RegistInfoActivity extends Activity {
 
                         @Override
                         public void onNothingSelected(AdapterView<?> arg0) {
-                            // TODO Auto-generated method stub
-
                         }
 
                     });
@@ -283,7 +278,7 @@ public class RegistInfoActivity extends Activity {
 
     private void select(Spinner spin, ArrayAdapter<CharSequence> adapter, int arry)
     {
-        adapter = ArrayAdapter.createFromResource(this, arry, android.R.layout.simple_spinner_item);
+        adapter = ArrayAdapter.createFromResource(this, arry, R.layout.view_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
         //spin.setSelection(0,true);
@@ -426,7 +421,24 @@ public class RegistInfoActivity extends Activity {
             CommonView.displayLong(instance, "请选择一个头像");
             return false;
         }
-
+        if(strProvince == null && strProvince.equals("")) {
+            CommonView.displayLong(instance, "请选择一个省份");
+            return false;
+        } else{
+            user.setProvince(strProvince);
+        }
+        if(strCity == null && strCity.equals("")) {
+            CommonView.displayLong(instance, "请选择一个城市");
+            return false;
+        } else{
+            user.setCity(strCity);
+        }
+        if(strCounty == null && strCounty.equals("")) {
+            CommonView.displayLong(instance, "请选择一个区县");
+            return false;
+        } else{
+            user.setDistrict(strCounty);
+        }
         return true;
     }
 
