@@ -92,6 +92,7 @@ public class RegistActivity extends Activity {
                 }
             }
         };
+        x3ProgressBar.start();
     }
 
     /**
@@ -119,7 +120,6 @@ public class RegistActivity extends Activity {
         if (iv_logo_clickNum == 2) {
             iv_logo_clickNum = 0;
             CommonView.displayShort(instance, "这个版本没有隐藏功能");
-//            CommonView.displayShort(instance, "有恒心，酒香不怕巷子深");
 //            Intent intentToHide = new Intent(instance, MainActivity_.class);
 //            startActivity(intentToHide);
         }

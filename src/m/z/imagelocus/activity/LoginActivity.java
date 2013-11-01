@@ -7,17 +7,23 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import com.baidu.android.pushservice.PushManager;
 import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
 import m.z.common.X3ProgressBar;
+import m.z.common.X3SimpleProgressBar;
 import m.z.imagelocus.R;
+import m.z.imagelocus.activity.push.tool.JPushUtil;
 import m.z.imagelocus.activity.push.tool.PushInitActivity_;
+import m.z.imagelocus.activity.push.tool.PushMessageReceiver;
 import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.config.SystemConfig;
 import m.z.imagelocus.entity.User;
 import m.z.imagelocus.service.Service;
 
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 登陆界面activity
@@ -67,9 +73,43 @@ public class LoginActivity extends Activity {
         if (!nullChecked()) return;
         user.setUsername(et_username.getText().toString());
         user.setPassword(et_pwd.getText().toString());
+
         login();
     }
+
+
     void login() {
+        //检测绑定服务是否能够正常运行
+        if(JPushUtil.isOpenNetwork(instance)) {
+            if(SystemAdapter.currentAppUserId != null && !SystemAdapter.currentAppUserId.equals("")) {
+                loginLocal();
+            } else {
+                //检测绑定服务是否成功获取app_user_id
+                final X3SimpleProgressBar x3SimpleProgressBar = new X3SimpleProgressBar(instance);
+                final Timer timer = new Timer(true);
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        if(SystemAdapter.currentAppUserId != null || !SystemAdapter.currentAppUserId.equals("")) {
+                            timer.cancel();
+                            x3SimpleProgressBar.stop();
+                            user.setApp_user_id(SystemAdapter.currentAppUserId);
+                            loginLocal();
+                        } else {
+                            CommonView.display(instance, "请稍等正在绑定网络服务，稍后登陆会自完成");
+                        }
+                    }
+                }, 0, 500);
+            }
+        } else {
+            CommonView.display(instance, "无网络连接，请检查网络");
+        }
+
+    }
+
+    @UiThread
+    void loginLocal() {
+
         X3ProgressBar<Map<String, Object>> x3ProgressBar = new X3ProgressBar<Map<String, Object>>(instance, "正在登录...", false, null, false) {
             @Override
             public Map<String, Object> doWork() {
@@ -80,7 +120,7 @@ public class LoginActivity extends Activity {
             public void doResult(Map<String, Object> result) {
                 if (result.get("info") != null && result.get("info").toString().equals("存在")) {
                     CommonView.displayShort(instance, "欢迎你回来," + SystemAdapter.currentUser.getUsername());
-                    Intent intentToMain = new Intent(instance, PushInitActivity_.class);
+                    Intent intentToMain = new Intent(instance, MainActivity_.class);
                     intentToMain.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intentToMain);
                     finish();
@@ -90,7 +130,9 @@ public class LoginActivity extends Activity {
                 }
             }
         };
+        x3ProgressBar.start();
     }
+
 
     /**检测是否注册过*/
     private void checkRegist() {
@@ -150,7 +192,7 @@ public class LoginActivity extends Activity {
     void iv_login_logo_onClick() {
         if (iv_logo_clickNum == 2) {
             iv_logo_clickNum = 0;
-//            CommonView.displayShort(instance, "有恒心，酒香不怕巷子深");
+            CommonView.displayShort(instance, "JPushUtil.isOpenNetwork(instance)" + JPushUtil.isOpenNetwork(instance));
 //            Intent intentToHide = new Intent(instance, MainActivity_.class);
 //            startActivity(intentToHide);
         } else {
