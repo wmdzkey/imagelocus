@@ -236,7 +236,11 @@ public class MapPeripheryActivity extends Activity{
         if(et_poi_search.getText() != null && !et_poi_search.getText().toString().equals("")) {
             search(et_poi_search.getText().toString(), (sb_poi_distance.getProgress() + 1) * 100);
         } else {
+<<<<<<< .mine
+            CommonView.displayGravity(instance, "写点什么在搜吧~");
+=======
             CommonView.displayShortGravity(instance, "写点什么在搜吧~");
+>>>>>>> .r37
         }
     }
 
