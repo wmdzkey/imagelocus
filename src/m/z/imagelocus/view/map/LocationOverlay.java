@@ -1,3 +1,4 @@
+
 package m.z.imagelocus.view.map;
 
 import android.graphics.Bitmap;
