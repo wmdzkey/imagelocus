@@ -15,6 +15,7 @@ import m.z.imagelocus.entity.User;
 public class SystemAdapter {
     public static Gson gson = new Gson();
 
+    public static String currentAppUserId;
     public static User currentUser;
     public static Lbs currentUserLbs;
 }
