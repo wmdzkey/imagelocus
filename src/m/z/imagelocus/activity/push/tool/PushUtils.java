@@ -7,15 +7,13 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import m.z.imagelocus.config.SystemConfig;
 
-public class Utils {
+public class PushUtils {
 	public static final String TAG = "ImageLocus - BaiduPush";
 
 	public static final String RESPONSE_METHOD = "method";
 	public static final String RESPONSE_ERRCODE = "errcode";
     public static final String RESPONSE_CONTENT = "content";
 
-    public static final String ACTION_LOGIN = "com.baidu.pushdemo.action.LOGIN";
-	public static final String ACTION_MESSAGE = "com.baiud.pushdemo.action.MESSAGE";
 	public static final String ACTION_RESPONSE = "bccsclient.action.RESPONSE";
 	public static final String ACTION_SHOW_MESSAGE = "bccsclient.action.SHOW_MESSAGE";
     public static final String EXTRA_ACCESS_TOKEN = "access_token";

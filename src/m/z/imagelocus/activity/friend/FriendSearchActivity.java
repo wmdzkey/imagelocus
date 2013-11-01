@@ -112,7 +112,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
             x3ap_items_friend.notifyDataSetChanged();
             lv_friend.setAdapter(x3ap_items_friend);
         }
-        CommonView.displayShortGravity(instance, "查找到" + list_friend.size() + "位陌生人");
+        CommonView.displayGravity(instance, "查找到" + list_friend.size() + "位陌生人");
 
     }
 
@@ -188,7 +188,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
         new SearchUserService(instance, SearchUserService.FunctionName.sendUserLocServer, locDataNow) {
             @Override
             public void doResult(Map<String, Object> resultMap) {
-                CommonView.displayShortGravity(instance, "正在发送我的位置...");
+                CommonView.displayGravity(instance, "正在发送我的位置...");
             }
         };
     }
@@ -271,7 +271,7 @@ public class FriendSearchActivity extends Activity implements AdapterView.OnItem
      */
     public void requestLocClick(){
         locClient.requestLocation();
-        CommonView.displayShortGravity(instance, "正在查找我附近的人……");
+        CommonView.displayGravity(instance, "正在查找我附近的人……");
     }
 
     /**

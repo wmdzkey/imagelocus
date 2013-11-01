@@ -101,6 +101,8 @@ public class FriendActivity extends Activity implements AdapterView.OnItemClickL
                 }
             }
         };
+
+        x3ProgressBar.start();
     }
 
 

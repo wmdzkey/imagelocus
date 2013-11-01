@@ -44,7 +44,7 @@ public class X3ProgressBarActivity extends Activity implements DialogInterface.O
     @Click(R.id.btn_setTags)
     void btn_setTags_onClick() {
 
-        new X3ProgressBar<Boolean>(this) {
+        X3ProgressBar x3ProgressBar = new X3ProgressBar<Boolean>(this) {
             @Override
             public Boolean doWork() {
                     int i;
@@ -66,6 +66,7 @@ public class X3ProgressBarActivity extends Activity implements DialogInterface.O
                 }
             }
         };
+        x3ProgressBar.start();
 
 //        //添加异步操作
 //        m_Dialog=new ProgressDialog(this);
