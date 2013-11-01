@@ -76,7 +76,7 @@
                         android:background="@drawable/login_input_arrow"
                         android:layout_width="12.0dip"
                         android:layout_height="8.0dip"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         />
 
             </LinearLayout>
@@ -164,5 +164,4 @@
             android:listSelector="#00000000"
             android:dividerHeight="3dp"
             android:scrollbars="none"/>
-    - ,
 </RelativeLayout>  
