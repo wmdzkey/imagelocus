@@ -29,6 +29,7 @@ import m.z.imagelocus.service.http.LbsYunService;
 import m.z.imagelocus.service.http.SearchPoiService;
 import m.z.imagelocus.view.map.LocationMapView;
 import m.z.imagelocus.view.map.LocationOverlay;
+import m.z.imagelocus.view.map.PoiInfoOverlay;
 
 import java.util.HashMap;
 import java.util.List;
@@ -386,9 +387,9 @@ public class MapPeripheryActivity extends Activity{
             mMapView.addLocationMarker(lbsDataNow);
 
             // 将poi结果显示到地图上
-            PoiOverlay poiOverlay = new PoiOverlay(instance, mMapView);
-            poiOverlay.setData(result.getAllPoi());
-            mMapView.getOverlays().add(poiOverlay);
+            PoiInfoOverlay poiInfoOverlay = new PoiInfoOverlay(instance, mMapView);
+            poiInfoOverlay.setData(result.getAllPoi());
+            mMapView.getOverlays().add(poiInfoOverlay);
             mMapView.refresh();
             //当ePoiType为2（公交线路）或4（地铁线路）时， poi坐标为空
             for(MKPoiInfo info : result.getAllPoi() ){

@@ -178,6 +178,7 @@
                         android:inputType="text"
                         android:layout_weight="1"
                         android:textColor="@color/black"
+                        android:background="@color/transparence"
                         android:paddingLeft="10dp"
                         />
                 <Button
@@ -293,7 +294,7 @@
                         android:layout_gravity="center_vertical"
                         android:id="@+id/sb_poi_distance"
                         android:layout_width="fill_parent"
-                        android:layout_height="65px"
+                        android:layout_height="wrap_content"
                         android:max="49"
                         android:progress="19"/>
             </LinearLayout>
