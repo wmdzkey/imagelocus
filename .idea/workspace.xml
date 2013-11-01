@@ -55,55 +55,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="6dc97390-5258-4379-8d00-8b4519bdf2ff" name="Default" comment="整理我的地图界面">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/mm_title_btn_refresh_normal.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/JPushUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/yun/LbsDoPoiListYun.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/yun/LbsDoPoiYun.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapRadarActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/service/http/SearchPoiService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/activity_map_radar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/view_paopao_map_keyword.xml" />
-      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\client\ChatActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\demo\CustomActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\demo\PushDemoActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\tool\PushInitActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\client" afterPath="" />
-      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\demo" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/friend/FriendActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/friend/FriendActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/friend/FriendSearchActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/friend/FriendSearchActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/impress/ImpressHistoryActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/impress/ImpressHistoryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/entity/convert/LbsConvert.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/convert/LbsConvert.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/entity/LbsDo.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/LbsDo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/LoginActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapGuessActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapGuessActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapImpressActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapImpressActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/application/MapInitApplication.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/application/MapInitApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapPeripheryActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapPeripheryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushMessageReceiver.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushMessageReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistInfoActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistInfoActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemAdapter.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemConfig.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemStore.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemStore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/service/UserService.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/WelcomeActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/WelcomeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/demo/X3ProgressBarActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/demo/X3ProgressBarActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_friend.xml" afterPath="$PROJECT_DIR$/res/layout/activity_friend.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_friend_chat.xml" afterPath="$PROJECT_DIR$/res/layout/activity_friend_chat.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_impress.xml" afterPath="$PROJECT_DIR$/res/layout/activity_impress.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/res/layout/activity_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_map.xml" afterPath="$PROJECT_DIR$/res/layout/activity_map.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_map_guess.xml" afterPath="$PROJECT_DIR$/res/layout/activity_map_guess.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_map_periphery.xml" afterPath="$PROJECT_DIR$/res/layout/activity_map_periphery.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_regist.xml" afterPath="$PROJECT_DIR$/res/layout/activity_regist.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_regist_info.xml" afterPath="$PROJECT_DIR$/res/layout/activity_regist_info.xml" />
-      <change type="MOVED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\res\layout\impress_paopao_point.xml" afterPath="$PROJECT_DIR$/res/layout/view_paopao_map_point.xml" />
-      <change type="MOVED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\res\layout\impress_paopao_view.xml" afterPath="$PROJECT_DIR$/res/layout/view_paopao_map_user.xml" />
-      <change type="MOVED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\tool\Utils.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushUtils.java" />
-      <change type="MOVED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\entity\convert\UserLocConvert.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/convert/LbsYunConvert.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="imagelocus.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -126,383 +78,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushMessageReceiver.java" line="0" class="m.z.imagelocus.activity.push.tool.PushMessageReceiver" package="m.z.imagelocus.activity.push.tool">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushUtils.java" line="22" class="m.z.imagelocus.activity.push.tool.Utils" package="m.z.imagelocus.activity.push.tool">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushUtils.java" line="35" class="m.z.imagelocus.activity.push.tool.Utils" package="m.z.imagelocus.activity.push.tool">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapLocusActivity.java" line="180" class="m.z.imagelocus.activity.map.MapLocusActivity" package="m.z.imagelocus.activity.map">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapLocusActivity.java" line="183" class="m.z.imagelocus.activity.map.MapLocusActivity" package="m.z.imagelocus.activity.map">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapLocusActivity.java" line="539" class="m.z.imagelocus.activity.map.MapLocusActivity" package="m.z.imagelocus.activity.map">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapLocusActivity.java" line="162" class="m.z.imagelocus.activity.map.MapLocusActivity" package="m.z.imagelocus.activity.map">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/adapter/friend/X3FriendAdapter.java" line="134" class="m.z.imagelocus.adapter.friend.X3FriendAdapter" package="m.z.imagelocus.adapter.friend">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/LbsService.java" line="61" class="m.z.imagelocus.service.LbsService" package="m.z.imagelocus.service">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/LbsService.java" line="63" class="m.z.imagelocus.service.LbsService" package="m.z.imagelocus.service">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapImpressActivity.java" line="228" class="m.z.imagelocus.activity.map.MapImpressActivity.LocationListener" package="m.z.imagelocus.activity.map">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapImpressActivity.java" line="187" class="m.z.imagelocus.activity.map.MapImpressActivity" package="m.z.imagelocus.activity.map">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/http/LbsYunService.java" line="154" class="m.z.imagelocus.service.http.LbsYunService$4" package="m.z.imagelocus.service.http">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/http/LbsYunService.java" line="155" class="m.z.imagelocus.service.http.LbsYunService$4" package="m.z.imagelocus.service.http">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/FriendService.java" line="44" class="m.z.imagelocus.service.FriendService" package="m.z.imagelocus.service">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/FriendService.java" line="86" class="m.z.imagelocus.service.FriendService" package="m.z.imagelocus.service">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/UserService.java" line="98" class="m.z.imagelocus.service.UserService" package="m.z.imagelocus.service">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushMessageReceiver.java" line="42" class="m.z.imagelocus.activity.push.tool.PushMessageReceiver" package="m.z.imagelocus.activity.push.tool">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/friend/FriendActivity.java" line="80" class="m.z.imagelocus.activity.friend.FriendActivity$1" package="m.z.imagelocus.activity.friend">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/entity/convert/LbsConvert.java" line="34" class="m.z.imagelocus.entity.convert.LbsConvert" package="m.z.imagelocus.entity.convert">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/http/LbsYunService.java" line="49" class="m.z.imagelocus.service.http.LbsYunService" package="m.z.imagelocus.service.http">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/http/LbsYunService.java" line="50" class="m.z.imagelocus.service.http.LbsYunService" package="m.z.imagelocus.service.http">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/UserService.java" line="156" class="m.z.imagelocus.service.UserService" package="m.z.imagelocus.service">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/UserService.java" line="157" class="m.z.imagelocus.service.UserService" package="m.z.imagelocus.service">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/m/z/imagelocus/service/UserService.java" line="158" class="m.z.imagelocus.service.UserService" package="m.z.imagelocus.service">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
@@ -549,123 +125,7 @@
     <favorites_list name="imagelocus" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/LoginActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="187" column="21" selection-start="5862" selection-end="5862" vertical-scroll-proportion="0.0" vertical-offset="3027" max-vertical-offset="3860">
-              <folding>
-                <element signature="e#2456#3062#0" expanded="true" />
-                <element signature="e#3043#3044#0" expanded="true" />
-                <element signature="e#3294#3315#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegistInfoActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistInfoActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="385" column="11" selection-start="27225" selection-end="27258" vertical-scroll-proportion="0.0" vertical-offset="7622" max-vertical-offset="10120">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#27653#28467#0" expanded="true" />
-                <element signature="e#28449#28450#0" expanded="true" />
-                <element signature="e#28751#28772#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_regist.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/activity_regist.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="16" selection-start="787" selection-end="787" vertical-scroll-proportion="22.4" vertical-offset="1052" max-vertical-offset="1840">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="开发记录" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/开发记录">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="39" selection-start="3448" selection-end="3448" vertical-scroll-proportion="0.59097743" vertical-offset="2247" max-vertical-offset="3080">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegistActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="12" selection-start="3404" selection-end="3404" vertical-scroll-proportion="0.0" vertical-offset="962" max-vertical-offset="2320">
-              <folding>
-                <element signature="e#1856#1862#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WelcomeActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/WelcomeActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="35" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1600">
-              <folding>
-                <element signature="e#1108#1604#0" expanded="true" />
-                <element signature="e#1593#1594#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_friend_chat.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/activity_friend_chat.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="57" selection-start="3250" selection-end="3250" vertical-scroll-proportion="26.6" vertical-offset="2218" max-vertical-offset="3460">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_friend.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/activity_friend.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="54" selection-start="3571" selection-end="3621" vertical-scroll-proportion="-9.333333" vertical-offset="1260" max-vertical-offset="4120">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PushMessageReceiver.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushMessageReceiver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="14" selection-start="5355" selection-end="5355" vertical-scroll-proportion="0.0" vertical-offset="2912" max-vertical-offset="4900">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JPushUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/JPushUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="39" selection-start="2294" selection-end="2307" vertical-scroll-proportion="0.0" vertical-offset="1082" max-vertical-offset="1660">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -783,7 +243,7 @@
     <property name="options.lastSelected" value="appearance" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../walle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -860,29 +320,6 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="RESTORED" />
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\push\client\ChatActivity$1.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\push\client\ChatActivity.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\push\demo\CustomActivity.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\push\demo\PushDemoActivity$1.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\push\demo\PushDemoActivity.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\push\tool\PushInitActivity$1.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\push\tool\PushInitActivity$2.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\push\tool\PushInitActivity.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\push\tool\Utils.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\setting\FriendInfoActivity$1.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\setting\FriendInfoActivity$2.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\setting\FriendInfoActivity$3.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\setting\FriendInfoActivity$4.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\setting\FriendInfoActivity.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\setting\SkinActivity$1.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\setting\SkinActivity.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\activity\setting\TrafficStatActivity.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\adapter\setting</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\adapter\setting\SkinListAdapter.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\config\CodeType$Demo.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\config\CodeType.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\entity\UserInfo.class</PATH>
-            <PATH vcs="svn" revision="27">E:\BC\JavaPj\IdeaProjects\imagelocus\out\production\imagelocus\m\z\imagelocus\service\UserInfoService.class</PATH>
           </FILE-GROUP>
         </FILE-GROUP>
         <FILE-GROUP>
@@ -912,6 +349,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+          <PATH vcs="svn" revision="UNDEFINED">E:\BC\JavaPj\IdeaProjects\imagelocus\gen</PATH>
+          <PATH vcs="svn" revision="UNDEFINED">E:\BC\JavaPj\IdeaProjects\imagelocus\gen_aa</PATH>
+          <PATH vcs="svn" revision="UNDEFINED">E:\BC\JavaPj\IdeaProjects\imagelocus\libs\armeabi</PATH>
+          <PATH vcs="svn" revision="UNDEFINED">E:\BC\JavaPj\IdeaProjects\imagelocus\out</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Merged with property conflicts" />
@@ -1329,6 +770,10 @@
           <option name="myVcsRoot" value="E:\BC\JavaPj\IdeaProjects\imagelocus" />
           <option name="myCopyRoot" value="E:\BC\JavaPj\IdeaProjects\imagelocus" />
         </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\BC\JavaPj\IdeaProjects\imagelocus\.idea" />
+          <option name="myCopyRoot" value="E:\BC\JavaPj\IdeaProjects\imagelocus\.idea" />
+        </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
@@ -1413,12 +858,12 @@
       <workItem from="1383183384303" duration="12100000" />
       <workItem from="1383196386075" duration="459000" />
       <workItem from="1383200944509" duration="12148000" />
-      <workItem from="1383271398670" duration="23325000" />
+      <workItem from="1383271398670" duration="25793000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="588636000" />
+    <option name="totallyTimeSpent" value="591104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1540,10 +985,7 @@
     <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="164" column="5" selection-start="4234" selection-end="4234" vertical-scroll-proportion="0.0" vertical-offset="2625" max-vertical-offset="3460">
-          <folding>
-            <element signature="e#4379#4891#0" expanded="true" />
-            <element signature="e#4880#4881#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1576,7 +1018,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="16" selection-start="787" selection-end="787" vertical-scroll-proportion="22.4" vertical-offset="1052" max-vertical-offset="1840">
+        <state line="19" column="16" selection-start="787" selection-end="787" vertical-scroll-proportion="-1.0166415" vertical-offset="1052" max-vertical-offset="1840">
           <folding />
         </state>
       </provider>
@@ -1584,19 +1026,14 @@
     <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="122" column="12" selection-start="3404" selection-end="3404" vertical-scroll-proportion="0.0" vertical-offset="962" max-vertical-offset="2320">
-          <folding>
-            <element signature="e#1856#1862#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/WelcomeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="35" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1600">
-          <folding>
-            <element signature="e#1108#1604#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1615,7 +1052,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="57" selection-start="3250" selection-end="3250" vertical-scroll-proportion="26.6" vertical-offset="2218" max-vertical-offset="3460">
+        <state line="70" column="57" selection-start="3188" selection-end="3188" vertical-scroll-proportion="-1.2072617" vertical-offset="2198" max-vertical-offset="3440">
           <folding />
         </state>
       </provider>
@@ -1630,38 +1067,20 @@
     <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistInfoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="385" column="11" selection-start="27225" selection-end="27258" vertical-scroll-proportion="0.0" vertical-offset="7622" max-vertical-offset="10120">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#27653#28467#0" expanded="true" />
-            <element signature="e#28449#28450#0" expanded="true" />
-            <element signature="e#28751#28772#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="187" column="21" selection-start="5862" selection-end="5862" vertical-scroll-proportion="0.0" vertical-offset="3027" max-vertical-offset="3860">
-          <folding>
-            <element signature="e#2456#3062#0" expanded="true" />
-            <element signature="e#3043#3044#0" expanded="true" />
-            <element signature="e#3294#3315#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushMessageReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="156" column="14" selection-start="5355" selection-end="5355" vertical-scroll-proportion="0.0" vertical-offset="2912" max-vertical-offset="4900">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/开发记录">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="39" selection-start="3448" selection-end="3448" vertical-scroll-proportion="0.59097743" vertical-offset="2247" max-vertical-offset="3080">
           <folding />
         </state>
       </provider>
