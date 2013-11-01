@@ -2,10 +2,12 @@ package m.z.imagelocus.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.baidu.android.pushservice.PushManager;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.db.sqlite.WhereBuilder;
 import com.lidroid.xutils.exception.DbException;
+import m.z.common.CommonView;
 import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.config.SystemConfig;
 import m.z.imagelocus.entity.Friend;
@@ -14,6 +16,8 @@ import m.z.util.SIMCardUtil;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author Winnid
@@ -158,6 +162,24 @@ public class UserService {
         } catch (DbException e) {
             e.printStackTrace();
         }
+    }
+
+    //保存登录用户云推id
+    public void savePushUserId(final String app_userid) {
+        final Timer timer = new Timer(true);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(SystemAdapter.currentUser != null) {
+                    SystemAdapter.currentUser.setApp_user_id(app_userid);
+                    Service.userService.saveOrUpdate(SystemAdapter.currentUser);
+                    CommonView.display(mContext, "绑定更新完成");
+                    timer.cancel();
+                } else{
+                    CommonView.display(mContext, "暂无用户登陆信息, 等待绑定");
+                }
+            }
+        }, 0, 5000);
     }
 
 }
