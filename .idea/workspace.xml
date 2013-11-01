@@ -54,7 +54,57 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="6dc97390-5258-4379-8d00-8b4519bdf2ff" name="Default" comment="整理我的地图界面" />
+    <list default="true" readonly="true" id="6dc97390-5258-4379-8d00-8b4519bdf2ff" name="Default" comment="整理我的地图界面">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/mm_title_btn_refresh_normal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/JPushUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/yun/LbsDoPoiListYun.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/yun/LbsDoPoiYun.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapRadarActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/service/http/SearchPoiService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/activity_map_radar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/view_paopao_map_keyword.xml" />
+      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\client\ChatActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\demo\CustomActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\demo\PushDemoActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\tool\PushInitActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\client" afterPath="" />
+      <change type="DELETED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\demo" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/friend/FriendActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/friend/FriendActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/friend/FriendSearchActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/friend/FriendSearchActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/impress/ImpressHistoryActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/impress/ImpressHistoryActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/entity/convert/LbsConvert.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/convert/LbsConvert.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/entity/LbsDo.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/LbsDo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/LoginActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/LoginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapGuessActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapGuessActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapImpressActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapImpressActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/application/MapInitApplication.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/application/MapInitApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapPeripheryActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/map/MapPeripheryActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushMessageReceiver.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushMessageReceiver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistInfoActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/RegistInfoActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemAdapter.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemConfig.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemStore.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/config/SystemStore.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/service/UserService.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/service/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/WelcomeActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/WelcomeActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/m/z/imagelocus/activity/demo/X3ProgressBarActivity.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/demo/X3ProgressBarActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_friend.xml" afterPath="$PROJECT_DIR$/res/layout/activity_friend.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_friend_chat.xml" afterPath="$PROJECT_DIR$/res/layout/activity_friend_chat.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_impress.xml" afterPath="$PROJECT_DIR$/res/layout/activity_impress.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/res/layout/activity_login.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_map.xml" afterPath="$PROJECT_DIR$/res/layout/activity_map.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_map_guess.xml" afterPath="$PROJECT_DIR$/res/layout/activity_map_guess.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_map_periphery.xml" afterPath="$PROJECT_DIR$/res/layout/activity_map_periphery.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_regist.xml" afterPath="$PROJECT_DIR$/res/layout/activity_regist.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_regist_info.xml" afterPath="$PROJECT_DIR$/res/layout/activity_regist_info.xml" />
+      <change type="MOVED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\res\layout\impress_paopao_point.xml" afterPath="$PROJECT_DIR$/res/layout/view_paopao_map_point.xml" />
+      <change type="MOVED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\res\layout\impress_paopao_view.xml" afterPath="$PROJECT_DIR$/res/layout/view_paopao_map_user.xml" />
+      <change type="MOVED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\activity\push\tool\Utils.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/activity/push/tool/PushUtils.java" />
+      <change type="MOVED" beforePath="E:\BC\JavaPj\IdeaProjects\imagelocus\src\m\z\imagelocus\entity\convert\UserLocConvert.java" afterPath="$PROJECT_DIR$/src/m/z/imagelocus/entity/convert/LbsYunConvert.java" />
+    </list>
     <ignored path="imagelocus.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1363,12 +1413,12 @@
       <workItem from="1383183384303" duration="12100000" />
       <workItem from="1383196386075" duration="459000" />
       <workItem from="1383200944509" duration="12148000" />
-      <workItem from="1383271398670" duration="22795000" />
+      <workItem from="1383271398670" duration="23325000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="588106000" />
+    <option name="totallyTimeSpent" value="588636000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
