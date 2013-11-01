@@ -2,15 +2,18 @@ package m.z.imagelocus.application;
 
 import android.app.Application;
 import android.content.Context;
+import android.widget.Toast;
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.MKGeneralListener;
 import com.baidu.mapapi.map.*;
-import m.z.common.CommonView;
+import m.z.imagelocus.activity.push.tool.PushUtils;
 import m.z.imagelocus.config.SystemConfig;
 
 public class MapInitApplication extends Application {
 
-    private static MapInitApplication mInstance = null;
+    public static MapInitApplication mInstance = null;
     public boolean m_bKeyRight = true;
     public BMapManager mBMapManager = null;
 
@@ -39,7 +42,7 @@ public class MapInitApplication extends Application {
         }
 
         if (!mBMapManager.init(strKey, new BaiduMapGeneralListener())) {
-             CommonView.displayLong(MapInitApplication.getInstance().getApplicationContext(), "地图模块  初始化错误!");
+             Toast.makeText(MapInitApplication.getInstance(), "地图模块  初始化错误!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -49,10 +52,10 @@ public class MapInitApplication extends Application {
         @Override
         public void onGetNetworkState(int iError) {
             if (iError == MKEvent.ERROR_NETWORK_CONNECT) {
-                CommonView.displayLong(MapInitApplication.getInstance().getApplicationContext(), "您的网络出错啦！");
+                Toast.makeText(MapInitApplication.getInstance(), "您的网络出错啦！", Toast.LENGTH_LONG).show();
             }
             else if (iError == MKEvent.ERROR_NETWORK_DATA) {
-                CommonView.displayLong(MapInitApplication.getInstance().getApplicationContext(), "输入正确的检索条件！");
+                Toast.makeText(MapInitApplication.getInstance(), "输入正确的检索条件！", Toast.LENGTH_LONG).show();
             }
         }
 
@@ -60,7 +63,7 @@ public class MapInitApplication extends Application {
         public void onGetPermissionState(int iError) {
             if (iError ==  MKEvent.ERROR_PERMISSION_DENIED) {
                 //授权Key错误：
-                CommonView.displayLong(MapInitApplication.getInstance().getApplicationContext(), "授权Key失效！请下载最新版本");
+                Toast.makeText(MapInitApplication.getInstance(), "授权Key失效！请下载最新版本", Toast.LENGTH_LONG).show();
                 MapInitApplication.getInstance().m_bKeyRight = false;
             }
         }
