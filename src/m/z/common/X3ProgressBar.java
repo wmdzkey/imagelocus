@@ -34,7 +34,6 @@ public abstract class X3ProgressBar<T> implements DialogInterface.OnClickListene
      * */
     public X3ProgressBar(Context context) {
         initParam(context, null, false, null, false);
-        initProgressDialog();
     }
     /**
      * cancelable：是否可以被取消;
@@ -45,7 +44,6 @@ public abstract class X3ProgressBar<T> implements DialogInterface.OnClickListene
      * */
     public X3ProgressBar(Context context, Boolean cancelable) {
         initParam(context, null, false, null, cancelable);
-        initProgressDialog();
     }
     /**
      * cancelable：是否可以被取消;
@@ -56,7 +54,6 @@ public abstract class X3ProgressBar<T> implements DialogInterface.OnClickListene
      * */
     public X3ProgressBar(Context context, Boolean btnBackgroundVisible, Boolean cancelable) {
         initParam(context, null, btnBackgroundVisible, null, cancelable);
-        initProgressDialog();
     }
     /**
      * btnBackgroundTitle:隐藏到后台按钮标题;
@@ -67,7 +64,6 @@ public abstract class X3ProgressBar<T> implements DialogInterface.OnClickListene
      * */
     public X3ProgressBar(Context context, String btnBackgroundTitle) {
         initParam(context, btnBackgroundTitle, false, null, false);
-        initProgressDialog();
     }
     /**
      * message:中间的消息="正在处理，请稍后..."
@@ -77,6 +73,9 @@ public abstract class X3ProgressBar<T> implements DialogInterface.OnClickListene
      * */
     public X3ProgressBar(Context context, String message, Boolean btnBackgroundVisible, String btnBackgroundTitle, Boolean cancelable) {
         initParam(context, message, btnBackgroundVisible, btnBackgroundTitle, cancelable);
+    }
+
+    public void start() {
         initProgressDialog();
     }
 
@@ -88,6 +87,9 @@ public abstract class X3ProgressBar<T> implements DialogInterface.OnClickListene
         this.btnBackgroundTitle = (btnBackgroundTitle == null) ? "隐藏到后台":btnBackgroundTitle;
         this.cancelable = cancelable;
         this.mHandler = new Handler();
+    }
+
+    private void initProgressDialog() {
 
         mProgressDialog = new ProgressDialog(mContext);//实例化
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);//设置进度条风格，风格为圆形，旋转的
@@ -98,9 +100,7 @@ public abstract class X3ProgressBar<T> implements DialogInterface.OnClickListene
         mProgressDialog.setIndeterminate(true);//设置ProgressDialog 的进度条是否不明确
         mProgressDialog.setCancelable(false);//设置ProgressDialog 是否可以按退回按键取消
         mProgressDialog.show();
-    }
 
-    private void initProgressDialog() {
         //添加异步操作
         new Thread(new Runnable(){
             @Override

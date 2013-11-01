@@ -1,6 +1,7 @@
 package m.z.common;
 
 import android.content.Context;
+import android.os.Looper;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
@@ -16,66 +17,103 @@ import android.widget.Toast;
 public class CommonView {
 
     /**
-     * 显示msg
+     * 短时间显示msg
      */
-    public static void display(Context context, String msg, int time) {
-        Toast.makeText(context, msg, time).show();
-    }
-
-    /**
-     * 长时间显示msg
-     */
-    public static void displayLong(Context context, String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+    public static void display(Context context, String msg) {
+        display(context, msg, Toast.LENGTH_SHORT);
     }
 
     /**
      * 短时间显示msg
      */
     public static void displayShort(Context context, String msg) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        display(context, msg, Toast.LENGTH_SHORT);
     }
+
+    /**
+     * 长时间显示msg
+     */
+    public static void displayLong(Context context, String msg) {
+        display(context, msg, Toast.LENGTH_LONG);
+    }
+
+    public static void display(final Context context, final String msg, final int time) {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                Looper.prepare();
+                Toast.makeText(context, msg, time).show();
+                Looper.loop();
+            }
+        }).start();
+    }
+
 
     /**
      * 短时间显示自定义位置（中间）
      */
-    public static void displayShortGravity(Context context, String msg) {
-        Toast toast = Toast.makeText(context,msg, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+    public static void displayGravity(final Context context, final String msg) {
+        displayGravity(context, msg, Toast.LENGTH_SHORT, Gravity.CENTER);
+    }
+    /**
+     * 短时间显示自定义位置（中间）
+     */
+    public static void displayLongGravity(final Context context, final String msg) {
+        displayGravity(context, msg, Toast.LENGTH_LONG, Gravity.CENTER);
+    }
+    /**
+     * 短时间显示自定义位置（中间）
+     */
+    public static void displayGravity(final Context context, final String msg, final int time, final int gravity) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+                toast.setGravity(gravity, 0, 0);
+                toast.show();
+                Looper.loop();
+            }
+        }).start();
     }
 
     /**
-     * 长时间显示自定义位置（中间）
+     * 短时间显示view
      */
-    public static void displayLongGravity(Context context, String msg) {
-        Toast toast = Toast.makeText(context,msg, Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
+    public static void displayView(Context context, View view) {
+        displayView(context, view, Toast.LENGTH_SHORT);
     }
-
-
-
 
     /**
      * 短时间显示view
      */
     public static void displayViewShort(Context context, View view) {
-        Toast toast = new Toast(context);
-        toast.setView(view);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.show();
+        displayView(context, view, Toast.LENGTH_SHORT);
     }
 
     /**
      * 长时间显示view
      */
     public static void displayViewLong(Context context, View view) {
-        Toast toast = new Toast(context);
-        toast.setView(view);
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.show();
+        displayView(context, view, Toast.LENGTH_LONG);
     }
 
+    /**
+     * 短时间显示view
+     */
+    public static void displayView(final Context context, final View view, final int time) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                Toast toast = new Toast(context);
+                toast.setView(view);
+                toast.setDuration(time);
+                toast.show();
+                Looper.loop();
+            }
+        }).start();
 
+    }
 }
