@@ -2,9 +2,7 @@ package m.z.imagelocus.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,14 +10,8 @@ import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
 import m.z.common.X3ProgressBar;
 import m.z.imagelocus.R;
-import m.z.imagelocus.activity.push.tool.PushInitActivity_;
-import m.z.imagelocus.config.SystemAdapter;
-import m.z.imagelocus.config.SystemConfig;
 import m.z.imagelocus.entity.User;
 import m.z.imagelocus.service.Service;
-import m.z.util.SIMCardUtil;
-
-import java.util.Map;
 
 /**
  * 登陆界面activity

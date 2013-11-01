@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationOverlay;
+import com.baidu.mapapi.map.PoiOverlay;
 import com.baidu.mapapi.map.PopupOverlay;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
 import m.z.common.CommonView;
@@ -30,7 +31,7 @@ import java.util.Date;
  * 继承MyLocationOverlay重写dispatchTap实现点击处理
  * Created by Winnid on 13-10-23.
  */
-public class LocationOverlay extends MyLocationOverlay {
+public class PoiInfoOverlay extends PoiOverlay {
 
     public Lbs lbs = null;
     public LbsDoPoiYun lbsDoPoiYun = null;
@@ -42,8 +43,8 @@ public class LocationOverlay extends MyLocationOverlay {
     private LayoutInflater inflater;
     private boolean useNative;
     private int popViewType = 0;
-    public LocationOverlay(MapView mapView, PopupOverlay pop) {
-        super(mapView);
+    public PoiInfoOverlay(MapView mapView, PopupOverlay pop) {
+        super(mapView.getContext(), mapView);
         this.inflater = LayoutInflater.from(mapView.getContext());
         this.mapView = mapView;
         this.pop = pop;
@@ -51,7 +52,7 @@ public class LocationOverlay extends MyLocationOverlay {
         this.useNative = true;
     }
 
-    public LocationOverlay(MapView mapView, PopupOverlay pop, boolean useNative) {
+    public PoiInfoOverlay(MapView mapView, PopupOverlay pop, boolean useNative) {
         super(mapView);
         this.inflater = LayoutInflater.from(mapView.getContext());
         this.mapView = mapView;
@@ -60,7 +61,7 @@ public class LocationOverlay extends MyLocationOverlay {
         this.useNative = useNative;
     }
 
-    public LocationOverlay(MapView mapView, PopupOverlay pop, boolean useNative, int popViewType) {
+    public PoiInfoOverlay(MapView mapView, PopupOverlay pop, boolean useNative, int popViewType) {
         super(mapView);
         this.inflater = LayoutInflater.from(mapView.getContext());
         this.mapView = mapView;
