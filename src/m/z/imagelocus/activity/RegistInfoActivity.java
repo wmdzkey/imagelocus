@@ -6,10 +6,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+import com.baidu.android.pushservice.PushManager;
 import com.googlecode.androidannotations.annotations.*;
 import m.z.common.CommonView;
 import m.z.common.X3ProgressBar;
+import m.z.common.X3SimpleProgressBar;
 import m.z.imagelocus.R;
+import m.z.imagelocus.activity.push.tool.JPushUtil;
 import m.z.imagelocus.activity.push.tool.PushInitActivity_;
 import m.z.imagelocus.config.SystemAdapter;
 import m.z.imagelocus.config.SystemConfig;
@@ -17,6 +20,8 @@ import m.z.imagelocus.entity.User;
 import m.z.imagelocus.service.Service;
 
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 登陆界面activity
@@ -377,7 +382,42 @@ public class RegistInfoActivity extends Activity {
     }
 
     void regist() {
-        X3ProgressBar<Map<String, Object>> x3ProgressBar = new X3ProgressBar<Map<String, Object>>(instance, "正在登录...", false, null, false) {
+        //检测绑定服务是否能够正常运行
+        if(JPushUtil.isOpenNetwork(instance)) {
+           if(SystemAdapter.currentAppUserId == null || SystemAdapter.currentAppUserId.equals("")) {
+               CommonView.display(instance, "请稍等正在绑定网络服务，稍后注册会自完成");
+               //检测绑定服务是否成功获取app_user_id
+               final X3SimpleProgressBar x3SimpleProgressBar = new X3SimpleProgressBar(instance);
+               final Timer timer = new Timer(true);
+               timer.schedule(new TimerTask() {
+                   @Override
+                   public void run() {
+                       if(SystemAdapter.currentAppUserId == null || SystemAdapter.currentAppUserId.equals("")) {
+//                           CommonView.display(instance, "请稍等正在绑定网络服务，稍后注册会自完成" +
+//                           "PushManager.isConnected(instance):" + PushManager.isConnected(instance) + "\n" +
+//                                   "SystemAdapter.currentAppUserId:" + SystemAdapter.currentAppUserId );
+                       } else {
+                           timer.cancel();
+                           x3SimpleProgressBar.stop();
+                           user.setApp_user_id(SystemAdapter.currentAppUserId);
+                           registLocal();
+                       }
+                   }
+               }, 0, 1000);
+
+           } else {
+               registLocal();
+           }
+        } else {
+            CommonView.display(instance, "无网络连接，请检查网络");
+        }
+
+
+    }
+
+    @UiThread
+    void registLocal() {
+        X3ProgressBar<Map<String, Object>> x3ProgressBar = new X3ProgressBar<Map<String, Object>>(instance, "正在注册...", false, null, false) {
             @Override
             public Map<String, Object> doWork() {
                 return Service.userService.regist(user);
@@ -389,14 +429,15 @@ public class RegistInfoActivity extends Activity {
                     CommonView.displayShort(instance, "被被人用了，换个用户名吧");
                 } else {
                     CommonView.displayShort(instance, "欢迎你加入," + SystemAdapter.currentUser.getUsername());
-                    Intent intentToMain = new Intent(instance, PushInitActivity_.class);
+                    remenberUser();
+                    Intent intentToMain = new Intent(instance, MainActivity_.class);
                     intentToMain.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivity(intentToMain);
-                    remenberUser();
                     finish();
                 }
             }
         };
+        x3ProgressBar.start();
     }
 
     /**记住用户信息*/
@@ -451,7 +492,6 @@ public class RegistInfoActivity extends Activity {
         if (iv_logo_clickNum == 2) {
             iv_logo_clickNum = 0;
             CommonView.displayShort(instance, "这个版本没有隐藏功能");
-//            CommonView.displayShort(instance, "有恒心，酒香不怕巷子深");
 //            Intent intentToHide = new Intent(instance, MainActivity_.class);
 //            startActivity(intentToHide);
         }
