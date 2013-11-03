@@ -114,30 +114,6 @@
         </activity><!-- impress.end -->
 
 
-        <!-- push -->
-        <activity
-                android:name="m.z.imagelocus.activity.push.tool.PushInitActivity_"
-                android:launchMode="singleTask"
-                android:configChanges="orientation|keyboardHidden"
-                android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
-        <activity
-                android:name="m.z.imagelocus.activity.push.client.ChatActivity_"
-                android:configChanges="orientation|keyboardHidden"
-                android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
-        <activity
-                android:name="m.z.imagelocus.activity.push.demo.PushDemoActivity_"
-                android:configChanges="orientation|keyboardHidden"
-                android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
-        <!-- 自定义消息通知显示 -->
-        <activity
-                android:name="m.z.imagelocus.activity.push.demo.CustomActivity"
-                android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
-
-
         <!-- push service rich media display -->
         <activity
                 android:name="com.baidu.android.pushservice.richmedia.MediaViewActivity"
@@ -209,6 +185,9 @@
                   android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity android:name=".activity.map.MapRadarActivity_"
+                  android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity android:name=".activity.map.MapPoiListActivity_"
                   android:theme="@android:style/Theme.NoTitleBar">
         </activity>
 
